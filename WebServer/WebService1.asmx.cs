@@ -20,30 +20,39 @@ namespace WebServer
     {
 
         SqlConnection sqlConnection = new SqlConnection();
-        String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ROPark;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Asus\Desktop\ok\ROPark_II\Database1.mdf;Integrated Security=True";
         SqlConnection myCon = new SqlConnection();
         public WebService1()
         {
-
             myCon.ConnectionString = connectionString;
         }
 
         [WebMethod]
-        public List<String> getAllCites()
-        {
+        public List<City> getAllCites()
+        { 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
-            DataSet dataSet_Cities = new DataSet();
-            SqlDataAdapter dataAdapter_Cities = new SqlDataAdapter("SELECT * FROM City", connection);
-            dataAdapter_Cities.Fill(dataSet_Cities, "CityName");
+            DataSet dataSet_Oras = new DataSet();
+            SqlDataAdapter dataAdapter_Univ = new SqlDataAdapter("SELECT * FROM City", connection);
+            DataTable dtOras = new DataTable();
+            dataAdapter_Univ.Fill(dataSet_Oras, "City");
 
-            List<String> list = new List<String>();
-
-            foreach (DataRow row in dataSet_Cities.Tables["CityName"].Rows)
+            List<City> list = new List<City>();
+           
+            foreach (DataRow row in dataSet_Oras.Tables["City"].Rows)
             {
-                list.Add(row.ItemArray.GetValue(1).ToString());
+
+                City city = new City();
+                city.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                city.name = row.ItemArray.GetValue(1).ToString();
+                city.mapX = Convert.ToInt32(row.ItemArray.GetValue(2));
+                city.mapY = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(city);
+
             }
+            
 
             sqlConnection.Close();
 
@@ -376,6 +385,15 @@ namespace WebServer
             myCon.Close();
 
         }
+
+    }
+
+    public class City
+    {
+        public int id;
+        public string name;
+        public int mapX;
+        public int mapY;
 
     }
 

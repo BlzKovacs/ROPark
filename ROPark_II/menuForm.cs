@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proiect_II;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +22,10 @@ namespace ROPark_II
         Boolean hasAccount,accountLogged;
         private System.Windows.Forms.Form activeForm = null;
         private System.Windows.Forms.Form openedChildForm;
+
         signInForm signInForm = new signInForm();
         signUpForm signUpForm = new signUpForm();
+        formMap formMap = new formMap();
 
         AccountForm accountForm = new AccountForm();
 
@@ -128,6 +131,35 @@ namespace ROPark_II
             }
             else
                 MessageBox.Show("Sign in first!", "Error");
+        }
+
+        private void buttonPark_Click(object sender, EventArgs e)
+        {
+            prevUserName = signInForm.userName;
+            if (accountForm.accountLogged == false)
+            {
+                userName = null;
+                signInForm.userName = null;
+            }
+            try
+            {
+                if (Form.ActiveForm != this.formMap)
+                {
+                    openChildFormInPanel(this.formMap);
+                }
+            }
+            catch (Exception ex)
+            {
+                //setNewLogin(userName);
+                this.formMap = new formMap();
+                signInForm.userName = userName;
+                openChildFormInPanel(formMap);
+            };
+        }
+
+        private void panelSecondForm_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void setNewAccount()
