@@ -152,6 +152,7 @@
             this.buttonPark.Text = " Start Parking";
             this.buttonPark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonPark.UseVisualStyleBackColor = false;
+            this.buttonPark.Click += new System.EventHandler(this.buttonPark_Click);
             // 
             // labelTime
             // 
@@ -171,7 +172,7 @@
             this.labelClock.ForeColor = System.Drawing.Color.Black;
             this.labelClock.Location = new System.Drawing.Point(253, 11);
             this.labelClock.Name = "labelClock";
-            this.labelClock.Size = new System.Drawing.Size(69, 28);
+            this.labelClock.Size = new System.Drawing.Size(70, 29);
             this.labelClock.TabIndex = 2;
             this.labelClock.Text = "label1";
             // 
@@ -187,6 +188,7 @@
             this.panelSecondForm.Name = "panelSecondForm";
             this.panelSecondForm.Size = new System.Drawing.Size(813, 470);
             this.panelSecondForm.TabIndex = 3;
+            this.panelSecondForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSecondForm_Paint);
             // 
             // pictureBox1
             // 

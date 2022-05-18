@@ -14,12 +14,12 @@
 #pragma warning disable 1591
 
 namespace ROPark_II.localhost {
-    using System.Diagnostics;
     using System;
+    using System.Web.Services;
+    using System.Diagnostics;
+    using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
-    using System.Web.Services.Protocols;
-    using System.Web.Services;
     
     
     /// <remarks/>
@@ -114,9 +114,9 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllCites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] getAllCites() {
+        public City[] getAllCites() {
             object[] results = this.Invoke("getAllCites", new object[0]);
-            return ((string[])(results[0]));
+            return ((City[])(results[0]));
         }
         
         /// <remarks/>
@@ -402,6 +402,63 @@ namespace ROPark_II.localhost {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class City {
+        
+        private int idField;
+        
+        private string nameField;
+        
+        private int mapXField;
+        
+        private int mapYField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int mapX {
+            get {
+                return this.mapXField;
+            }
+            set {
+                this.mapXField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int mapY {
+            get {
+                return this.mapYField;
+            }
+            set {
+                this.mapYField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getAllCitesCompletedEventHandler(object sender, getAllCitesCompletedEventArgs e);
     
@@ -419,10 +476,10 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
-        public string[] Result {
+        public City[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string[])(this.results[0]));
+                return ((City[])(this.results[0]));
             }
         }
     }
