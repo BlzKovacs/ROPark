@@ -49,7 +49,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(350, 202);
+            this.textBoxPassword.Location = new System.Drawing.Point(350, 201);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(125, 22);
@@ -58,7 +58,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(350, 141);
+            this.textBoxName.Location = new System.Drawing.Point(350, 140);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(125, 22);
@@ -97,7 +97,7 @@
             this.labelWelcome.TabIndex = 7;
             this.labelWelcome.Text = "Please enter you account";
             // 
-            // signInForm
+            // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,7 +109,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelWelcome);
-            this.Name = "signInForm";
+            this.Name = "SignInForm";
             this.Text = "signInForm";
             this.ResumeLayout(false);
             this.PerformLayout();

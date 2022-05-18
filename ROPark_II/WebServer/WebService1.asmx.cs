@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Services;
 
@@ -93,6 +95,7 @@ namespace WebServer
 
             return list;
         }
+
         [WebMethod]
         public List<String> getAllUsers()
         {
@@ -139,6 +142,7 @@ namespace WebServer
             return "NU EXISTA IN BAZA DE DATE";
         }
 
+
         [WebMethod]
         public List<String> getRegionByCityId(int idCity)
         {
@@ -163,6 +167,8 @@ namespace WebServer
 
             return list;
         }
+
+
 
         [WebMethod]
         public bool checkUserName(String name)
@@ -442,6 +448,356 @@ namespace WebServer
 
         }
 
+
+
+        [WebMethod]
+        public int getCityId(String name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT CityID FROM City WHERE CityName = @name";
+
+            int id = -1;
+
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("name", name);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                id = Convert.ToInt32(dataReader["CityID"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return id;
+
+        }
+
+        [WebMethod]
+        public int getRegionId(String name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT RegionID FROM CityRegion WHERE RegionName = @name";
+
+            int id = -1;
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("name", name);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                id = Convert.ToInt32(dataReader["RegionID"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return id;
+
+        }
+
+
+        [WebMethod]
+        public Boolean deleteParkPlace(string name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+            try
+            {
+                using (myCon)
+                {
+                    myCon.Open();
+                    SqlCommand command = new SqlCommand("DELETE FROM ParkingPlaces WHERE ParkPlaceName = @name", myCon);
+                    command.Parameters.Add("@name", name);
+
+                    using (command)
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    
+                    myCon.Close();
+                    return true;
+                }
+            }
+            catch (Exception) {
+                return false;
+            };
+        }
+
+        [WebMethod]
+        public Boolean deleteRegion(string name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+            try
+            {
+                using (myCon)
+                {
+                    myCon.Open();
+                    SqlCommand command = new SqlCommand("DELETE FROM CityRegion WHERE RegionName = @name", myCon);
+                    command.Parameters.Add("@name", name);
+
+                    using (command)
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    myCon.Close();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            };
+        }
+        [WebMethod]
+        public Boolean deleteCity(string name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+            try
+            {
+                using (myCon)
+                {
+                    myCon.Open();
+                    SqlCommand command = new SqlCommand("DELETE FROM City WHERE CityName = @name", myCon);
+                    command.Parameters.Add("@name", name);
+
+                    using (command)
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    myCon.Close();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            };
+        }
+
+        [WebMethod]
+        public List<String> getRegionsForCity(int cityId)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT RegionName FROM CityRegion WHERE CityID = @cityId";
+
+            List<string> regions = new List<string>();
+
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("cityId", cityId);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                regions.Add(dataReader["RegionName"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return regions;
+        }
+
+        [WebMethod]
+        public List<String> getParkPlacesForRegion(int regionId)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT ParkPlaceName FROM ParkingPlaces WHERE CityRegionID = @regionId";
+
+            List<string> parkPlaces = new List<string>();
+
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("regionId", regionId);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                parkPlaces.Add(dataReader["ParkPlaceName"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return parkPlaces;
+        }
+
+        [WebMethod]
+
+        public Boolean changeCityName(String oldName,String newName)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Update City Set CityName = @newName where CityName = @oldName", myCon);
+                
+                command.Parameters.Add("@oldName", SqlDbType.NChar).Value = oldName;
+                command.Parameters.Add("@newName", SqlDbType.NChar).Value = newName;
+                command.ExecuteNonQuery();
+                myCon.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                myCon.Close();
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public Boolean changeRegionName(String oldName, String newName)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Update CityRegion Set RegionName = @newName where RegionName = @oldName", myCon);
+
+                command.Parameters.Add("@oldName", SqlDbType.NChar).Value = oldName;
+                command.Parameters.Add("@newName", SqlDbType.NChar).Value = newName;
+                command.ExecuteNonQuery();
+                myCon.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                myCon.Close();
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public Boolean changeParkPlace(String oldName, String newName,int newSpaces)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Update ParkingPlaces Set ParkPlaceName = @newName,NrSpaces = @newSpaces where ParkPlaceName = @oldName", myCon);
+
+                command.Parameters.Add("@oldName", SqlDbType.NChar).Value = oldName;
+                command.Parameters.Add("@newName", SqlDbType.NChar).Value = newName;
+                command.Parameters.Add("@newSpaces", SqlDbType.NChar).Value = newSpaces;
+                command.ExecuteNonQuery();
+                myCon.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                myCon.Close();
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public int getNrSpaces(String name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT NrSpaces FROM ParkingPlaces WHERE ParkPlaceName = @name";
+
+            List<string> parkPlaces = new List<string>();
+            int nrSpaces = 0;
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("name", name);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                nrSpaces = Convert.ToInt32(dataReader["NrSpaces"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return nrSpaces;
+        }
+
+        [WebMethod]
+        public Boolean sendEmail(string email, String userName, String firstName, String lastName, String phoneNr)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential("ropark.mail@gmail.com", "aagvxllfrllyrare");
+
+                MailMessage mailDetails = new MailMessage();
+                mailDetails.From = new MailAddress("ropark.mail@gmail.com");
+                mailDetails.To.Add(email);
+                mailDetails.Subject = "ROPark";
+                mailDetails.IsBodyHtml = false;
+                mailDetails.Body = "Hey " + firstName + "!\n" + "Thank you for joining ROPark!\n" +
+                    "\nYour account has the following details: \nUsername: " + userName + "\nFirst name: " + firstName + "\nLast name: " + lastName
+                    + "\nEmail: " + email + "\nPhone Number: " + phoneNr + "\n\nHave a great day!";
+                client.Send(mailDetails);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
     }
 
 }

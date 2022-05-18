@@ -60,6 +60,24 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditCityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCityForm.Designer.cs">
+      <DependentUpon>EditCityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditParkPlaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditParkPlaceForm.Designer.cs">
+      <DependentUpon>EditParkPlaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditRegionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRegionForm.Designer.cs">
+      <DependentUpon>EditRegionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +114,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCityForm.resx">
+      <DependentUpon>EditCityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditParkPlaceForm.resx">
+      <DependentUpon>EditParkPlaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRegionForm.resx">
+      <DependentUpon>EditRegionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>

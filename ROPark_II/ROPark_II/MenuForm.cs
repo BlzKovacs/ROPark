@@ -15,12 +15,11 @@ namespace ROPark_II
         public MenuForm()
         {
             InitializeComponent();
-            hasAccount = false;
-            accountLogged = false;
         }
-        Boolean hasAccount,accountLogged;
+
+        
         private System.Windows.Forms.Form activeForm = null;
-        private System.Windows.Forms.Form openedChildForm;
+        //private System.Windows.Forms.Form openedChildForm;
         SignInForm signInForm = new SignInForm();
         SignUpForm signUpForm = new SignUpForm();
 

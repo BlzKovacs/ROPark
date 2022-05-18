@@ -31,6 +31,8 @@ namespace ROPark_II
             {
                 username = textBoxName.Text.Trim();
                 password = textBoxPassword.Text.Trim();
+                password = EncodePassword(password);
+     
                 success = serv.checkUser(username, password);
                 if (success)
                 {
@@ -58,5 +60,20 @@ namespace ROPark_II
         {
             return adminEntered;
         }
+        public static string EncodePassword(string password)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[password.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in base64Encode" + ex.Message);
+            }
+        }
+        
     }
 }

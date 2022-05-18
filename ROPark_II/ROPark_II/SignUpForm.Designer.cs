@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxPhoneNr = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.buttonEnter = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPhoneNr = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
+            this.buttonEnter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBoxPhoneNr
+            // textBoxPassword
             // 
-            this.textBoxPhoneNr.Location = new System.Drawing.Point(370, 238);
-            this.textBoxPhoneNr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxPhoneNr.Name = "textBoxPhoneNr";
-            this.textBoxPhoneNr.Size = new System.Drawing.Size(125, 22);
-            this.textBoxPhoneNr.TabIndex = 28;
+            this.textBoxPassword.Location = new System.Drawing.Point(370, 278);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(125, 22);
+            this.textBoxPassword.TabIndex = 28;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -63,13 +64,13 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "Phone number:";
             // 
-            // textBoxFirstName
+            // textBoxPhoneNr
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(370, 137);
-            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(125, 22);
-            this.textBoxFirstName.TabIndex = 26;
+            this.textBoxPhoneNr.Location = new System.Drawing.Point(370, 241);
+            this.textBoxPhoneNr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxPhoneNr.Name = "textBoxPhoneNr";
+            this.textBoxPhoneNr.Size = new System.Drawing.Size(125, 22);
+            this.textBoxPhoneNr.TabIndex = 26;
             // 
             // label6
             // 
@@ -82,13 +83,13 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "First Name:";
             // 
-            // textBoxLastName
+            // textBoxEmail
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(370, 171);
-            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(125, 22);
-            this.textBoxLastName.TabIndex = 24;
+            this.textBoxEmail.Location = new System.Drawing.Point(370, 208);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(125, 22);
+            this.textBoxEmail.TabIndex = 24;
             // 
             // label5
             // 
@@ -101,13 +102,13 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "Last name:";
             // 
-            // textBoxEmail
+            // textBoxLastName
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(370, 205);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(125, 22);
-            this.textBoxEmail.TabIndex = 22;
+            this.textBoxLastName.Location = new System.Drawing.Point(370, 174);
+            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(125, 22);
+            this.textBoxLastName.TabIndex = 22;
             // 
             // label4
             // 
@@ -120,24 +121,13 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Email:";
             // 
-            // buttonEnter
+            // textBoxFirstName
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(327, 323);
-            this.buttonEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(94, 23);
-            this.buttonEnter.TabIndex = 20;
-            this.buttonEnter.Text = "Enter";
-            this.buttonEnter.UseVisualStyleBackColor = true;
-            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(370, 274);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(125, 22);
-            this.textBoxPassword.TabIndex = 19;
+            this.textBoxFirstName.Location = new System.Drawing.Point(370, 137);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(125, 22);
+            this.textBoxFirstName.TabIndex = 19;
             // 
             // textBoxName
             // 
@@ -180,27 +170,38 @@
             this.labelMessage.TabIndex = 15;
             this.labelMessage.Text = "Create an accout";
             // 
-            // signUpForm
+            // buttonEnter
+            // 
+            this.buttonEnter.Location = new System.Drawing.Point(370, 318);
+            this.buttonEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEnter.Name = "buttonEnter";
+            this.buttonEnter.Size = new System.Drawing.Size(94, 23);
+            this.buttonEnter.TabIndex = 29;
+            this.buttonEnter.Text = "Enter";
+            this.buttonEnter.UseVisualStyleBackColor = true;
+            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
+            // 
+            // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(742, 392);
-            this.Controls.Add(this.textBoxPhoneNr);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxFirstName);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxPhoneNr);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxLastName);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelMessage);
-            this.Name = "signUpForm";
+            this.Name = "SignUpForm";
             this.Text = "signUpForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,19 +210,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxPhoneNr;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxFirstName;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxPhoneNr;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.Button buttonEnter;
     }
 }

@@ -53,3 +53,6 @@ C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.csp
 C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.exe
 C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.pdb
+C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.EditCityForm.resources
+C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.EditParkPlaceForm.resources
+C:\Users\user\source\repos\ROPark_II\ROPark_II\ROPark_II\obj\Debug\ROPark_II.EditRegionForm.resources
