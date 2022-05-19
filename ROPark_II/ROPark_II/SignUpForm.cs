@@ -69,8 +69,11 @@ namespace ROPark_II
                         labelMessage.Text = "Username already exists! Try a different one.";
                     else
                     {
+                        String msg = "Hey " + firstName + "!\n" + "Thank you for joining ROPark!\n" +
+                        "\nYour account has the following details: \nUsername: " + username + "\nFirst name: " + firstName + "\nLast name: " + lastName
+                        + "\nEmail: " + email + "\nPhone Number: " + phoneNr + "\n\nHave a great day!";
 
-                        if (serv.sendEmail(email, username, firstName, lastName, phoneNr))
+                        if (serv.sendEmail(email,msg, username, firstName, lastName, phoneNr))
                         {
                             serv.addUser(username, firstName, lastName, email, phoneNr, password);
                             labelMessage.Text = "All done. Welcome to ROPark! Now log in with your account.";
@@ -87,6 +90,5 @@ namespace ROPark_II
             else
                 labelMessage.Text = "Enter data into every field!";
         }
-        
     }
 }

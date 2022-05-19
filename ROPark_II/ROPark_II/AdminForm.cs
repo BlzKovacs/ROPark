@@ -222,5 +222,12 @@ namespace ROPark_II
             foreach (string user in userList)
                 listBoxUsers.Items.Add(user);
         }
+
+        private void buttonEnter_Click(object sender, EventArgs e)
+        {
+            EnterForm enterForm = new EnterForm();
+            openChildFormInPanel(enterForm);
+        }
+
     }
 }

@@ -22,10 +22,10 @@ namespace ROPark_II
         //private System.Windows.Forms.Form openedChildForm;
         SignInForm signInForm = new SignInForm();
         SignUpForm signUpForm = new SignUpForm();
-
+        formMap formMap = new formMap();
         AccountForm accountForm = new AccountForm();
 
-        String userName = null;
+        String userName = null, prevUserName=null;
         private void openChildFormInPanel(System.Windows.Forms.Form childForm)
         {
             if (activeForm != null)
@@ -159,6 +159,31 @@ namespace ROPark_II
                 this.signInForm = new SignInForm();
                 signInForm.userName = username;
             }
+        }
+
+
+        private void buttonPark_Click(object sender, EventArgs e)
+        {
+            prevUserName = signInForm.userName;
+            if (accountForm.accountLogged == false)
+            {
+                userName = null;
+                signInForm.userName = null;
+            }
+            try
+            {
+                if (Form.ActiveForm != this.formMap)
+                {
+                    openChildFormInPanel(this.formMap);
+                }
+            }
+            catch (Exception ex)
+            {
+                //setNewLogin(userName);
+                this.formMap = new formMap();
+                signInForm.userName = userName;
+                openChildFormInPanel(formMap);
+            };
         }
     }
 }

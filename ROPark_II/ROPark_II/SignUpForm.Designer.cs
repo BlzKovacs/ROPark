@@ -46,7 +46,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(370, 278);
+            this.textBoxPassword.Location = new System.Drawing.Point(438, 303);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(125, 22);
@@ -58,7 +58,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(196, 235);
+            this.label7.Location = new System.Drawing.Point(264, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(144, 28);
             this.label7.TabIndex = 27;
@@ -66,7 +66,7 @@
             // 
             // textBoxPhoneNr
             // 
-            this.textBoxPhoneNr.Location = new System.Drawing.Point(370, 241);
+            this.textBoxPhoneNr.Location = new System.Drawing.Point(438, 266);
             this.textBoxPhoneNr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPhoneNr.Name = "textBoxPhoneNr";
             this.textBoxPhoneNr.Size = new System.Drawing.Size(125, 22);
@@ -77,7 +77,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(230, 137);
+            this.label6.Location = new System.Drawing.Point(298, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 28);
             this.label6.TabIndex = 25;
@@ -85,7 +85,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(370, 208);
+            this.textBoxEmail.Location = new System.Drawing.Point(438, 233);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(125, 22);
@@ -96,7 +96,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(237, 168);
+            this.label5.Location = new System.Drawing.Point(305, 193);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 28);
             this.label5.TabIndex = 23;
@@ -104,7 +104,7 @@
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(370, 174);
+            this.textBoxLastName.Location = new System.Drawing.Point(438, 199);
             this.textBoxLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(125, 22);
@@ -115,7 +115,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(277, 202);
+            this.label4.Location = new System.Drawing.Point(345, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 28);
             this.label4.TabIndex = 21;
@@ -123,7 +123,7 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(370, 137);
+            this.textBoxFirstName.Location = new System.Drawing.Point(438, 162);
             this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(125, 22);
@@ -131,7 +131,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(370, 100);
+            this.textBoxName.Location = new System.Drawing.Point(438, 125);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(125, 22);
@@ -142,7 +142,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(243, 271);
+            this.label2.Location = new System.Drawing.Point(311, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 28);
             this.label2.TabIndex = 17;
@@ -153,7 +153,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(230, 100);
+            this.label3.Location = new System.Drawing.Point(298, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 16;
@@ -172,7 +172,7 @@
             // 
             // buttonEnter
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(370, 318);
+            this.buttonEnter.Location = new System.Drawing.Point(438, 343);
             this.buttonEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(94, 23);
@@ -186,7 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(742, 392);
+            this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label7);

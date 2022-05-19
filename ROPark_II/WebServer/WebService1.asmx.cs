@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ROPark_II.localhost;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -46,6 +47,38 @@ namespace WebServer
             {
                 list.Add(row.ItemArray.GetValue(1).ToString());
             }
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public List<City> getAllCitesCityType()
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Oras = new DataSet();
+            SqlDataAdapter dataAdapter_Univ = new SqlDataAdapter("SELECT * FROM City", connection);
+            DataTable dtOras = new DataTable();
+            dataAdapter_Univ.Fill(dataSet_Oras, "City");
+
+            List<City> list = new List<City>();
+
+            foreach (DataRow row in dataSet_Oras.Tables["City"].Rows)
+            {
+
+                City city = new City();
+                city.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                city.name = row.ItemArray.GetValue(1).ToString();
+                city.mapX = Convert.ToInt32(row.ItemArray.GetValue(2));
+                city.mapY = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(city);
+
+            }
+
 
             sqlConnection.Close();
 
@@ -142,7 +175,6 @@ namespace WebServer
             return "NU EXISTA IN BAZA DE DATE";
         }
 
-
         [WebMethod]
         public List<String> getRegionByCityId(int idCity)
         {
@@ -167,8 +199,6 @@ namespace WebServer
 
             return list;
         }
-
-
 
         [WebMethod]
         public bool checkUserName(String name)
@@ -198,9 +228,9 @@ namespace WebServer
 
             return success;
         }
-        
+
         [WebMethod]
-        public bool checkUser(String name,String password)
+        public bool checkUser(String name, String password)
         {
             bool success = false;
             String sqlStatement = "Select * from dbo.Users where UserName = @name and Password = @password";
@@ -295,7 +325,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public void addUser(String userName,String firstName,String lastName,String email,String phoneNr,String password)
+        public void addUser(String userName, String firstName, String lastName, String email, String phoneNr, String password)
         {
             myCon.Open();
             try
@@ -320,7 +350,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public bool checkCityDB(String name)
+        public bool CityExists(String name)
         {
             name = name.ToUpper();
             bool success = false;
@@ -348,15 +378,17 @@ namespace WebServer
             return success;
         }
 
-        public bool checkRegion(String name)
+        [WebMethod]
+        public bool RegionExists(String name,int cityId)
         {
             name = name.ToUpper();
             bool success = false;
-            String sqlStatement = "Select * from dbo.CityRegion where RegionName = @name";
+            String sqlStatement = "Select * from CityRegion where RegionName = @name and CityID = @cityId";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@name", System.Data.SqlDbType.NChar, 25).Value = name;
+                command.Parameters.Add("@name", name);
+                command.Parameters.Add("@cityId", cityId);
 
                 try
                 {
@@ -372,83 +404,40 @@ namespace WebServer
                     Console.WriteLine(ex.Message);
                 }
             }
+
             return success;
         }
-
-        public void addCity(string cityName)
+        [WebMethod]
+        public bool ParkingPlaceExists(String name,int regionId)
         {
-            bool exists = this.checkCityDB(cityName);
-            if (exists == false)
+            name = name.ToUpper();
+            bool success = false;
+            String sqlStatement = "Select * from ParkingPlaces where ParkPlaceName = @name and RegionID = @regionId";
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                cityName = cityName.ToUpper();
-                myCon.Open();
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@name", name);
+                command.Parameters.Add("@regionId", regionId);
+
                 try
                 {
-                    SqlCommand command = new SqlCommand("Insert into City (CityName) values (@cityName)", myCon);
-                    command.Parameters.Add("@CityName", SqlDbType.Text).Value = cityName;
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                        success = true;
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-
-                myCon.Close();
             }
+
+            return success;
         }
 
-        public void addRegion(string regionName, String cityName)
-        {
-            int cityID;
-            regionName = regionName.ToUpper();
-            cityName = cityName.ToUpper();
-
-            using (myCon)
-            {
-                myCon.Open();
-                SqlCommand cmd = new SqlCommand("Select CityID from City where CityName = @cityName", myCon);
-                cmd.Parameters.Add("@cityName", SqlDbType.NChar).Value = cityName;
-                cityID = (int)cmd.ExecuteScalar();
-
-                SqlCommand command = new SqlCommand("Insert into CityRegion (CityID,RegionName) values (@cityId,@regionName)", myCon);
-                command.Parameters.Add("@regionName", SqlDbType.NChar).Value = regionName;
-                command.Parameters.Add("@cityID", SqlDbType.Int).Value = cityID;
-
-                command.ExecuteNonQuery();
-
-
-            }
-            myCon.Close();
-        }
-
-        public void addParkingPlace(String parkPlaceName, String regionName, int nrSpaces)
-        {
-            int regionID;
-            regionName = regionName.ToUpper();
-            parkPlaceName = parkPlaceName.ToUpper();
-            myCon.ConnectionString = connectionString;
-            myCon.Open();
-            using (myCon)
-            {
-
-                SqlCommand cmd = new SqlCommand("Select RegionID from dbo.CityRegion where RegionName = @regionName", myCon);
-                cmd.Parameters.Add("@regionName", SqlDbType.NChar).Value = regionName;
-                regionID = Convert.ToInt32(cmd.ExecuteScalar());
-
-                SqlCommand command = new SqlCommand("Insert into ParkingPlaces (CityRegionID,ParkPlaceName,NrSpaces) values (@regionId,@parkPlaceName,@nrSpaces)", myCon);
-                command.Parameters.Add("@parkPlaceName", SqlDbType.NChar).Value = parkPlaceName;
-                command.Parameters.Add("@regionID", SqlDbType.Int).Value = regionID;
-                command.Parameters.Add("@nrSpaces", SqlDbType.Int).Value = nrSpaces;
-
-                command.ExecuteNonQuery();
-
-            }
-            myCon.Close();
-
-        }
-
-
+        
 
         [WebMethod]
         public int getCityId(String name)
@@ -512,7 +501,6 @@ namespace WebServer
 
         }
 
-
         [WebMethod]
         public Boolean deleteParkPlace(string name)
         {
@@ -530,12 +518,13 @@ namespace WebServer
                     {
                         command.ExecuteNonQuery();
                     }
-                    
+
                     myCon.Close();
                     return true;
                 }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return false;
             };
         }
@@ -659,7 +648,7 @@ namespace WebServer
 
         [WebMethod]
 
-        public Boolean changeCityName(String oldName,String newName)
+        public Boolean changeCityName(String oldName, String newName)
         {
 
             SqlConnection myCon = new SqlConnection();
@@ -669,7 +658,7 @@ namespace WebServer
             try
             {
                 SqlCommand command = new SqlCommand("Update City Set CityName = @newName where CityName = @oldName", myCon);
-                
+
                 command.Parameters.Add("@oldName", SqlDbType.NChar).Value = oldName;
                 command.Parameters.Add("@newName", SqlDbType.NChar).Value = newName;
                 command.ExecuteNonQuery();
@@ -711,7 +700,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public Boolean changeParkPlace(String oldName, String newName,int newSpaces)
+        public Boolean changeParkPlace(String oldName, String newName, int newSpaces)
         {
 
             SqlConnection myCon = new SqlConnection();
@@ -769,7 +758,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public Boolean sendEmail(string email, String userName, String firstName, String lastName, String phoneNr)
+        public Boolean sendEmail(String email,String msg, String userName, String firstName, String lastName, String phoneNr)
         {
             try
             {
@@ -786,9 +775,7 @@ namespace WebServer
                 mailDetails.To.Add(email);
                 mailDetails.Subject = "ROPark";
                 mailDetails.IsBodyHtml = false;
-                mailDetails.Body = "Hey " + firstName + "!\n" + "Thank you for joining ROPark!\n" +
-                    "\nYour account has the following details: \nUsername: " + userName + "\nFirst name: " + firstName + "\nLast name: " + lastName
-                    + "\nEmail: " + email + "\nPhone Number: " + phoneNr + "\n\nHave a great day!";
+                mailDetails.Body = msg;
                 client.Send(mailDetails);
                 return true;
             }
@@ -798,6 +785,94 @@ namespace WebServer
             }
 
         }
+        [WebMethod]
+        public Boolean addCity(String cityName,int mapx,int mapy)
+        {
+            
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Insert into City (CityName,MapX,MapY) values (@name,@mapx,@mapy)", myCon);
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = cityName;
+                command.Parameters.Add("@mapx", SqlDbType.Int).Value = mapx;
+                command.Parameters.Add("@mapy", SqlDbType.Int).Value = mapy;
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                myCon.Close();
+            }
+        }
+
+  
+
+        [WebMethod]
+        public Boolean addParkingPlace(int regionId, String name, int nrSpaces)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Insert into ParkingPlaces (CityRegionID,ParkPlaceName,NrSpaces) values (@regionId,@name,@nrSpaces)", myCon);
+                command.Parameters.Add("@regionId", SqlDbType.Int).Value = regionId;
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = name;
+                command.Parameters.Add("@nrSpaces", SqlDbType.Int).Value = nrSpaces;
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                myCon.Close();
+            }
+        }
+
+        [WebMethod]
+        public Boolean addRegion(int cityId, String name)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Insert into CityRegion (CityID,RegionName) values (@cityId,@name)", myCon);
+                command.Parameters.Add("@cityId", SqlDbType.Int).Value = cityId;
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = name;
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                myCon.Close();
+            }
+        }
+
     }
+
 
 }

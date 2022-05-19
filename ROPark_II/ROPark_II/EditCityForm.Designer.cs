@@ -148,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(795, 423);
+            this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.listBoxParkPlaces);
             this.Controls.Add(this.label5);
