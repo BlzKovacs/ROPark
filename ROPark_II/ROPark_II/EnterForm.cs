@@ -92,7 +92,8 @@ namespace ROPark_II
         {
             City oras = getOrasFromClick(e.X, e.Y);
 
-
+            listViewParkPlace.Items.Clear();
+            listView_Regiuni.Items.Clear();
             if (oras != null)
             {
 
@@ -269,6 +270,26 @@ namespace ROPark_II
             }
             else
                 MessageBox.Show("Select a Region first!", "Error");
+        }
+
+        private void listView_Regiuni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listViewParkPlace.Items.Clear();
+            try
+            {
+                String regionName = listView_Regiuni.SelectedItems[0].Text;
+                int regionId = service.getRegionId(regionName);
+               
+                List<String> parkPlaces = service.getParkPlacesForRegion(regionId).ToList();
+
+                foreach (String parkPlace in parkPlaces)
+                {
+                    listViewParkPlace.Items.Add(parkPlace);
+                }
+            }
+            catch (Exception)
+            { }
+            
         }
     }
 }

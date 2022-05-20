@@ -102,6 +102,7 @@
             this.listViewParkPlace.Size = new System.Drawing.Size(231, 137);
             this.listViewParkPlace.TabIndex = 6;
             this.listViewParkPlace.UseCompatibleStateImageBehavior = false;
+            this.listViewParkPlace.View = System.Windows.Forms.View.List;
             // 
             // label2
             // 
@@ -131,6 +132,8 @@
             this.listView_Regiuni.Size = new System.Drawing.Size(231, 137);
             this.listView_Regiuni.TabIndex = 3;
             this.listView_Regiuni.UseCompatibleStateImageBehavior = false;
+            this.listView_Regiuni.View = System.Windows.Forms.View.List;
+            this.listView_Regiuni.SelectedIndexChanged += new System.EventHandler(this.listView_Regiuni_SelectedIndexChanged);
             // 
             // buttonRegion
             // 

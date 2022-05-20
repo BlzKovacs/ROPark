@@ -1,4 +1,4 @@
-﻿using ROPark_II.localhost;
+﻿using ROPark_II.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -733,12 +733,8 @@ namespace WebServer
             myCon.ConnectionString = connectionString;
 
             string query = "SELECT NrSpaces FROM ParkingPlaces WHERE ParkPlaceName = @name";
-
-            List<string> parkPlaces = new List<string>();
             int nrSpaces = 0;
-
             myCon.Open();
-
             SqlCommand cmd = new SqlCommand(query, myCon);
             cmd.Parameters.Add("name", name);
 
@@ -779,7 +775,7 @@ namespace WebServer
                 client.Send(mailDetails);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -872,6 +868,126 @@ namespace WebServer
             }
         }
 
+        [WebMethod]
+        public List<History> getAllHistory()
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_History = new DataSet();
+            SqlDataAdapter dataAdapter_History = new SqlDataAdapter("SELECT * FROM History", connection);
+            DataTable dtHistory = new DataTable();
+            dataAdapter_History.Fill(dataSet_History, "History");
+
+            List<History> list = new List<History>();
+
+            foreach (DataRow row in dataSet_History.Tables["History"].Rows)
+            {
+
+                History history = new History();
+                history.historyId = Convert.ToInt32(row.ItemArray.GetValue(0));
+                history.userId = Convert.ToInt32(row.ItemArray.GetValue(1));
+                history.PlateNr = row.ItemArray.GetValue(2).ToString();
+                history.parkingLotId = Convert.ToInt32(row.ItemArray.GetValue(3));
+                history.parkingPlaceId = Convert.ToInt32(row.ItemArray.GetValue(4));
+                history.regionId = Convert.ToInt32(row.ItemArray.GetValue(5));
+                history.cityId = Convert.ToInt32(row.ItemArray.GetValue(6));
+                history.date = Convert.ToDateTime(row.ItemArray.GetValue(7));
+
+                list.Add(history);
+
+            }
+
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public String getUserById(int id)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            String query = "SELECT UserName FROM Users WHERE UserID = @id";
+            String username = null;
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", id);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                username = dataReader["UserName"].ToString();
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return username;
+        }
+
+
+        [WebMethod]
+        public String getParkPlaceById(int id)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            String query = "SELECT ParkPlaceName FROM ParkingPlaces WHERE ParkingPlaceID = @id";
+            String username = null;
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", id);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                username = dataReader["ParkPlaceName"].ToString();
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return username;
+        }
+
+        [WebMethod]
+        public String getRegionById(int id)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            String query = "SELECT RegionName FROM CityRegion WHERE RegionID = @id";
+            String username = null;
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", id);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                username = dataReader["RegionName"].ToString();
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return username;
+        }
     }
 
 

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelSecondForm = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonSignOut = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonEnter = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
-            this.listBoxHistory = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panelSecondForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,26 @@
             this.panelSecondForm.Name = "panelSecondForm";
             this.panelSecondForm.Size = new System.Drawing.Size(1281, 653);
             this.panelSecondForm.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(143, 437);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 20);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Parking History:";
+            // 
+            // listBoxHistory
+            // 
+            this.listBoxHistory.FormattingEnabled = true;
+            this.listBoxHistory.HorizontalScrollbar = true;
+            this.listBoxHistory.ItemHeight = 16;
+            this.listBoxHistory.Location = new System.Drawing.Point(139, 473);
+            this.listBoxHistory.Name = "listBoxHistory";
+            this.listBoxHistory.Size = new System.Drawing.Size(940, 116);
+            this.listBoxHistory.TabIndex = 42;
             // 
             // buttonRefresh
             // 
@@ -135,6 +155,7 @@
             // listBoxParkPlaces
             // 
             this.listBoxParkPlaces.FormattingEnabled = true;
+            this.listBoxParkPlaces.HorizontalScrollbar = true;
             this.listBoxParkPlaces.ItemHeight = 16;
             this.listBoxParkPlaces.Location = new System.Drawing.Point(909, 137);
             this.listBoxParkPlaces.Name = "listBoxParkPlaces";
@@ -145,6 +166,7 @@
             // listBoxRegions
             // 
             this.listBoxRegions.FormattingEnabled = true;
+            this.listBoxRegions.HorizontalScrollbar = true;
             this.listBoxRegions.ItemHeight = 16;
             this.listBoxRegions.Location = new System.Drawing.Point(658, 137);
             this.listBoxRegions.Name = "listBoxRegions";
@@ -155,6 +177,7 @@
             // listBoxCities
             // 
             this.listBoxCities.FormattingEnabled = true;
+            this.listBoxCities.HorizontalScrollbar = true;
             this.listBoxCities.ItemHeight = 16;
             this.listBoxCities.Location = new System.Drawing.Point(401, 137);
             this.listBoxCities.Name = "listBoxCities";
@@ -165,6 +188,7 @@
             // listBoxUsers
             // 
             this.listBoxUsers.FormattingEnabled = true;
+            this.listBoxUsers.HorizontalScrollbar = true;
             this.listBoxUsers.ItemHeight = 16;
             this.listBoxUsers.Location = new System.Drawing.Point(139, 137);
             this.listBoxUsers.Name = "listBoxUsers";
@@ -213,25 +237,6 @@
             this.labelWelcome.Size = new System.Drawing.Size(180, 25);
             this.labelWelcome.TabIndex = 28;
             this.labelWelcome.Text = "Admin control room";
-            // 
-            // listBoxHistory
-            // 
-            this.listBoxHistory.FormattingEnabled = true;
-            this.listBoxHistory.ItemHeight = 16;
-            this.listBoxHistory.Location = new System.Drawing.Point(139, 473);
-            this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(940, 116);
-            this.listBoxHistory.TabIndex = 42;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(143, 437);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 20);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "Parking History:";
             // 
             // AdminForm
             // 

@@ -50,7 +50,7 @@ namespace ROPark_II
                         f.Close();
                 }
             }
-            catch (Exception ex) { };
+            catch (Exception) { };
 
         }
 
@@ -70,7 +70,7 @@ namespace ROPark_II
                     openChildFormInPanel(signInForm);
                 }
             }
-            catch(Exception ex) 
+            catch(Exception) 
             {
                 this.signInForm = new SignInForm();
                 signInForm.userName = userName;
@@ -97,7 +97,7 @@ namespace ROPark_II
                     openChildFormInPanel(signUpForm);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 this.signUpForm = new SignUpForm();
@@ -177,7 +177,7 @@ namespace ROPark_II
                     openChildFormInPanel(this.formMap);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //setNewLogin(userName);
                 this.formMap = new formMap();

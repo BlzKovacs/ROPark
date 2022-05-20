@@ -8,10 +8,10 @@ namespace ROPark_II.Models
 {
     public class City
     {
-        public int id { get; private set; }
-        public string name { get; private set; }
-        public int mapX { get; private set; }
-        public int mapY { get; private set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public int mapX { get; set; }
+        public int mapY { get; set; }
 
         public City()
         {

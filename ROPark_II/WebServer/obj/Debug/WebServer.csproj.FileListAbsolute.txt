@@ -296,3 +296,6 @@ C:\Users\user\Desktop\ROPark-nou\ROPark-nou\ROPark_II\WebServer\obj\Debug\WebSer
 C:\Users\user\Desktop\ROPark-nou\ROPark-nou\ROPark_II\WebServer\bin\ROPark_II.exe
 C:\Users\user\Desktop\ROPark-nou\ROPark-nou\ROPark_II\WebServer\bin\ROPark_II.pdb
 C:\Users\user\Desktop\ROPark-nou\ROPark-nou\ROPark_II\WebServer\bin\ROPark_II.exe.config
+C:\Users\user\source\repos\ROPark_II\ROPark_II\WebServer\bin\ROPark_II.exe
+C:\Users\user\source\repos\ROPark_II\ROPark_II\WebServer\bin\ROPark_II.pdb
+C:\Users\user\source\repos\ROPark_II\ROPark_II\WebServer\bin\ROPark_II.exe.config

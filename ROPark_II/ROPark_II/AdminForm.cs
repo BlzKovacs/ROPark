@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ROPark_II.localhost;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,29 +18,34 @@ namespace ROPark_II
             InitializeComponent();
         }
         localhost.WebService1 serv = new localhost.WebService1();
-        List<string> cityList = new List<string>();
-        List<string> regionList = new List<string>();
-        List<string> parkPlaceList = new List<string>();
-        List<string> userList = new List<string>();
 
         private void AdminForm_Load(object sender, EventArgs e)
-        {
-            
-            cityList = serv.getAllCites().ToList();
-            regionList = serv.getAllRegions().ToList();
-            parkPlaceList = serv.getAllParkPlaces().ToList();
-            userList = serv.getAllUsers().ToList();
+        { 
 
             foreach (string city in serv.getAllCites())
                 listBoxCities.Items.Add(city);
-            foreach (string user in userList)
+            foreach (string user in serv.getAllUsers())
                 listBoxUsers.Items.Add(user);
-            
+
+            String historyMsg;
+            String userName, parkplaceName,regionName,cityName;
+            foreach (History history in serv.getAllHistory())
+            {
+                userName = serv.getUserById(history.userId).Trim();
+                parkplaceName = serv.getParkPlaceById(history.parkingPlaceId).Trim();
+                regionName = serv.getRegionById(history.regionId).Trim();
+                cityName = serv.getCityById(history.cityId).Trim();
+
+                historyMsg = "User: "+userName + " has parked at City: " + cityName + "; Region: " + regionName
+                    + "; Parking Place: " + parkplaceName + " at: " + history.date;
+                listBoxHistory.Items.Add(historyMsg);
+            }
+
         }
 
 
         private System.Windows.Forms.Form activeForm = null;
-        private System.Windows.Forms.Form openedChildForm;
+
         private void openChildFormInPanel(System.Windows.Forms.Form childForm)
         {
             if (activeForm != null)
@@ -107,9 +113,8 @@ namespace ROPark_II
 
                 String regionName = listBoxRegions.SelectedItem.ToString().Trim();
                 int id = serv.getRegionId(regionName);
-                parkPlaceList = serv.getParkPlacesForRegion(id).ToList();
 
-                foreach (string parkPlace in parkPlaceList)
+                foreach (string parkPlace in serv.getParkPlacesForRegion(id))
                     listBoxParkPlaces.Items.Add(parkPlace);
             }
         }
@@ -126,9 +131,8 @@ namespace ROPark_II
                 listBoxParkPlaces.SelectedIndex = -1;
                 String cityName = listBoxCities.SelectedItem.ToString().Trim();
                 int id = serv.getCityId(cityName);
-                regionList = serv.getRegionsForCity(id).ToList();
 
-                foreach (string region in regionList)
+                foreach (string region in serv.getRegionsForCity(id))
                     listBoxRegions.Items.Add(region);
 
             }
@@ -212,14 +216,9 @@ namespace ROPark_II
             listBoxRegions.Items.Clear();
             listBoxParkPlaces.Items.Clear();
 
-            cityList = serv.getAllCites().ToList();
-            regionList = serv.getAllRegions().ToList();
-            parkPlaceList = serv.getAllParkPlaces().ToList();
-            userList = serv.getAllUsers().ToList();
-
             foreach (string city in serv.getAllCites())
                 listBoxCities.Items.Add(city);
-            foreach (string user in userList)
+            foreach (string user in serv.getAllUsers())
                 listBoxUsers.Items.Add(user);
         }
 

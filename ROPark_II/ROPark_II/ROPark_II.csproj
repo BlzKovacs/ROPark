@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\HelpingFunctions.cs" />
+    <Compile Include="Models\History.cs" />
     <Compile Include="Models\OrasRectangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +121,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <None Include="Web References\localhost\City.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\History.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Reference.map">
