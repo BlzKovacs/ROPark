@@ -78,6 +78,21 @@ namespace ROPark_II.Models
 
         }
 
+        public int getIdFromNameParkingPlace(List<ParkingPlace> list, String name)
+        {
+
+            for (int i = 0; i < list.Count(); i++)
+            {
+                if (list[i].name.Equals(name))
+                {
+                    return list[i].id;
+                }
+            }
+
+            return 1;
+
+        }
+
     }
 
 }

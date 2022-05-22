@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using ROPark_II.Models;
+using ROPark_II;
 
 namespace Proiect_II
 {
@@ -184,6 +185,22 @@ namespace Proiect_II
                         listView_parkingPlace.Items.Add(new ListViewItem(listParkingPlaces[i].name));
                     }
                 }
+
+            }
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0) {
+                ReserveParkingLot reserveParkingLot = new ReserveParkingLot();
+
+                int id = this.helpingFunctions.getIdFromNameParkingPlace(
+                    listParkingPlaces,
+                    listView_parkingPlace.SelectedItems[0].Text);
+
+                MessageBox.Show(id+"");
 
             }
 

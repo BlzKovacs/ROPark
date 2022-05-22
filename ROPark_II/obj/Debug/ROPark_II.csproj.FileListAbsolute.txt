@@ -85,3 +85,4 @@ C:\Users\Asus\Desktop\reserve\ROPark_II\obj\Debug\ROPark_II.csproj.CoreCompileIn
 C:\Users\Asus\Desktop\reserve\ROPark_II\obj\Debug\ROPark_II.exe
 C:\Users\Asus\Desktop\reserve\ROPark_II\obj\Debug\ROPark_II.pdb
 C:\Users\Asus\Desktop\reserve\ROPark_II\obj\Debug\ROPark_II.Form1.resources
+C:\Users\Asus\Desktop\reserve\ROPark_II\obj\Debug\ROPark_II.ReserveParkingLot.resources
