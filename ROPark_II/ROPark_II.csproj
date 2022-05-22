@@ -88,6 +88,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\CityRegion.cs" />
+    <Compile Include="Models\ParkingPlace.cs" />
     <Compile Include="Models\HelpingFunctions.cs" />
     <Compile Include="Models\OrasRectangle.cs" />
     <Compile Include="Program.cs" />
@@ -111,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMap.resx">
       <DependentUpon>formMap.cs</DependentUpon>
@@ -144,6 +149,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Web References\localhost\City.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\CityRegion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\ParkingPlace.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Reference.map">

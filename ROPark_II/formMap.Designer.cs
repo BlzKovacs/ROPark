@@ -37,6 +37,8 @@
             this.pictureBox_Romania = new System.Windows.Forms.PictureBox();
             this.groupBox_currentCity = new System.Windows.Forms.GroupBox();
             this.label_orasSelectat = new System.Windows.Forms.Label();
+            this.listView_parkingPlace = new System.Windows.Forms.ListView();
+            this.label2 = new System.Windows.Forms.Label();
             this.pannel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Romania)).BeginInit();
             this.groupBox_currentCity.SuspendLayout();
@@ -51,6 +53,8 @@
             // pannel_menu
             // 
             this.pannel_menu.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pannel_menu.Controls.Add(this.label2);
+            this.pannel_menu.Controls.Add(this.listView_parkingPlace);
             this.pannel_menu.Controls.Add(this.label1);
             this.pannel_menu.Controls.Add(this.listView_Regiuni);
             this.pannel_menu.Controls.Add(this.buttonSearch);
@@ -78,10 +82,11 @@
             this.listView_Regiuni.Size = new System.Drawing.Size(231, 149);
             this.listView_Regiuni.TabIndex = 3;
             this.listView_Regiuni.UseCompatibleStateImageBehavior = false;
+            this.listView_Regiuni.SelectedIndexChanged += new System.EventHandler(this.listView_Regiuni_SelectedIndexChanged);
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(3, 178);
+            this.buttonSearch.Location = new System.Drawing.Point(1, 367);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(235, 38);
@@ -122,6 +127,25 @@
             this.label_orasSelectat.TabIndex = 4;
             this.label_orasSelectat.Text = "- ; -";
             // 
+            // listView_parkingPlace
+            // 
+            this.listView_parkingPlace.HideSelection = false;
+            this.listView_parkingPlace.Location = new System.Drawing.Point(2, 214);
+            this.listView_parkingPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView_parkingPlace.Name = "listView_parkingPlace";
+            this.listView_parkingPlace.Size = new System.Drawing.Size(231, 149);
+            this.listView_parkingPlace.TabIndex = 5;
+            this.listView_parkingPlace.UseCompatibleStateImageBehavior = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(57, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Locuri parcare:";
+            // 
             // formMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -153,6 +177,8 @@
         private System.Windows.Forms.Label label_orasSelectat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView_Regiuni;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView listView_parkingPlace;
     }
 }
 

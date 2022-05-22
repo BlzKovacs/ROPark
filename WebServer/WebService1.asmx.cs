@@ -20,7 +20,7 @@ namespace WebServer
     {
 
         SqlConnection sqlConnection = new SqlConnection();
-        String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Asus\Desktop\ok\ROPark_II\Database1.mdf;Integrated Security=True";
+        String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=mainDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         SqlConnection myCon = new SqlConnection();
         public WebService1()
         {
@@ -84,7 +84,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public List<String> getRegionByCityId(int idCity)
+        public List<CityRegion> getRegionByCityId(int idCity)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -94,12 +94,46 @@ namespace WebServer
             SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
             dataAdapter_Regions.Fill(dataSet_Regions, "RegionName");
 
-            List<String> list = new List<String>();
+            List<CityRegion> list = new List<CityRegion>();
 
             foreach (DataRow row in dataSet_Regions.Tables["RegionName"].Rows)
             {
 
-                list.Add(row.ItemArray.GetValue(2).ToString());
+                CityRegion cityRegion = new CityRegion();
+                cityRegion.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                cityRegion.name = row.ItemArray.GetValue(2).ToString();
+
+                list.Add(cityRegion);
+
+            }
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public List<ParkingPlace> getParkingPlacesByRegionId(int idRegion)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "SELECT * FROM ParkingPlaces WHERE CityRegionID=" + idRegion.ToString();
+            SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
+            dataAdapter_Regions.Fill(dataSet_Regions, "ParkingPlaces");
+
+            List<ParkingPlace> list = new List<ParkingPlace>();
+
+            foreach (DataRow row in dataSet_Regions.Tables["ParkingPlaces"].Rows)
+            {
+
+                ParkingPlace pkPlace = new ParkingPlace();
+                pkPlace.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                pkPlace.name = row.ItemArray.GetValue(2).ToString();
+                pkPlace.nrSpaces = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(pkPlace);
 
             }
 
@@ -395,6 +429,17 @@ namespace WebServer
         public int mapX;
         public int mapY;
 
+    }
+
+    public class CityRegion {
+        public int id;
+        public String name;
+    }
+
+    public class ParkingPlace {
+        public int id;
+        public String name;
+        public int nrSpaces;
     }
 
 }

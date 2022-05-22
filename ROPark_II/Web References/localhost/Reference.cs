@@ -35,6 +35,8 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback getRegionByCityIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getParkingPlacesByRegionIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback checkUserNameOperationCompleted;
         
         private System.Threading.SendOrPostCallback checkUserOperationCompleted;
@@ -93,6 +95,9 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         public event getRegionByCityIdCompletedEventHandler getRegionByCityIdCompleted;
+        
+        /// <remarks/>
+        public event getParkingPlacesByRegionIdCompletedEventHandler getParkingPlacesByRegionIdCompleted;
         
         /// <remarks/>
         public event checkUserNameCompletedEventHandler checkUserNameCompleted;
@@ -170,10 +175,10 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionByCityId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] getRegionByCityId(int idCity) {
+        public CityRegion[] getRegionByCityId(int idCity) {
             object[] results = this.Invoke("getRegionByCityId", new object[] {
                         idCity});
-            return ((string[])(results[0]));
+            return ((CityRegion[])(results[0]));
         }
         
         /// <remarks/>
@@ -194,6 +199,35 @@ namespace ROPark_II.localhost {
             if ((this.getRegionByCityIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getRegionByCityIdCompleted(this, new getRegionByCityIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkingPlacesByRegionId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ParkingPlace[] getParkingPlacesByRegionId(int idRegion) {
+            object[] results = this.Invoke("getParkingPlacesByRegionId", new object[] {
+                        idRegion});
+            return ((ParkingPlace[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkingPlacesByRegionIdAsync(int idRegion) {
+            this.getParkingPlacesByRegionIdAsync(idRegion, null);
+        }
+        
+        /// <remarks/>
+        public void getParkingPlacesByRegionIdAsync(int idRegion, object userState) {
+            if ((this.getParkingPlacesByRegionIdOperationCompleted == null)) {
+                this.getParkingPlacesByRegionIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkingPlacesByRegionIdOperationCompleted);
+            }
+            this.InvokeAsync("getParkingPlacesByRegionId", new object[] {
+                        idRegion}, this.getParkingPlacesByRegionIdOperationCompleted, userState);
+        }
+        
+        private void OngetParkingPlacesByRegionIdOperationCompleted(object arg) {
+            if ((this.getParkingPlacesByRegionIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkingPlacesByRegionIdCompleted(this, new getParkingPlacesByRegionIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -459,6 +493,84 @@ namespace ROPark_II.localhost {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ParkingPlace {
+        
+        private int idField;
+        
+        private string nameField;
+        
+        private int nrSpacesField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int nrSpaces {
+            get {
+                return this.nrSpacesField;
+            }
+            set {
+                this.nrSpacesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CityRegion {
+        
+        private int idField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getAllCitesCompletedEventHandler(object sender, getAllCitesCompletedEventArgs e);
     
@@ -528,10 +640,36 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
-        public string[] Result {
+        public CityRegion[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string[])(this.results[0]));
+                return ((CityRegion[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkingPlacesByRegionIdCompletedEventHandler(object sender, getParkingPlacesByRegionIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkingPlacesByRegionIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkingPlacesByRegionIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ParkingPlace[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ParkingPlace[])(this.results[0]));
             }
         }
     }
