@@ -37,6 +37,10 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback getParkingPlacesByRegionIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getParkingLotByParkingPlaceIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback reserveParkingLotOperationCompleted;
+        
         private System.Threading.SendOrPostCallback checkUserNameOperationCompleted;
         
         private System.Threading.SendOrPostCallback checkUserOperationCompleted;
@@ -98,6 +102,12 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         public event getParkingPlacesByRegionIdCompletedEventHandler getParkingPlacesByRegionIdCompleted;
+        
+        /// <remarks/>
+        public event getParkingLotByParkingPlaceIdCompletedEventHandler getParkingLotByParkingPlaceIdCompleted;
+        
+        /// <remarks/>
+        public event reserveParkingLotCompletedEventHandler reserveParkingLotCompleted;
         
         /// <remarks/>
         public event checkUserNameCompletedEventHandler checkUserNameCompleted;
@@ -228,6 +238,65 @@ namespace ROPark_II.localhost {
             if ((this.getParkingPlacesByRegionIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getParkingPlacesByRegionIdCompleted(this, new getParkingPlacesByRegionIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkingLotByParkingPlaceId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ParkingLot[] getParkingLotByParkingPlaceId(int idParkingPlace) {
+            object[] results = this.Invoke("getParkingLotByParkingPlaceId", new object[] {
+                        idParkingPlace});
+            return ((ParkingLot[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkingLotByParkingPlaceIdAsync(int idParkingPlace) {
+            this.getParkingLotByParkingPlaceIdAsync(idParkingPlace, null);
+        }
+        
+        /// <remarks/>
+        public void getParkingLotByParkingPlaceIdAsync(int idParkingPlace, object userState) {
+            if ((this.getParkingLotByParkingPlaceIdOperationCompleted == null)) {
+                this.getParkingLotByParkingPlaceIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkingLotByParkingPlaceIdOperationCompleted);
+            }
+            this.InvokeAsync("getParkingLotByParkingPlaceId", new object[] {
+                        idParkingPlace}, this.getParkingLotByParkingPlaceIdOperationCompleted, userState);
+        }
+        
+        private void OngetParkingLotByParkingPlaceIdOperationCompleted(object arg) {
+            if ((this.getParkingLotByParkingPlaceIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkingLotByParkingPlaceIdCompleted(this, new getParkingLotByParkingPlaceIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/reserveParkingLot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void reserveParkingLot(int idParkingLot, string plateNr) {
+            this.Invoke("reserveParkingLot", new object[] {
+                        idParkingLot,
+                        plateNr});
+        }
+        
+        /// <remarks/>
+        public void reserveParkingLotAsync(int idParkingLot, string plateNr) {
+            this.reserveParkingLotAsync(idParkingLot, plateNr, null);
+        }
+        
+        /// <remarks/>
+        public void reserveParkingLotAsync(int idParkingLot, string plateNr, object userState) {
+            if ((this.reserveParkingLotOperationCompleted == null)) {
+                this.reserveParkingLotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnreserveParkingLotOperationCompleted);
+            }
+            this.InvokeAsync("reserveParkingLot", new object[] {
+                        idParkingLot,
+                        plateNr}, this.reserveParkingLotOperationCompleted, userState);
+        }
+        
+        private void OnreserveParkingLotOperationCompleted(object arg) {
+            if ((this.reserveParkingLotCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.reserveParkingLotCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -498,6 +567,51 @@ namespace ROPark_II.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ParkingLot {
+        
+        private int idField;
+        
+        private string plateNrField;
+        
+        private int stateField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string plateNr {
+            get {
+                return this.plateNrField;
+            }
+            set {
+                this.plateNrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int state {
+            get {
+                return this.stateField;
+            }
+            set {
+                this.stateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class ParkingPlace {
         
         private int idField;
@@ -673,6 +787,36 @@ namespace ROPark_II.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkingLotByParkingPlaceIdCompletedEventHandler(object sender, getParkingLotByParkingPlaceIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkingLotByParkingPlaceIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkingLotByParkingPlaceIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ParkingLot[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ParkingLot[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void reserveParkingLotCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]

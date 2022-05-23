@@ -194,13 +194,13 @@ namespace Proiect_II
         {
 
             if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0) {
-                ReserveParkingLot reserveParkingLot = new ReserveParkingLot();
 
                 int id = this.helpingFunctions.getIdFromNameParkingPlace(
                     listParkingPlaces,
                     listView_parkingPlace.SelectedItems[0].Text);
 
-                MessageBox.Show(id+"");
+                ReserveParkingLot reserveParkingLot = new ReserveParkingLot(id);
+                reserveParkingLot.Show();
 
             }
 

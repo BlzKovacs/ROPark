@@ -63,6 +63,28 @@ namespace ROPark_II.Models
             return newList;
         }
 
+        public List<ROPark_II.Models.ParkingLot> convertParkingLotServiceClient(localhost.ParkingLot[] list)
+        {
+
+            List<ROPark_II.Models.ParkingLot> newList = new List<ROPark_II.Models.ParkingLot>();
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                ROPark_II.Models.ParkingLot pk = new ROPark_II.Models.ParkingLot(
+                                                        list[i].id,
+                                                        list[i].plateNr,
+                                                        list[i].state);
+
+                pk.showStr = "Id: " + pk.id + ", State: " + pk.state;
+
+                newList.Add(pk);
+            }
+
+
+
+            return newList;
+        }
+
         public int getIdFromNameRegiuni(List<CityRegion> list, String name)
         {
 
@@ -84,6 +106,21 @@ namespace ROPark_II.Models
             for (int i = 0; i < list.Count(); i++)
             {
                 if (list[i].name.Equals(name))
+                {
+                    return list[i].id;
+                }
+            }
+
+            return 1;
+
+        }
+        
+        public int getIdFromNameParkingLot(List<ParkingLot> list, String name)
+        {
+
+            for (int i = 0; i < list.Count(); i++)
+            {
+                if (list[i].showStr.Equals(name))
                 {
                     return list[i].id;
                 }

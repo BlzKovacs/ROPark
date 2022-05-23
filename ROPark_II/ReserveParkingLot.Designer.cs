@@ -29,22 +29,22 @@ namespace ROPark_II
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView_Regiuni = new System.Windows.Forms.ListView();
+            this.listView_ParkingLot = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView_Regiuni
+            // listView_ParkingLot
             // 
-            this.listView_Regiuni.HideSelection = false;
-            this.listView_Regiuni.Location = new System.Drawing.Point(134, 55);
-            this.listView_Regiuni.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listView_Regiuni.Name = "listView_Regiuni";
-            this.listView_Regiuni.Size = new System.Drawing.Size(288, 306);
-            this.listView_Regiuni.TabIndex = 4;
-            this.listView_Regiuni.UseCompatibleStateImageBehavior = false;
+            this.listView_ParkingLot.HideSelection = false;
+            this.listView_ParkingLot.Location = new System.Drawing.Point(134, 55);
+            this.listView_ParkingLot.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView_ParkingLot.Name = "listView_ParkingLot";
+            this.listView_ParkingLot.Size = new System.Drawing.Size(288, 306);
+            this.listView_ParkingLot.TabIndex = 4;
+            this.listView_ParkingLot.UseCompatibleStateImageBehavior = false;
             // 
             // label1
             // 
@@ -79,6 +79,7 @@ namespace ROPark_II
             this.button1.TabIndex = 8;
             this.button1.Text = "Reserve";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ReserveParkingLot
             // 
@@ -89,7 +90,7 @@ namespace ROPark_II
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView_Regiuni);
+            this.Controls.Add(this.listView_ParkingLot);
             this.Name = "ReserveParkingLot";
             this.Text = "ReserveParkingLot";
             this.Load += new System.EventHandler(this.ReserveParkingLot_Load);
@@ -100,7 +101,7 @@ namespace ROPark_II
 
         #endregion
 
-        private System.Windows.Forms.ListView listView_Regiuni;
+        private System.Windows.Forms.ListView listView_ParkingLot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;

@@ -143,6 +143,52 @@ namespace WebServer
         }
 
         [WebMethod]
+        public List<ParkingLot> getParkingLotByParkingPlaceId(int idParkingPlace)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "SELECT * FROM ParkingLot WHERE ParkingPlaceID=" + idParkingPlace + "AND State=0";
+            SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
+            dataAdapter_Regions.Fill(dataSet_Regions, "ParkingLot");
+
+            List<ParkingLot> list = new List<ParkingLot>();
+
+            foreach (DataRow row in dataSet_Regions.Tables["ParkingLot"].Rows)
+            {
+
+                ParkingLot pkPlace = new ParkingLot();
+                pkPlace.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                pkPlace.plateNr = row.ItemArray.GetValue(2).ToString();
+                pkPlace.state = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(pkPlace);
+
+            }
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public void reserveParkingLot(int idParkingLot, String plateNr)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "UPDATE ParkingLot SET State=1, PlateNr="+plateNr+" WHERE ParkingLotID=" + idParkingLot;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = sqlString;
+            sqlCommand.Connection = connection;
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        [WebMethod]
         public bool checkUserName(String name)
         {
             bool success = false;
@@ -440,6 +486,13 @@ namespace WebServer
         public int id;
         public String name;
         public int nrSpaces;
+    }
+
+    public class ParkingLot
+    {
+        public int id;
+        public String plateNr;
+        public int state;
     }
 
 }

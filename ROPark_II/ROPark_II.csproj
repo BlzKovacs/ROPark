@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\CityRegion.cs" />
+    <Compile Include="Models\ParkingLot.cs" />
     <Compile Include="Models\ParkingPlace.cs" />
     <Compile Include="Models\HelpingFunctions.cs" />
     <Compile Include="Models\OrasRectangle.cs" />
@@ -161,6 +162,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\CityRegion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\ParkingLot.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\ParkingPlace.datasource">
