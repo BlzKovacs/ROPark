@@ -31,15 +31,25 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback getAllCitesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getCityByIdOperationCompleted;
+        private System.Threading.SendOrPostCallback getAllCitesTypeOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getRegionByCityIdOperationCompleted;
+        private System.Threading.SendOrPostCallback getAllRegionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllParkPlacesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getCityByIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback getParkingPlacesByRegionIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback reserveParkingLotOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getParkingLotByParkingPlaceIdOperationCompleted;
         
-        private System.Threading.SendOrPostCallback reserveParkingLotOperationCompleted;
+        private System.Threading.SendOrPostCallback getRegionByCityIdTypeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRegionByCityIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback checkUserNameOperationCompleted;
         
@@ -51,7 +61,49 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback addUserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback checkCityDBOperationCompleted;
+        private System.Threading.SendOrPostCallback CityExistsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegionExistsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ParkingPlaceExistsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getCityIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRegionIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteParkPlaceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteRegionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteCityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRegionsForCityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getParkPlacesForRegionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback changeCityNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback changeRegionNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback changeParkPlaceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNrSpacesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback sendEmailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addCityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addParkingPlaceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addRegionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllHistoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getUserByIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getParkPlaceByIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRegionByIdOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -95,19 +147,34 @@ namespace ROPark_II.localhost {
         public event getAllCitesCompletedEventHandler getAllCitesCompleted;
         
         /// <remarks/>
-        public event getCityByIdCompletedEventHandler getCityByIdCompleted;
+        public event getAllCitesTypeCompletedEventHandler getAllCitesTypeCompleted;
         
         /// <remarks/>
-        public event getRegionByCityIdCompletedEventHandler getRegionByCityIdCompleted;
+        public event getAllRegionsCompletedEventHandler getAllRegionsCompleted;
+        
+        /// <remarks/>
+        public event getAllParkPlacesCompletedEventHandler getAllParkPlacesCompleted;
+        
+        /// <remarks/>
+        public event getAllUsersCompletedEventHandler getAllUsersCompleted;
+        
+        /// <remarks/>
+        public event getCityByIdCompletedEventHandler getCityByIdCompleted;
         
         /// <remarks/>
         public event getParkingPlacesByRegionIdCompletedEventHandler getParkingPlacesByRegionIdCompleted;
         
         /// <remarks/>
+        public event reserveParkingLotCompletedEventHandler reserveParkingLotCompleted;
+        
+        /// <remarks/>
         public event getParkingLotByParkingPlaceIdCompletedEventHandler getParkingLotByParkingPlaceIdCompleted;
         
         /// <remarks/>
-        public event reserveParkingLotCompletedEventHandler reserveParkingLotCompleted;
+        public event getRegionByCityIdTypeCompletedEventHandler getRegionByCityIdTypeCompleted;
+        
+        /// <remarks/>
+        public event getRegionByCityIdCompletedEventHandler getRegionByCityIdCompleted;
         
         /// <remarks/>
         public event checkUserNameCompletedEventHandler checkUserNameCompleted;
@@ -125,13 +192,76 @@ namespace ROPark_II.localhost {
         public event addUserCompletedEventHandler addUserCompleted;
         
         /// <remarks/>
-        public event checkCityDBCompletedEventHandler checkCityDBCompleted;
+        public event CityExistsCompletedEventHandler CityExistsCompleted;
+        
+        /// <remarks/>
+        public event RegionExistsCompletedEventHandler RegionExistsCompleted;
+        
+        /// <remarks/>
+        public event ParkingPlaceExistsCompletedEventHandler ParkingPlaceExistsCompleted;
+        
+        /// <remarks/>
+        public event getCityIdCompletedEventHandler getCityIdCompleted;
+        
+        /// <remarks/>
+        public event getRegionIdCompletedEventHandler getRegionIdCompleted;
+        
+        /// <remarks/>
+        public event deleteParkPlaceCompletedEventHandler deleteParkPlaceCompleted;
+        
+        /// <remarks/>
+        public event deleteRegionCompletedEventHandler deleteRegionCompleted;
+        
+        /// <remarks/>
+        public event deleteCityCompletedEventHandler deleteCityCompleted;
+        
+        /// <remarks/>
+        public event getRegionsForCityCompletedEventHandler getRegionsForCityCompleted;
+        
+        /// <remarks/>
+        public event getParkPlacesForRegionCompletedEventHandler getParkPlacesForRegionCompleted;
+        
+        /// <remarks/>
+        public event changeCityNameCompletedEventHandler changeCityNameCompleted;
+        
+        /// <remarks/>
+        public event changeRegionNameCompletedEventHandler changeRegionNameCompleted;
+        
+        /// <remarks/>
+        public event changeParkPlaceCompletedEventHandler changeParkPlaceCompleted;
+        
+        /// <remarks/>
+        public event getNrSpacesCompletedEventHandler getNrSpacesCompleted;
+        
+        /// <remarks/>
+        public event sendEmailCompletedEventHandler sendEmailCompleted;
+        
+        /// <remarks/>
+        public event addCityCompletedEventHandler addCityCompleted;
+        
+        /// <remarks/>
+        public event addParkingPlaceCompletedEventHandler addParkingPlaceCompleted;
+        
+        /// <remarks/>
+        public event addRegionCompletedEventHandler addRegionCompleted;
+        
+        /// <remarks/>
+        public event getAllHistoryCompletedEventHandler getAllHistoryCompleted;
+        
+        /// <remarks/>
+        public event getUserByIdCompletedEventHandler getUserByIdCompleted;
+        
+        /// <remarks/>
+        public event getParkPlaceByIdCompletedEventHandler getParkPlaceByIdCompleted;
+        
+        /// <remarks/>
+        public event getRegionByIdCompletedEventHandler getRegionByIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllCites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public City[] getAllCites() {
+        public string[] getAllCites() {
             object[] results = this.Invoke("getAllCites", new object[0]);
-            return ((City[])(results[0]));
+            return ((string[])(results[0]));
         }
         
         /// <remarks/>
@@ -151,6 +281,114 @@ namespace ROPark_II.localhost {
             if ((this.getAllCitesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAllCitesCompleted(this, new getAllCitesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllCitesType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public City[] getAllCitesType() {
+            object[] results = this.Invoke("getAllCitesType", new object[0]);
+            return ((City[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllCitesTypeAsync() {
+            this.getAllCitesTypeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllCitesTypeAsync(object userState) {
+            if ((this.getAllCitesTypeOperationCompleted == null)) {
+                this.getAllCitesTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllCitesTypeOperationCompleted);
+            }
+            this.InvokeAsync("getAllCitesType", new object[0], this.getAllCitesTypeOperationCompleted, userState);
+        }
+        
+        private void OngetAllCitesTypeOperationCompleted(object arg) {
+            if ((this.getAllCitesTypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllCitesTypeCompleted(this, new getAllCitesTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllRegions", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getAllRegions() {
+            object[] results = this.Invoke("getAllRegions", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllRegionsAsync() {
+            this.getAllRegionsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllRegionsAsync(object userState) {
+            if ((this.getAllRegionsOperationCompleted == null)) {
+                this.getAllRegionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllRegionsOperationCompleted);
+            }
+            this.InvokeAsync("getAllRegions", new object[0], this.getAllRegionsOperationCompleted, userState);
+        }
+        
+        private void OngetAllRegionsOperationCompleted(object arg) {
+            if ((this.getAllRegionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllRegionsCompleted(this, new getAllRegionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllParkPlaces", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getAllParkPlaces() {
+            object[] results = this.Invoke("getAllParkPlaces", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllParkPlacesAsync() {
+            this.getAllParkPlacesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllParkPlacesAsync(object userState) {
+            if ((this.getAllParkPlacesOperationCompleted == null)) {
+                this.getAllParkPlacesOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllParkPlacesOperationCompleted);
+            }
+            this.InvokeAsync("getAllParkPlaces", new object[0], this.getAllParkPlacesOperationCompleted, userState);
+        }
+        
+        private void OngetAllParkPlacesOperationCompleted(object arg) {
+            if ((this.getAllParkPlacesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllParkPlacesCompleted(this, new getAllParkPlacesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getAllUsers() {
+            object[] results = this.Invoke("getAllUsers", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllUsersAsync() {
+            this.getAllUsersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllUsersAsync(object userState) {
+            if ((this.getAllUsersOperationCompleted == null)) {
+                this.getAllUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllUsersOperationCompleted);
+            }
+            this.InvokeAsync("getAllUsers", new object[0], this.getAllUsersOperationCompleted, userState);
+        }
+        
+        private void OngetAllUsersOperationCompleted(object arg) {
+            if ((this.getAllUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllUsersCompleted(this, new getAllUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -184,35 +422,6 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionByCityId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public CityRegion[] getRegionByCityId(int idCity) {
-            object[] results = this.Invoke("getRegionByCityId", new object[] {
-                        idCity});
-            return ((CityRegion[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void getRegionByCityIdAsync(int idCity) {
-            this.getRegionByCityIdAsync(idCity, null);
-        }
-        
-        /// <remarks/>
-        public void getRegionByCityIdAsync(int idCity, object userState) {
-            if ((this.getRegionByCityIdOperationCompleted == null)) {
-                this.getRegionByCityIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionByCityIdOperationCompleted);
-            }
-            this.InvokeAsync("getRegionByCityId", new object[] {
-                        idCity}, this.getRegionByCityIdOperationCompleted, userState);
-        }
-        
-        private void OngetRegionByCityIdOperationCompleted(object arg) {
-            if ((this.getRegionByCityIdCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getRegionByCityIdCompleted(this, new getRegionByCityIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkingPlacesByRegionId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public ParkingPlace[] getParkingPlacesByRegionId(int idRegion) {
             object[] results = this.Invoke("getParkingPlacesByRegionId", new object[] {
@@ -238,6 +447,36 @@ namespace ROPark_II.localhost {
             if ((this.getParkingPlacesByRegionIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getParkingPlacesByRegionIdCompleted(this, new getParkingPlacesByRegionIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/reserveParkingLot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void reserveParkingLot(int idParkingLot, string plateNr) {
+            this.Invoke("reserveParkingLot", new object[] {
+                        idParkingLot,
+                        plateNr});
+        }
+        
+        /// <remarks/>
+        public void reserveParkingLotAsync(int idParkingLot, string plateNr) {
+            this.reserveParkingLotAsync(idParkingLot, plateNr, null);
+        }
+        
+        /// <remarks/>
+        public void reserveParkingLotAsync(int idParkingLot, string plateNr, object userState) {
+            if ((this.reserveParkingLotOperationCompleted == null)) {
+                this.reserveParkingLotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnreserveParkingLotOperationCompleted);
+            }
+            this.InvokeAsync("reserveParkingLot", new object[] {
+                        idParkingLot,
+                        plateNr}, this.reserveParkingLotOperationCompleted, userState);
+        }
+        
+        private void OnreserveParkingLotOperationCompleted(object arg) {
+            if ((this.reserveParkingLotCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.reserveParkingLotCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -271,32 +510,60 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/reserveParkingLot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void reserveParkingLot(int idParkingLot, string plateNr) {
-            this.Invoke("reserveParkingLot", new object[] {
-                        idParkingLot,
-                        plateNr});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionByCityIdType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CityRegion[] getRegionByCityIdType(int idCity) {
+            object[] results = this.Invoke("getRegionByCityIdType", new object[] {
+                        idCity});
+            return ((CityRegion[])(results[0]));
         }
         
         /// <remarks/>
-        public void reserveParkingLotAsync(int idParkingLot, string plateNr) {
-            this.reserveParkingLotAsync(idParkingLot, plateNr, null);
+        public void getRegionByCityIdTypeAsync(int idCity) {
+            this.getRegionByCityIdTypeAsync(idCity, null);
         }
         
         /// <remarks/>
-        public void reserveParkingLotAsync(int idParkingLot, string plateNr, object userState) {
-            if ((this.reserveParkingLotOperationCompleted == null)) {
-                this.reserveParkingLotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnreserveParkingLotOperationCompleted);
+        public void getRegionByCityIdTypeAsync(int idCity, object userState) {
+            if ((this.getRegionByCityIdTypeOperationCompleted == null)) {
+                this.getRegionByCityIdTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionByCityIdTypeOperationCompleted);
             }
-            this.InvokeAsync("reserveParkingLot", new object[] {
-                        idParkingLot,
-                        plateNr}, this.reserveParkingLotOperationCompleted, userState);
+            this.InvokeAsync("getRegionByCityIdType", new object[] {
+                        idCity}, this.getRegionByCityIdTypeOperationCompleted, userState);
         }
         
-        private void OnreserveParkingLotOperationCompleted(object arg) {
-            if ((this.reserveParkingLotCompleted != null)) {
+        private void OngetRegionByCityIdTypeOperationCompleted(object arg) {
+            if ((this.getRegionByCityIdTypeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.reserveParkingLotCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getRegionByCityIdTypeCompleted(this, new getRegionByCityIdTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionByCityId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getRegionByCityId(int idCity) {
+            object[] results = this.Invoke("getRegionByCityId", new object[] {
+                        idCity});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRegionByCityIdAsync(int idCity) {
+            this.getRegionByCityIdAsync(idCity, null);
+        }
+        
+        /// <remarks/>
+        public void getRegionByCityIdAsync(int idCity, object userState) {
+            if ((this.getRegionByCityIdOperationCompleted == null)) {
+                this.getRegionByCityIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionByCityIdOperationCompleted);
+            }
+            this.InvokeAsync("getRegionByCityId", new object[] {
+                        idCity}, this.getRegionByCityIdOperationCompleted, userState);
+        }
+        
+        private void OngetRegionByCityIdOperationCompleted(object arg) {
+            if ((this.getRegionByCityIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRegionByCityIdCompleted(this, new getRegionByCityIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -457,31 +724,670 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkCityDB", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool checkCityDB(string name) {
-            object[] results = this.Invoke("checkCityDB", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CityExists", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CityExists(string name) {
+            object[] results = this.Invoke("CityExists", new object[] {
                         name});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void checkCityDBAsync(string name) {
-            this.checkCityDBAsync(name, null);
+        public void CityExistsAsync(string name) {
+            this.CityExistsAsync(name, null);
         }
         
         /// <remarks/>
-        public void checkCityDBAsync(string name, object userState) {
-            if ((this.checkCityDBOperationCompleted == null)) {
-                this.checkCityDBOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckCityDBOperationCompleted);
+        public void CityExistsAsync(string name, object userState) {
+            if ((this.CityExistsOperationCompleted == null)) {
+                this.CityExistsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCityExistsOperationCompleted);
             }
-            this.InvokeAsync("checkCityDB", new object[] {
-                        name}, this.checkCityDBOperationCompleted, userState);
+            this.InvokeAsync("CityExists", new object[] {
+                        name}, this.CityExistsOperationCompleted, userState);
         }
         
-        private void OncheckCityDBOperationCompleted(object arg) {
-            if ((this.checkCityDBCompleted != null)) {
+        private void OnCityExistsOperationCompleted(object arg) {
+            if ((this.CityExistsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.checkCityDBCompleted(this, new checkCityDBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.CityExistsCompleted(this, new CityExistsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegionExists", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool RegionExists(string name, int cityId) {
+            object[] results = this.Invoke("RegionExists", new object[] {
+                        name,
+                        cityId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegionExistsAsync(string name, int cityId) {
+            this.RegionExistsAsync(name, cityId, null);
+        }
+        
+        /// <remarks/>
+        public void RegionExistsAsync(string name, int cityId, object userState) {
+            if ((this.RegionExistsOperationCompleted == null)) {
+                this.RegionExistsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegionExistsOperationCompleted);
+            }
+            this.InvokeAsync("RegionExists", new object[] {
+                        name,
+                        cityId}, this.RegionExistsOperationCompleted, userState);
+        }
+        
+        private void OnRegionExistsOperationCompleted(object arg) {
+            if ((this.RegionExistsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegionExistsCompleted(this, new RegionExistsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ParkingPlaceExists", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ParkingPlaceExists(string name, int regionId) {
+            object[] results = this.Invoke("ParkingPlaceExists", new object[] {
+                        name,
+                        regionId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ParkingPlaceExistsAsync(string name, int regionId) {
+            this.ParkingPlaceExistsAsync(name, regionId, null);
+        }
+        
+        /// <remarks/>
+        public void ParkingPlaceExistsAsync(string name, int regionId, object userState) {
+            if ((this.ParkingPlaceExistsOperationCompleted == null)) {
+                this.ParkingPlaceExistsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnParkingPlaceExistsOperationCompleted);
+            }
+            this.InvokeAsync("ParkingPlaceExists", new object[] {
+                        name,
+                        regionId}, this.ParkingPlaceExistsOperationCompleted, userState);
+        }
+        
+        private void OnParkingPlaceExistsOperationCompleted(object arg) {
+            if ((this.ParkingPlaceExistsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ParkingPlaceExistsCompleted(this, new ParkingPlaceExistsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getCityId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getCityId(string name) {
+            object[] results = this.Invoke("getCityId", new object[] {
+                        name});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getCityIdAsync(string name) {
+            this.getCityIdAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getCityIdAsync(string name, object userState) {
+            if ((this.getCityIdOperationCompleted == null)) {
+                this.getCityIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCityIdOperationCompleted);
+            }
+            this.InvokeAsync("getCityId", new object[] {
+                        name}, this.getCityIdOperationCompleted, userState);
+        }
+        
+        private void OngetCityIdOperationCompleted(object arg) {
+            if ((this.getCityIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getCityIdCompleted(this, new getCityIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getRegionId(string name) {
+            object[] results = this.Invoke("getRegionId", new object[] {
+                        name});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRegionIdAsync(string name) {
+            this.getRegionIdAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getRegionIdAsync(string name, object userState) {
+            if ((this.getRegionIdOperationCompleted == null)) {
+                this.getRegionIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionIdOperationCompleted);
+            }
+            this.InvokeAsync("getRegionId", new object[] {
+                        name}, this.getRegionIdOperationCompleted, userState);
+        }
+        
+        private void OngetRegionIdOperationCompleted(object arg) {
+            if ((this.getRegionIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRegionIdCompleted(this, new getRegionIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteParkPlace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool deleteParkPlace(string name) {
+            object[] results = this.Invoke("deleteParkPlace", new object[] {
+                        name});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteParkPlaceAsync(string name) {
+            this.deleteParkPlaceAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void deleteParkPlaceAsync(string name, object userState) {
+            if ((this.deleteParkPlaceOperationCompleted == null)) {
+                this.deleteParkPlaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteParkPlaceOperationCompleted);
+            }
+            this.InvokeAsync("deleteParkPlace", new object[] {
+                        name}, this.deleteParkPlaceOperationCompleted, userState);
+        }
+        
+        private void OndeleteParkPlaceOperationCompleted(object arg) {
+            if ((this.deleteParkPlaceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteParkPlaceCompleted(this, new deleteParkPlaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteRegion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool deleteRegion(string name) {
+            object[] results = this.Invoke("deleteRegion", new object[] {
+                        name});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteRegionAsync(string name) {
+            this.deleteRegionAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void deleteRegionAsync(string name, object userState) {
+            if ((this.deleteRegionOperationCompleted == null)) {
+                this.deleteRegionOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteRegionOperationCompleted);
+            }
+            this.InvokeAsync("deleteRegion", new object[] {
+                        name}, this.deleteRegionOperationCompleted, userState);
+        }
+        
+        private void OndeleteRegionOperationCompleted(object arg) {
+            if ((this.deleteRegionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteRegionCompleted(this, new deleteRegionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteCity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool deleteCity(string name) {
+            object[] results = this.Invoke("deleteCity", new object[] {
+                        name});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteCityAsync(string name) {
+            this.deleteCityAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void deleteCityAsync(string name, object userState) {
+            if ((this.deleteCityOperationCompleted == null)) {
+                this.deleteCityOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteCityOperationCompleted);
+            }
+            this.InvokeAsync("deleteCity", new object[] {
+                        name}, this.deleteCityOperationCompleted, userState);
+        }
+        
+        private void OndeleteCityOperationCompleted(object arg) {
+            if ((this.deleteCityCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteCityCompleted(this, new deleteCityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionsForCity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getRegionsForCity(int cityId) {
+            object[] results = this.Invoke("getRegionsForCity", new object[] {
+                        cityId});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRegionsForCityAsync(int cityId) {
+            this.getRegionsForCityAsync(cityId, null);
+        }
+        
+        /// <remarks/>
+        public void getRegionsForCityAsync(int cityId, object userState) {
+            if ((this.getRegionsForCityOperationCompleted == null)) {
+                this.getRegionsForCityOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionsForCityOperationCompleted);
+            }
+            this.InvokeAsync("getRegionsForCity", new object[] {
+                        cityId}, this.getRegionsForCityOperationCompleted, userState);
+        }
+        
+        private void OngetRegionsForCityOperationCompleted(object arg) {
+            if ((this.getRegionsForCityCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRegionsForCityCompleted(this, new getRegionsForCityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkPlacesForRegion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getParkPlacesForRegion(int regionId) {
+            object[] results = this.Invoke("getParkPlacesForRegion", new object[] {
+                        regionId});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkPlacesForRegionAsync(int regionId) {
+            this.getParkPlacesForRegionAsync(regionId, null);
+        }
+        
+        /// <remarks/>
+        public void getParkPlacesForRegionAsync(int regionId, object userState) {
+            if ((this.getParkPlacesForRegionOperationCompleted == null)) {
+                this.getParkPlacesForRegionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkPlacesForRegionOperationCompleted);
+            }
+            this.InvokeAsync("getParkPlacesForRegion", new object[] {
+                        regionId}, this.getParkPlacesForRegionOperationCompleted, userState);
+        }
+        
+        private void OngetParkPlacesForRegionOperationCompleted(object arg) {
+            if ((this.getParkPlacesForRegionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkPlacesForRegionCompleted(this, new getParkPlacesForRegionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changeCityName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool changeCityName(string oldName, string newName) {
+            object[] results = this.Invoke("changeCityName", new object[] {
+                        oldName,
+                        newName});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void changeCityNameAsync(string oldName, string newName) {
+            this.changeCityNameAsync(oldName, newName, null);
+        }
+        
+        /// <remarks/>
+        public void changeCityNameAsync(string oldName, string newName, object userState) {
+            if ((this.changeCityNameOperationCompleted == null)) {
+                this.changeCityNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangeCityNameOperationCompleted);
+            }
+            this.InvokeAsync("changeCityName", new object[] {
+                        oldName,
+                        newName}, this.changeCityNameOperationCompleted, userState);
+        }
+        
+        private void OnchangeCityNameOperationCompleted(object arg) {
+            if ((this.changeCityNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.changeCityNameCompleted(this, new changeCityNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changeRegionName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool changeRegionName(string oldName, string newName) {
+            object[] results = this.Invoke("changeRegionName", new object[] {
+                        oldName,
+                        newName});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void changeRegionNameAsync(string oldName, string newName) {
+            this.changeRegionNameAsync(oldName, newName, null);
+        }
+        
+        /// <remarks/>
+        public void changeRegionNameAsync(string oldName, string newName, object userState) {
+            if ((this.changeRegionNameOperationCompleted == null)) {
+                this.changeRegionNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangeRegionNameOperationCompleted);
+            }
+            this.InvokeAsync("changeRegionName", new object[] {
+                        oldName,
+                        newName}, this.changeRegionNameOperationCompleted, userState);
+        }
+        
+        private void OnchangeRegionNameOperationCompleted(object arg) {
+            if ((this.changeRegionNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.changeRegionNameCompleted(this, new changeRegionNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changeParkPlace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool changeParkPlace(string oldName, string newName, int newSpaces) {
+            object[] results = this.Invoke("changeParkPlace", new object[] {
+                        oldName,
+                        newName,
+                        newSpaces});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void changeParkPlaceAsync(string oldName, string newName, int newSpaces) {
+            this.changeParkPlaceAsync(oldName, newName, newSpaces, null);
+        }
+        
+        /// <remarks/>
+        public void changeParkPlaceAsync(string oldName, string newName, int newSpaces, object userState) {
+            if ((this.changeParkPlaceOperationCompleted == null)) {
+                this.changeParkPlaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangeParkPlaceOperationCompleted);
+            }
+            this.InvokeAsync("changeParkPlace", new object[] {
+                        oldName,
+                        newName,
+                        newSpaces}, this.changeParkPlaceOperationCompleted, userState);
+        }
+        
+        private void OnchangeParkPlaceOperationCompleted(object arg) {
+            if ((this.changeParkPlaceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.changeParkPlaceCompleted(this, new changeParkPlaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getNrSpaces", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getNrSpaces(string name) {
+            object[] results = this.Invoke("getNrSpaces", new object[] {
+                        name});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNrSpacesAsync(string name) {
+            this.getNrSpacesAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getNrSpacesAsync(string name, object userState) {
+            if ((this.getNrSpacesOperationCompleted == null)) {
+                this.getNrSpacesOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNrSpacesOperationCompleted);
+            }
+            this.InvokeAsync("getNrSpaces", new object[] {
+                        name}, this.getNrSpacesOperationCompleted, userState);
+        }
+        
+        private void OngetNrSpacesOperationCompleted(object arg) {
+            if ((this.getNrSpacesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNrSpacesCompleted(this, new getNrSpacesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/sendEmail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool sendEmail(string email, string msg, string userName, string firstName, string lastName, string phoneNr) {
+            object[] results = this.Invoke("sendEmail", new object[] {
+                        email,
+                        msg,
+                        userName,
+                        firstName,
+                        lastName,
+                        phoneNr});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void sendEmailAsync(string email, string msg, string userName, string firstName, string lastName, string phoneNr) {
+            this.sendEmailAsync(email, msg, userName, firstName, lastName, phoneNr, null);
+        }
+        
+        /// <remarks/>
+        public void sendEmailAsync(string email, string msg, string userName, string firstName, string lastName, string phoneNr, object userState) {
+            if ((this.sendEmailOperationCompleted == null)) {
+                this.sendEmailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsendEmailOperationCompleted);
+            }
+            this.InvokeAsync("sendEmail", new object[] {
+                        email,
+                        msg,
+                        userName,
+                        firstName,
+                        lastName,
+                        phoneNr}, this.sendEmailOperationCompleted, userState);
+        }
+        
+        private void OnsendEmailOperationCompleted(object arg) {
+            if ((this.sendEmailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.sendEmailCompleted(this, new sendEmailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addCity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool addCity(string cityName, int mapx, int mapy) {
+            object[] results = this.Invoke("addCity", new object[] {
+                        cityName,
+                        mapx,
+                        mapy});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void addCityAsync(string cityName, int mapx, int mapy) {
+            this.addCityAsync(cityName, mapx, mapy, null);
+        }
+        
+        /// <remarks/>
+        public void addCityAsync(string cityName, int mapx, int mapy, object userState) {
+            if ((this.addCityOperationCompleted == null)) {
+                this.addCityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddCityOperationCompleted);
+            }
+            this.InvokeAsync("addCity", new object[] {
+                        cityName,
+                        mapx,
+                        mapy}, this.addCityOperationCompleted, userState);
+        }
+        
+        private void OnaddCityOperationCompleted(object arg) {
+            if ((this.addCityCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addCityCompleted(this, new addCityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addParkingPlace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool addParkingPlace(int regionId, string name, int nrSpaces) {
+            object[] results = this.Invoke("addParkingPlace", new object[] {
+                        regionId,
+                        name,
+                        nrSpaces});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void addParkingPlaceAsync(int regionId, string name, int nrSpaces) {
+            this.addParkingPlaceAsync(regionId, name, nrSpaces, null);
+        }
+        
+        /// <remarks/>
+        public void addParkingPlaceAsync(int regionId, string name, int nrSpaces, object userState) {
+            if ((this.addParkingPlaceOperationCompleted == null)) {
+                this.addParkingPlaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddParkingPlaceOperationCompleted);
+            }
+            this.InvokeAsync("addParkingPlace", new object[] {
+                        regionId,
+                        name,
+                        nrSpaces}, this.addParkingPlaceOperationCompleted, userState);
+        }
+        
+        private void OnaddParkingPlaceOperationCompleted(object arg) {
+            if ((this.addParkingPlaceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addParkingPlaceCompleted(this, new addParkingPlaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addRegion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool addRegion(int cityId, string name) {
+            object[] results = this.Invoke("addRegion", new object[] {
+                        cityId,
+                        name});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void addRegionAsync(int cityId, string name) {
+            this.addRegionAsync(cityId, name, null);
+        }
+        
+        /// <remarks/>
+        public void addRegionAsync(int cityId, string name, object userState) {
+            if ((this.addRegionOperationCompleted == null)) {
+                this.addRegionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddRegionOperationCompleted);
+            }
+            this.InvokeAsync("addRegion", new object[] {
+                        cityId,
+                        name}, this.addRegionOperationCompleted, userState);
+        }
+        
+        private void OnaddRegionOperationCompleted(object arg) {
+            if ((this.addRegionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addRegionCompleted(this, new addRegionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllHistory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public History[] getAllHistory() {
+            object[] results = this.Invoke("getAllHistory", new object[0]);
+            return ((History[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllHistoryAsync() {
+            this.getAllHistoryAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllHistoryAsync(object userState) {
+            if ((this.getAllHistoryOperationCompleted == null)) {
+                this.getAllHistoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllHistoryOperationCompleted);
+            }
+            this.InvokeAsync("getAllHistory", new object[0], this.getAllHistoryOperationCompleted, userState);
+        }
+        
+        private void OngetAllHistoryOperationCompleted(object arg) {
+            if ((this.getAllHistoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllHistoryCompleted(this, new getAllHistoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getUserById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getUserById(int id) {
+            object[] results = this.Invoke("getUserById", new object[] {
+                        id});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getUserByIdAsync(int id) {
+            this.getUserByIdAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getUserByIdAsync(int id, object userState) {
+            if ((this.getUserByIdOperationCompleted == null)) {
+                this.getUserByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUserByIdOperationCompleted);
+            }
+            this.InvokeAsync("getUserById", new object[] {
+                        id}, this.getUserByIdOperationCompleted, userState);
+        }
+        
+        private void OngetUserByIdOperationCompleted(object arg) {
+            if ((this.getUserByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUserByIdCompleted(this, new getUserByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkPlaceById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getParkPlaceById(int id) {
+            object[] results = this.Invoke("getParkPlaceById", new object[] {
+                        id});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkPlaceByIdAsync(int id) {
+            this.getParkPlaceByIdAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getParkPlaceByIdAsync(int id, object userState) {
+            if ((this.getParkPlaceByIdOperationCompleted == null)) {
+                this.getParkPlaceByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkPlaceByIdOperationCompleted);
+            }
+            this.InvokeAsync("getParkPlaceById", new object[] {
+                        id}, this.getParkPlaceByIdOperationCompleted, userState);
+        }
+        
+        private void OngetParkPlaceByIdOperationCompleted(object arg) {
+            if ((this.getParkPlaceByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkPlaceByIdCompleted(this, new getParkPlaceByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegionById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getRegionById(int id) {
+            object[] results = this.Invoke("getRegionById", new object[] {
+                        id});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRegionByIdAsync(int id) {
+            this.getRegionByIdAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getRegionByIdAsync(int id, object userState) {
+            if ((this.getRegionByIdOperationCompleted == null)) {
+                this.getRegionByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionByIdOperationCompleted);
+            }
+            this.InvokeAsync("getRegionById", new object[] {
+                        id}, this.getRegionByIdOperationCompleted, userState);
+        }
+        
+        private void OngetRegionByIdOperationCompleted(object arg) {
+            if ((this.getRegionByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRegionByIdCompleted(this, new getRegionByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -557,6 +1463,144 @@ namespace ROPark_II.localhost {
             }
             set {
                 this.mapYField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class History {
+        
+        private int historyIdField;
+        
+        private int userIdField;
+        
+        private string plateNrField;
+        
+        private int parkingLotIdField;
+        
+        private int parkingPlaceIdField;
+        
+        private int regionIdField;
+        
+        private int cityIdField;
+        
+        private System.DateTime dateField;
+        
+        /// <remarks/>
+        public int historyId {
+            get {
+                return this.historyIdField;
+            }
+            set {
+                this.historyIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int userId {
+            get {
+                return this.userIdField;
+            }
+            set {
+                this.userIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PlateNr {
+            get {
+                return this.plateNrField;
+            }
+            set {
+                this.plateNrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int parkingLotId {
+            get {
+                return this.parkingLotIdField;
+            }
+            set {
+                this.parkingLotIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int parkingPlaceId {
+            get {
+                return this.parkingPlaceIdField;
+            }
+            set {
+                this.parkingPlaceIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int regionId {
+            get {
+                return this.regionIdField;
+            }
+            set {
+                this.regionIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int cityId {
+            get {
+                return this.cityIdField;
+            }
+            set {
+                this.cityIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CityRegion {
+        
+        private int idField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
             }
         }
     }
@@ -652,39 +1696,6 @@ namespace ROPark_II.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class CityRegion {
-        
-        private int idField;
-        
-        private string nameField;
-        
-        /// <remarks/>
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getAllCitesCompletedEventHandler(object sender, getAllCitesCompletedEventArgs e);
     
@@ -702,10 +1713,114 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getAllCitesTypeCompletedEventHandler(object sender, getAllCitesTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllCitesTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllCitesTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
         public City[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((City[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getAllRegionsCompletedEventHandler(object sender, getAllRegionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllRegionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllRegionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getAllParkPlacesCompletedEventHandler(object sender, getAllParkPlacesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllParkPlacesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllParkPlacesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getAllUsersCompletedEventHandler(object sender, getAllUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }
@@ -738,32 +1853,6 @@ namespace ROPark_II.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void getRegionByCityIdCompletedEventHandler(object sender, getRegionByCityIdCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getRegionByCityIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal getRegionByCityIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public CityRegion[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((CityRegion[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getParkingPlacesByRegionIdCompletedEventHandler(object sender, getParkingPlacesByRegionIdCompletedEventArgs e);
     
     /// <remarks/>
@@ -787,6 +1876,10 @@ namespace ROPark_II.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void reserveParkingLotCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
@@ -816,7 +1909,55 @@ namespace ROPark_II.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void reserveParkingLotCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getRegionByCityIdTypeCompletedEventHandler(object sender, getRegionByCityIdTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionByCityIdTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionByCityIdTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public CityRegion[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((CityRegion[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getRegionByCityIdCompletedEventHandler(object sender, getRegionByCityIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionByCityIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionByCityIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
@@ -928,17 +2069,17 @@ namespace ROPark_II.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void checkCityDBCompletedEventHandler(object sender, checkCityDBCompletedEventArgs e);
+    public delegate void CityExistsCompletedEventHandler(object sender, CityExistsCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class checkCityDBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CityExistsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal checkCityDBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal CityExistsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -948,6 +2089,552 @@ namespace ROPark_II.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void RegionExistsCompletedEventHandler(object sender, RegionExistsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegionExistsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegionExistsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void ParkingPlaceExistsCompletedEventHandler(object sender, ParkingPlaceExistsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ParkingPlaceExistsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ParkingPlaceExistsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getCityIdCompletedEventHandler(object sender, getCityIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getCityIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getCityIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getRegionIdCompletedEventHandler(object sender, getRegionIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void deleteParkPlaceCompletedEventHandler(object sender, deleteParkPlaceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteParkPlaceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteParkPlaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void deleteRegionCompletedEventHandler(object sender, deleteRegionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteRegionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteRegionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void deleteCityCompletedEventHandler(object sender, deleteCityCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteCityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteCityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getRegionsForCityCompletedEventHandler(object sender, getRegionsForCityCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionsForCityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionsForCityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkPlacesForRegionCompletedEventHandler(object sender, getParkPlacesForRegionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkPlacesForRegionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkPlacesForRegionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void changeCityNameCompletedEventHandler(object sender, changeCityNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class changeCityNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal changeCityNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void changeRegionNameCompletedEventHandler(object sender, changeRegionNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class changeRegionNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal changeRegionNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void changeParkPlaceCompletedEventHandler(object sender, changeParkPlaceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class changeParkPlaceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal changeParkPlaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getNrSpacesCompletedEventHandler(object sender, getNrSpacesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNrSpacesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNrSpacesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void sendEmailCompletedEventHandler(object sender, sendEmailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class sendEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal sendEmailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void addCityCompletedEventHandler(object sender, addCityCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class addCityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal addCityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void addParkingPlaceCompletedEventHandler(object sender, addParkingPlaceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class addParkingPlaceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal addParkingPlaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void addRegionCompletedEventHandler(object sender, addRegionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class addRegionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal addRegionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getAllHistoryCompletedEventHandler(object sender, getAllHistoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllHistoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllHistoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public History[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((History[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getUserByIdCompletedEventHandler(object sender, getUserByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUserByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUserByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkPlaceByIdCompletedEventHandler(object sender, getParkPlaceByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkPlaceByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkPlaceByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getRegionByIdCompletedEventHandler(object sender, getRegionByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

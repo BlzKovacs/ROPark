@@ -1,6 +1,6 @@
 ﻿namespace ROPark_II
 {
-    partial class signInForm
+    partial class SignInForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             // 
             // buttonEnter
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(297, 264);
+            this.buttonEnter.Location = new System.Drawing.Point(396, 302);
             this.buttonEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(94, 23);
@@ -49,7 +49,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(350, 202);
+            this.textBoxPassword.Location = new System.Drawing.Point(449, 239);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(125, 22);
@@ -58,7 +58,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(350, 141);
+            this.textBoxName.Location = new System.Drawing.Point(449, 178);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(125, 22);
@@ -69,7 +69,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(214, 195);
+            this.label2.Location = new System.Drawing.Point(313, 233);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 28);
             this.label2.TabIndex = 9;
@@ -80,7 +80,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(208, 134);
+            this.label3.Location = new System.Drawing.Point(307, 172);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 8;
@@ -97,19 +97,19 @@
             this.labelWelcome.TabIndex = 7;
             this.labelWelcome.Text = "Please enter you account";
             // 
-            // signInForm
+            // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(742, 392);
+            this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelWelcome);
-            this.Name = "signInForm";
+            this.Name = "SignInForm";
             this.Text = "signInForm";
             this.ResumeLayout(false);
             this.PerformLayout();

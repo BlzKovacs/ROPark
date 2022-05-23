@@ -16,7 +16,7 @@ namespace ROPark_II
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new menuForm());
+            Application.Run(new MenuForm());
         }
     }
 }

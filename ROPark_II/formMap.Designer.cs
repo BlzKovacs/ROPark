@@ -1,4 +1,4 @@
-﻿namespace Proiect_II
+﻿namespace ROPark_II
 {
     partial class formMap
     {
@@ -67,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 195);
+            this.label2.Location = new System.Drawing.Point(57, 206);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 6;
@@ -75,13 +75,15 @@
             // 
             // listView_parkingPlace
             // 
+            this.listView_parkingPlace.FullRowSelect = true;
             this.listView_parkingPlace.HideSelection = false;
-            this.listView_parkingPlace.Location = new System.Drawing.Point(2, 214);
+            this.listView_parkingPlace.Location = new System.Drawing.Point(1, 225);
             this.listView_parkingPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView_parkingPlace.Name = "listView_parkingPlace";
             this.listView_parkingPlace.Size = new System.Drawing.Size(231, 149);
             this.listView_parkingPlace.TabIndex = 5;
             this.listView_parkingPlace.UseCompatibleStateImageBehavior = false;
+            this.listView_parkingPlace.SelectedIndexChanged += new System.EventHandler(this.listView_parkingPlace_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -94,6 +96,7 @@
             // 
             // listView_Regiuni
             // 
+            this.listView_Regiuni.FullRowSelect = true;
             this.listView_Regiuni.HideSelection = false;
             this.listView_Regiuni.Location = new System.Drawing.Point(3, 26);
             this.listView_Regiuni.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -105,24 +108,23 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(1, 367);
+            this.buttonSearch.Location = new System.Drawing.Point(-1, 396);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(235, 38);
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click_1);
             // 
             // pictureBox_Romania
             // 
-            this.pictureBox_Romania.Location = new System.Drawing.Point(244, -1);
+            this.pictureBox_Romania.Location = new System.Drawing.Point(247, -1);
             this.pictureBox_Romania.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_Romania.Name = "pictureBox_Romania";
-            this.pictureBox_Romania.Size = new System.Drawing.Size(828, 612);
+            this.pictureBox_Romania.Size = new System.Drawing.Size(1013, 612);
             this.pictureBox_Romania.TabIndex = 2;
             this.pictureBox_Romania.TabStop = false;
-            this.pictureBox_Romania.Click += new System.EventHandler(this.pictureBox_Romania_Click);
             this.pictureBox_Romania.Paint += new System.Windows.Forms.PaintEventHandler(this.pbImage_Paint);
             this.pictureBox_Romania.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clickOnImage);
             // 
@@ -151,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 611);
+            this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.groupBox_currentCity);
             this.Controls.Add(this.pictureBox_Romania);
             this.Controls.Add(this.pannel_menu);
@@ -182,4 +184,3 @@
         private System.Windows.Forms.ListView listView_parkingPlace;
     }
 }
-

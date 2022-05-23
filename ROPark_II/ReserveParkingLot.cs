@@ -18,12 +18,12 @@ namespace ROPark_II
         private List<ParkingLot> listParkingLot = new List<ParkingLot>();
         private HelpingFunctions helpingFunctions = new HelpingFunctions();
 
-        public ReserveParkingLot(int idParkingPlace)
+        public ReserveParkingLot(int id)
         {
             InitializeComponent();
 
             service = new ROPark_II.localhost.WebService1();
-            this.idParkingPlace = idParkingPlace;
+            this.idParkingPlace = id;
 
             listParkingLot = helpingFunctions.convertParkingLotServiceClient(
                     this.service.getParkingLotByParkingPlaceId(idParkingPlace));
@@ -58,6 +58,22 @@ namespace ROPark_II
                 MessageBox.Show("Parking Lot rezervat.");
             }
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (listView_ParkingLot.SelectedItems.Count > 0 && textBox1.Text.ToString() != "")
+            {
+                int id = this.helpingFunctions.getIdFromNameParkingLot(
+                   listParkingLot,
+                   listView_ParkingLot.SelectedItems[0].Text);
+
+                this.service.reserveParkingLot(id, "tudy");
+
+                this.Close();
+
+                MessageBox.Show("Parking Lot rezervat.");
+            }
         }
     }
 }

@@ -6,15 +6,14 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using ROPark_II.Models;
-using ROPark_II;
 
-namespace Proiect_II
+namespace ROPark_II
 {
     public partial class formMap : Form
     {
         private ROPark_II.localhost.WebService1 service;
 
-        private String romaniaMap = "C:/Users/Asus/Desktop/ok/romaniaMap.jpg";
+        private String romaniaMap = "romaniaMap.jpg";
         private HelpingFunctions helpingFunctions = new HelpingFunctions();
         private List<OrasRectangle> listOrasRectangle = new List<OrasRectangle>();
         private List<CityRegion> listRegiuni = new List<CityRegion>();
@@ -28,10 +27,10 @@ namespace Proiect_II
             service = new ROPark_II.localhost.WebService1();
 
             List<City> listOrase = new List<City>();
-            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCites());
-            var x = service.getAllCites();
+            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesType());
+            var x = service.getAllCitesType();
 
-            
+
             for (int i = 0; i < listOrase.Count(); i++)
             {
 
@@ -49,7 +48,7 @@ namespace Proiect_II
             }
 
             this.Refresh();
-            
+
 
         }
 
@@ -57,7 +56,7 @@ namespace Proiect_II
         {
 
             pictureBox_Romania.Image = ResizeImage(
-                new Bitmap(romaniaMap), 470, 400);
+                new Bitmap(romaniaMap), 775, 545);
             pictureBox_Romania.SizeMode = PictureBoxSizeMode.AutoSize;
             pannel_menu.Height = pictureBox_Romania.Image.Height;
 
@@ -69,7 +68,7 @@ namespace Proiect_II
             {
                 e.Graphics.DrawRectangle(new Pen(Color.White, 1), listOrasRectangle[i].rectangle);
 
-                
+
                 if (selectedId != -1)
                 {
                     if (listOrasRectangle[i].oras.id == selectedId)
@@ -85,7 +84,7 @@ namespace Proiect_II
                     new SolidBrush(Color.FromArgb(70, 128, 128, 128)),
                         listOrasRectangle[i].rectangle);
                 }
-                
+
             }
 
         }
@@ -103,7 +102,7 @@ namespace Proiect_II
                 label_orasSelectat.Text = oras.name;
 
                 listRegiuni = helpingFunctions.convertOrasRegionServiceClient(
-                    this.service.getRegionByCityId(oras.id));
+                    this.service.getRegionByCityIdType(oras.id));
 
                 listView_Regiuni.Items.Clear();
 
@@ -116,10 +115,6 @@ namespace Proiect_II
 
         }
 
-        private void pictureBox_Romania_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
@@ -163,9 +158,13 @@ namespace Proiect_II
             return null;
         }
 
-        private void listView_Regiuni_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView_parkingPlace_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView_Regiuni_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (listView_Regiuni.SelectedItems.Count > 0)
             {
 
@@ -173,12 +172,12 @@ namespace Proiect_II
                     listRegiuni,
                     listView_Regiuni.SelectedItems[0].Text);
 
-                listParkingPlaces = helpingFunctions.convertOrasRegionServiceClient(
+                listParkingPlaces = helpingFunctions.convertParkingPlaceServiceClient(
                     this.service.getParkingPlacesByRegionId(id));
 
                 listView_parkingPlace.Items.Clear();
 
-                if(listParkingPlaces.Count != 0)
+                if (listParkingPlaces.Count != 0)
                 {
                     for (int i = 0; i < listRegiuni.Count(); i++)
                     {
@@ -187,13 +186,12 @@ namespace Proiect_II
                 }
 
             }
-
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonSearch_Click_1(object sender, EventArgs e)
         {
-
-            if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0) {
+            if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0)
+            {
 
                 int id = this.helpingFunctions.getIdFromNameParkingPlace(
                     listParkingPlaces,
@@ -203,7 +201,6 @@ namespace Proiect_II
                 reserveParkingLot.Show();
 
             }
-
         }
     }
 }
