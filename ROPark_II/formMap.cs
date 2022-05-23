@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using ROPark_II.Models;
+using ROPark_II;
 
 namespace Proiect_II
 {
@@ -16,6 +17,8 @@ namespace Proiect_II
         private String romaniaMap = "C:/Users/Asus/Desktop/ok/romaniaMap.jpg";
         private HelpingFunctions helpingFunctions = new HelpingFunctions();
         private List<OrasRectangle> listOrasRectangle = new List<OrasRectangle>();
+        private List<CityRegion> listRegiuni = new List<CityRegion>();
+        private List<ParkingPlace> listParkingPlaces = new List<ParkingPlace>();
         int selectedId = -1;
 
         public formMap()
@@ -99,13 +102,14 @@ namespace Proiect_II
 
                 label_orasSelectat.Text = oras.name;
 
-                String[] list = service.getRegionByCityId(oras.id);
+                listRegiuni = helpingFunctions.convertOrasRegionServiceClient(
+                    this.service.getRegionByCityId(oras.id));
 
                 listView_Regiuni.Items.Clear();
 
-                for (int i = 0; i < list.Count(); i++)
+                for (int i = 0; i < listRegiuni.Count(); i++)
                 {
-                    listView_Regiuni.Items.Add(new ListViewItem(list[i]));
+                    listView_Regiuni.Items.Add(new ListViewItem(listRegiuni[i].name));
                 }
 
             }
@@ -159,5 +163,47 @@ namespace Proiect_II
             return null;
         }
 
+        private void listView_Regiuni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (listView_Regiuni.SelectedItems.Count > 0)
+            {
+
+                int id = this.helpingFunctions.getIdFromNameRegiuni(
+                    listRegiuni,
+                    listView_Regiuni.SelectedItems[0].Text);
+
+                listParkingPlaces = helpingFunctions.convertOrasRegionServiceClient(
+                    this.service.getParkingPlacesByRegionId(id));
+
+                listView_parkingPlace.Items.Clear();
+
+                if(listParkingPlaces.Count != 0)
+                {
+                    for (int i = 0; i < listRegiuni.Count(); i++)
+                    {
+                        listView_parkingPlace.Items.Add(new ListViewItem(listParkingPlaces[i].name));
+                    }
+                }
+
+            }
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0) {
+
+                int id = this.helpingFunctions.getIdFromNameParkingPlace(
+                    listParkingPlaces,
+                    listView_parkingPlace.SelectedItems[0].Text);
+
+                ReserveParkingLot reserveParkingLot = new ReserveParkingLot(id);
+                reserveParkingLot.Show();
+
+            }
+
+        }
     }
 }

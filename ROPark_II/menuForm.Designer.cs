@@ -218,6 +218,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "menuForm";
             this.Text = "ROPark";
+            this.Load += new System.EventHandler(this.menuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panelSecondForm.ResumeLayout(false);
             this.panelSecondForm.PerformLayout();

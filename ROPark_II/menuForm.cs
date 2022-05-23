@@ -162,6 +162,11 @@ namespace ROPark_II
 
         }
 
+        private void menuForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void setNewAccount()
         {
             
