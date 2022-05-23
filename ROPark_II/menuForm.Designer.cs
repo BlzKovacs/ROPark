@@ -1,6 +1,6 @@
 ﻿namespace ROPark_II
 {
-    partial class menuForm
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menuForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.buttonHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -54,14 +54,13 @@
             this.buttonHome.Location = new System.Drawing.Point(0, 0);
             this.buttonHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(195, 55);
+            this.buttonHome.Size = new System.Drawing.Size(195, 74);
             this.buttonHome.TabIndex = 0;
             this.buttonHome.UseVisualStyleBackColor = false;
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.buttonExit);
             this.panel1.Controls.Add(this.buttonAccount);
@@ -69,10 +68,11 @@
             this.panel1.Controls.Add(this.buttonSignIn);
             this.panel1.Controls.Add(this.buttonPark);
             this.panel1.Controls.Add(this.buttonHome);
-            this.panel1.Location = new System.Drawing.Point(17, 24);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 470);
+            this.panel1.Size = new System.Drawing.Size(195, 675);
             this.panel1.TabIndex = 2;
             // 
             // buttonExit
@@ -81,9 +81,9 @@
             this.buttonExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonExit.Image = global::ROPark_II.Properties.Resources.exit;
             this.buttonExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExit.Location = new System.Drawing.Point(0, 344);
+            this.buttonExit.Location = new System.Drawing.Point(0, 534);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(195, 63);
+            this.buttonExit.Size = new System.Drawing.Size(195, 70);
             this.buttonExit.TabIndex = 6;
             this.buttonExit.Text = " Exit";
             this.buttonExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -96,10 +96,10 @@
             this.buttonAccount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonAccount.Image = ((System.Drawing.Image)(resources.GetObject("buttonAccount.Image")));
             this.buttonAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAccount.Location = new System.Drawing.Point(0, 407);
+            this.buttonAccount.Location = new System.Drawing.Point(0, 604);
             this.buttonAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAccount.Name = "buttonAccount";
-            this.buttonAccount.Size = new System.Drawing.Size(195, 63);
+            this.buttonAccount.Size = new System.Drawing.Size(195, 71);
             this.buttonAccount.TabIndex = 5;
             this.buttonAccount.Text = "Your account";
             this.buttonAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -112,10 +112,10 @@
             this.buttonSignUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSignUp.Image = global::ROPark_II.Properties.Resources.signup;
             this.buttonSignUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSignUp.Location = new System.Drawing.Point(0, 190);
+            this.buttonSignUp.Location = new System.Drawing.Point(0, 230);
             this.buttonSignUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSignUp.Name = "buttonSignUp";
-            this.buttonSignUp.Size = new System.Drawing.Size(195, 69);
+            this.buttonSignUp.Size = new System.Drawing.Size(195, 78);
             this.buttonSignUp.TabIndex = 4;
             this.buttonSignUp.Text = " Sign up";
             this.buttonSignUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,10 +128,10 @@
             this.buttonSignIn.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSignIn.Image = global::ROPark_II.Properties.Resources.login1;
             this.buttonSignIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSignIn.Location = new System.Drawing.Point(0, 125);
+            this.buttonSignIn.Location = new System.Drawing.Point(0, 156);
             this.buttonSignIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSignIn.Name = "buttonSignIn";
-            this.buttonSignIn.Size = new System.Drawing.Size(195, 65);
+            this.buttonSignIn.Size = new System.Drawing.Size(195, 74);
             this.buttonSignIn.TabIndex = 3;
             this.buttonSignIn.Text = " Sign in";
             this.buttonSignIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -144,10 +144,10 @@
             this.buttonPark.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonPark.Image = global::ROPark_II.Properties.Resources.startPark;
             this.buttonPark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPark.Location = new System.Drawing.Point(0, 55);
+            this.buttonPark.Location = new System.Drawing.Point(0, 74);
             this.buttonPark.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPark.Name = "buttonPark";
-            this.buttonPark.Size = new System.Drawing.Size(195, 70);
+            this.buttonPark.Size = new System.Drawing.Size(195, 82);
             this.buttonPark.TabIndex = 1;
             this.buttonPark.Text = " Start Parking";
             this.buttonPark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -170,31 +170,29 @@
             this.labelClock.BackColor = System.Drawing.Color.Transparent;
             this.labelClock.Font = new System.Drawing.Font("Impact", 13.8F);
             this.labelClock.ForeColor = System.Drawing.Color.Black;
-            this.labelClock.Location = new System.Drawing.Point(253, 11);
+            this.labelClock.Location = new System.Drawing.Point(487, 102);
             this.labelClock.Name = "labelClock";
-            this.labelClock.Size = new System.Drawing.Size(70, 29);
+            this.labelClock.Size = new System.Drawing.Size(69, 28);
             this.labelClock.TabIndex = 2;
             this.labelClock.Text = "label1";
             // 
             // panelSecondForm
             // 
-            this.panelSecondForm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSecondForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
             this.panelSecondForm.Controls.Add(this.labelClock);
             this.panelSecondForm.Controls.Add(this.labelTime);
             this.panelSecondForm.Controls.Add(this.pictureBox1);
-            this.panelSecondForm.Location = new System.Drawing.Point(217, 24);
+            this.panelSecondForm.Location = new System.Drawing.Point(201, 11);
             this.panelSecondForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSecondForm.Name = "panelSecondForm";
-            this.panelSecondForm.Size = new System.Drawing.Size(813, 470);
+            this.panelSecondForm.Size = new System.Drawing.Size(1281, 653);
             this.panelSecondForm.TabIndex = 3;
-            this.panelSecondForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSecondForm_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(20, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(254, 146);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(779, 362);
@@ -207,18 +205,17 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // menuForm
+            // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1047, 509);
+            this.ClientSize = new System.Drawing.Size(1494, 675);
             this.Controls.Add(this.panelSecondForm);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "menuForm";
+            this.Name = "MenuForm";
             this.Text = "ROPark";
-            this.Load += new System.EventHandler(this.menuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panelSecondForm.ResumeLayout(false);
             this.panelSecondForm.PerformLayout();

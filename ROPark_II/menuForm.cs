@@ -1,5 +1,4 @@
-﻿using Proiect_II;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,25 +10,22 @@ using System.Windows.Forms;
 
 namespace ROPark_II
 {
-    public partial class menuForm : Form
+    public partial class MenuForm : Form
     {
-        public menuForm()
+        public MenuForm()
         {
             InitializeComponent();
-            hasAccount = false;
-            accountLogged = false;
         }
-        Boolean hasAccount,accountLogged;
+
+        
         private System.Windows.Forms.Form activeForm = null;
-        private System.Windows.Forms.Form openedChildForm;
-
-        signInForm signInForm = new signInForm();
-        signUpForm signUpForm = new signUpForm();
+        //private System.Windows.Forms.Form openedChildForm;
+        SignInForm signInForm = new SignInForm();
+        SignUpForm signUpForm = new SignUpForm();
         formMap formMap = new formMap();
-
         AccountForm accountForm = new AccountForm();
 
-        String userName=null,prevUserName=null;
+        String userName = null, prevUserName=null;
         private void openChildFormInPanel(System.Windows.Forms.Form childForm)
         {
             if (activeForm != null)
@@ -50,18 +46,18 @@ namespace ROPark_II
             {
                 foreach (System.Windows.Forms.Form f in Application.OpenForms)
                 {
-                    if (f is signInForm || f is signUpForm || f is AccountForm)
+                    if (f is SignInForm || f is SignUpForm || f is AccountForm)
                         f.Close();
                 }
             }
-            catch (Exception ex) { };
+            catch (Exception) { };
 
         }
 
 
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
-            prevUserName = signInForm.userName;
+            
             if (accountForm.accountLogged == false)
             {
                 userName = null;
@@ -74,10 +70,9 @@ namespace ROPark_II
                     openChildFormInPanel(signInForm);
                 }
             }
-            catch(Exception ex) 
+            catch(Exception) 
             {
-                //setNewLogin(userName);
-                this.signInForm = new signInForm();
+                this.signInForm = new SignInForm();
                 signInForm.userName = userName;
                 openChildFormInPanel(signInForm);
             };
@@ -102,10 +97,10 @@ namespace ROPark_II
                     openChildFormInPanel(signUpForm);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                this.signUpForm = new signUpForm();
+                this.signUpForm = new SignUpForm();
                 openChildFormInPanel(signUpForm);
             };
         }
@@ -117,21 +112,55 @@ namespace ROPark_II
 
         private void buttonAccount_Click(object sender, EventArgs e)
         {
-            
+
             if (signInForm.userName != null)
             {
-
-                if (Form.ActiveForm != accountForm)
+                if (signInForm.userName.Equals("admin"))
                 {
-                        setNewAccount();
-                        openChildFormInPanel(accountForm);
-                        accountForm.setLabels(signInForm.userName);
-                        userName = signInForm.userName;
+                    userName = "admin";
+                    AdminForm adminForm = new AdminForm();
+                    openChildFormInPanel(adminForm);
+                }
+                else
+                {
+                    setNewAccount();
+                    openChildFormInPanel(accountForm);
+                    accountForm.setLabels(signInForm.userName);
+                    userName = signInForm.userName;
+                }
+            }
+
+            else
+                MessageBox.Show("Sign in first!", "Error");
+            
+        }
+
+        private void setNewAccount()
+        {
+            
+            this.accountForm = new AccountForm();
+            accountForm.accountLogged = true;
+        }
+
+        public void setNewLogin(String username)
+        {
+            if (signInForm.userName != null)
+            {
+                this.signInForm = new SignInForm();
+                signInForm.userName = username;
+                if (!accountForm.accountLogged)
+                {
+                    setNewAccount();
+                    accountForm.accountUser = username;
                 }
             }
             else
-                MessageBox.Show("Sign in first!", "Error");
+            {
+                this.signInForm = new SignInForm();
+                signInForm.userName = username;
+            }
         }
+
 
         private void buttonPark_Click(object sender, EventArgs e)
         {
@@ -148,49 +177,13 @@ namespace ROPark_II
                     openChildFormInPanel(this.formMap);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //setNewLogin(userName);
                 this.formMap = new formMap();
                 signInForm.userName = userName;
                 openChildFormInPanel(formMap);
             };
-        }
-
-        private void panelSecondForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void menuForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void setNewAccount()
-        {
-            
-            this.accountForm = new AccountForm();
-            accountForm.accountLogged = true;
-        }
-
-        public void setNewLogin(String username)
-        {
-            if (signInForm.userName != null)
-            {
-                this.signInForm = new signInForm();
-                signInForm.userName = username;
-                if (!accountForm.accountLogged)
-                {
-                    setNewAccount();
-                    accountForm.accountUser = username;
-                }
-            }
-            else
-            {
-                this.signInForm = new signInForm();
-                signInForm.userName = username;
-            }
         }
     }
 }

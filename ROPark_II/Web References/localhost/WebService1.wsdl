@@ -8,7 +8,22 @@
       <s:element name="getAllCitesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getAllCitesResult" type="tns:ArrayOfCity" />
+            <s:element minOccurs="0" maxOccurs="1" name="getAllCitesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAllCitesType">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllCitesTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllCitesTypeResult" type="tns:ArrayOfCity" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -25,6 +40,36 @@
           <s:element minOccurs="1" maxOccurs="1" name="mapY" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="getAllRegions">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllRegionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllRegionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllParkPlaces">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllParkPlacesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllParkPlacesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllUsersResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getCityById">
         <s:complexType>
           <s:sequence>
@@ -39,31 +84,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getRegionByCityId">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="idCity" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getRegionByCityIdResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getRegionByCityIdResult" type="tns:ArrayOfCityRegion" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfCityRegion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CityRegion" nillable="true" type="tns:CityRegion" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CityRegion">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="getParkingPlacesByRegionId">
         <s:complexType>
           <s:sequence>
@@ -90,6 +110,17 @@
           <s:element minOccurs="1" maxOccurs="1" name="nrSpaces" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="reserveParkingLot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idParkingLot" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="plateNr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reserveParkingLotResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="getParkingLotByParkingPlaceId">
         <s:complexType>
           <s:sequence>
@@ -116,16 +147,44 @@
           <s:element minOccurs="1" maxOccurs="1" name="state" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="reserveParkingLot">
+      <s:element name="getRegionByCityIdType">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="idParkingLot" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="plateNr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idCity" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="reserveParkingLotResponse">
-        <s:complexType />
+      <s:element name="getRegionByCityIdTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionByCityIdTypeResult" type="tns:ArrayOfCityRegion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCityRegion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CityRegion" nillable="true" type="tns:CityRegion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CityRegion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRegionByCityId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionByCityIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionByCityIdResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="checkUserName">
         <s:complexType>
@@ -170,11 +229,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="checkParkingPlace">
         <s:complexType>
           <s:sequence>
@@ -204,17 +258,340 @@
       <s:element name="addUserResponse">
         <s:complexType />
       </s:element>
-      <s:element name="checkCityDB">
+      <s:element name="CityExists">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="checkCityDBResponse">
+      <s:element name="CityExistsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="checkCityDBResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CityExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegionExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegionExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegionExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParkingPlaceExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParkingPlaceExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ParkingPlaceExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCityId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCityIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getCityIdResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getRegionIdResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteParkPlace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteParkPlaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteParkPlaceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteRegionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteCityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionsForCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionsForCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionsForCityResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkPlacesForRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkPlacesForRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParkPlacesForRegionResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeCityName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeCityNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="changeCityNameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeRegionName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeRegionNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="changeRegionNameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeParkPlace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="newSpaces" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeParkPlaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="changeParkPlaceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNrSpaces">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNrSpacesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getNrSpacesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sendEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="mapx" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mapy" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addCityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addParkingPlace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nrSpaces" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addParkingPlaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addParkingPlaceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addRegionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllHistory">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllHistoryResult" type="tns:ArrayOfHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="History" nillable="true" type="tns:History" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="History">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="historyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlateNr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="parkingLotId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="parkingPlaceId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getUserById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkPlaceById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkPlaceByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParkPlaceByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionByIdResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -226,17 +603,35 @@
   <wsdl:message name="getAllCitesSoapOut">
     <wsdl:part name="parameters" element="tns:getAllCitesResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllCitesTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllCitesType" />
+  </wsdl:message>
+  <wsdl:message name="getAllCitesTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllCitesTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllRegionsSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllRegions" />
+  </wsdl:message>
+  <wsdl:message name="getAllRegionsSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllParkPlacesSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllParkPlaces" />
+  </wsdl:message>
+  <wsdl:message name="getAllParkPlacesSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllParkPlacesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="getCityByIdSoapIn">
     <wsdl:part name="parameters" element="tns:getCityById" />
   </wsdl:message>
   <wsdl:message name="getCityByIdSoapOut">
     <wsdl:part name="parameters" element="tns:getCityByIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="getRegionByCityIdSoapIn">
-    <wsdl:part name="parameters" element="tns:getRegionByCityId" />
-  </wsdl:message>
-  <wsdl:message name="getRegionByCityIdSoapOut">
-    <wsdl:part name="parameters" element="tns:getRegionByCityIdResponse" />
   </wsdl:message>
   <wsdl:message name="getParkingPlacesByRegionIdSoapIn">
     <wsdl:part name="parameters" element="tns:getParkingPlacesByRegionId" />
@@ -244,17 +639,29 @@
   <wsdl:message name="getParkingPlacesByRegionIdSoapOut">
     <wsdl:part name="parameters" element="tns:getParkingPlacesByRegionIdResponse" />
   </wsdl:message>
+  <wsdl:message name="reserveParkingLotSoapIn">
+    <wsdl:part name="parameters" element="tns:reserveParkingLot" />
+  </wsdl:message>
+  <wsdl:message name="reserveParkingLotSoapOut">
+    <wsdl:part name="parameters" element="tns:reserveParkingLotResponse" />
+  </wsdl:message>
   <wsdl:message name="getParkingLotByParkingPlaceIdSoapIn">
     <wsdl:part name="parameters" element="tns:getParkingLotByParkingPlaceId" />
   </wsdl:message>
   <wsdl:message name="getParkingLotByParkingPlaceIdSoapOut">
     <wsdl:part name="parameters" element="tns:getParkingLotByParkingPlaceIdResponse" />
   </wsdl:message>
-  <wsdl:message name="reserveParkingLotSoapIn">
-    <wsdl:part name="parameters" element="tns:reserveParkingLot" />
+  <wsdl:message name="getRegionByCityIdTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionByCityIdType" />
   </wsdl:message>
-  <wsdl:message name="reserveParkingLotSoapOut">
-    <wsdl:part name="parameters" element="tns:reserveParkingLotResponse" />
+  <wsdl:message name="getRegionByCityIdTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionByCityIdTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionByCityIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionByCityId" />
+  </wsdl:message>
+  <wsdl:message name="getRegionByCityIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionByCityIdResponse" />
   </wsdl:message>
   <wsdl:message name="checkUserNameSoapIn">
     <wsdl:part name="parameters" element="tns:checkUserName" />
@@ -286,36 +693,182 @@
   <wsdl:message name="addUserSoapOut">
     <wsdl:part name="parameters" element="tns:addUserResponse" />
   </wsdl:message>
-  <wsdl:message name="checkCityDBSoapIn">
-    <wsdl:part name="parameters" element="tns:checkCityDB" />
+  <wsdl:message name="CityExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:CityExists" />
   </wsdl:message>
-  <wsdl:message name="checkCityDBSoapOut">
-    <wsdl:part name="parameters" element="tns:checkCityDBResponse" />
+  <wsdl:message name="CityExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:CityExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegionExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:RegionExists" />
+  </wsdl:message>
+  <wsdl:message name="RegionExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:RegionExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParkingPlaceExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:ParkingPlaceExists" />
+  </wsdl:message>
+  <wsdl:message name="ParkingPlaceExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:ParkingPlaceExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCityIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getCityId" />
+  </wsdl:message>
+  <wsdl:message name="getCityIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionId" />
+  </wsdl:message>
+  <wsdl:message name="getRegionIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteParkPlaceSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteParkPlace" />
+  </wsdl:message>
+  <wsdl:message name="deleteParkPlaceSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteParkPlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteRegion" />
+  </wsdl:message>
+  <wsdl:message name="deleteRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCitySoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCity" />
+  </wsdl:message>
+  <wsdl:message name="deleteCitySoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionsForCitySoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionsForCity" />
+  </wsdl:message>
+  <wsdl:message name="getRegionsForCitySoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionsForCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParkPlacesForRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:getParkPlacesForRegion" />
+  </wsdl:message>
+  <wsdl:message name="getParkPlacesForRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:getParkPlacesForRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeCityNameSoapIn">
+    <wsdl:part name="parameters" element="tns:changeCityName" />
+  </wsdl:message>
+  <wsdl:message name="changeCityNameSoapOut">
+    <wsdl:part name="parameters" element="tns:changeCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeRegionNameSoapIn">
+    <wsdl:part name="parameters" element="tns:changeRegionName" />
+  </wsdl:message>
+  <wsdl:message name="changeRegionNameSoapOut">
+    <wsdl:part name="parameters" element="tns:changeRegionNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeParkPlaceSoapIn">
+    <wsdl:part name="parameters" element="tns:changeParkPlace" />
+  </wsdl:message>
+  <wsdl:message name="changeParkPlaceSoapOut">
+    <wsdl:part name="parameters" element="tns:changeParkPlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNrSpacesSoapIn">
+    <wsdl:part name="parameters" element="tns:getNrSpaces" />
+  </wsdl:message>
+  <wsdl:message name="getNrSpacesSoapOut">
+    <wsdl:part name="parameters" element="tns:getNrSpacesResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:sendEmail" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:sendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="addCitySoapIn">
+    <wsdl:part name="parameters" element="tns:addCity" />
+  </wsdl:message>
+  <wsdl:message name="addCitySoapOut">
+    <wsdl:part name="parameters" element="tns:addCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="addParkingPlaceSoapIn">
+    <wsdl:part name="parameters" element="tns:addParkingPlace" />
+  </wsdl:message>
+  <wsdl:message name="addParkingPlaceSoapOut">
+    <wsdl:part name="parameters" element="tns:addParkingPlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="addRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:addRegion" />
+  </wsdl:message>
+  <wsdl:message name="addRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:addRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:getAllHistory" />
+  </wsdl:message>
+  <wsdl:message name="getAllHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:getAllHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserById" />
+  </wsdl:message>
+  <wsdl:message name="getUserByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParkPlaceByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getParkPlaceById" />
+  </wsdl:message>
+  <wsdl:message name="getParkPlaceByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getParkPlaceByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionById" />
+  </wsdl:message>
+  <wsdl:message name="getRegionByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionByIdResponse" />
   </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="getAllCites">
       <wsdl:input message="tns:getAllCitesSoapIn" />
       <wsdl:output message="tns:getAllCitesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllCitesType">
+      <wsdl:input message="tns:getAllCitesTypeSoapIn" />
+      <wsdl:output message="tns:getAllCitesTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRegions">
+      <wsdl:input message="tns:getAllRegionsSoapIn" />
+      <wsdl:output message="tns:getAllRegionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllParkPlaces">
+      <wsdl:input message="tns:getAllParkPlacesSoapIn" />
+      <wsdl:output message="tns:getAllParkPlacesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsers">
+      <wsdl:input message="tns:getAllUsersSoapIn" />
+      <wsdl:output message="tns:getAllUsersSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getCityById">
       <wsdl:input message="tns:getCityByIdSoapIn" />
       <wsdl:output message="tns:getCityByIdSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getRegionByCityId">
-      <wsdl:input message="tns:getRegionByCityIdSoapIn" />
-      <wsdl:output message="tns:getRegionByCityIdSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getParkingPlacesByRegionId">
       <wsdl:input message="tns:getParkingPlacesByRegionIdSoapIn" />
       <wsdl:output message="tns:getParkingPlacesByRegionIdSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="reserveParkingLot">
+      <wsdl:input message="tns:reserveParkingLotSoapIn" />
+      <wsdl:output message="tns:reserveParkingLotSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getParkingLotByParkingPlaceId">
       <wsdl:input message="tns:getParkingLotByParkingPlaceIdSoapIn" />
       <wsdl:output message="tns:getParkingLotByParkingPlaceIdSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="reserveParkingLot">
-      <wsdl:input message="tns:reserveParkingLotSoapIn" />
-      <wsdl:output message="tns:reserveParkingLotSoapOut" />
+    <wsdl:operation name="getRegionByCityIdType">
+      <wsdl:input message="tns:getRegionByCityIdTypeSoapIn" />
+      <wsdl:output message="tns:getRegionByCityIdTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionByCityId">
+      <wsdl:input message="tns:getRegionByCityIdSoapIn" />
+      <wsdl:output message="tns:getRegionByCityIdSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="checkUserName">
       <wsdl:input message="tns:checkUserNameSoapIn" />
@@ -337,15 +890,135 @@
       <wsdl:input message="tns:addUserSoapIn" />
       <wsdl:output message="tns:addUserSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="checkCityDB">
-      <wsdl:input message="tns:checkCityDBSoapIn" />
-      <wsdl:output message="tns:checkCityDBSoapOut" />
+    <wsdl:operation name="CityExists">
+      <wsdl:input message="tns:CityExistsSoapIn" />
+      <wsdl:output message="tns:CityExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegionExists">
+      <wsdl:input message="tns:RegionExistsSoapIn" />
+      <wsdl:output message="tns:RegionExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParkingPlaceExists">
+      <wsdl:input message="tns:ParkingPlaceExistsSoapIn" />
+      <wsdl:output message="tns:ParkingPlaceExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCityId">
+      <wsdl:input message="tns:getCityIdSoapIn" />
+      <wsdl:output message="tns:getCityIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionId">
+      <wsdl:input message="tns:getRegionIdSoapIn" />
+      <wsdl:output message="tns:getRegionIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteParkPlace">
+      <wsdl:input message="tns:deleteParkPlaceSoapIn" />
+      <wsdl:output message="tns:deleteParkPlaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRegion">
+      <wsdl:input message="tns:deleteRegionSoapIn" />
+      <wsdl:output message="tns:deleteRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCity">
+      <wsdl:input message="tns:deleteCitySoapIn" />
+      <wsdl:output message="tns:deleteCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionsForCity">
+      <wsdl:input message="tns:getRegionsForCitySoapIn" />
+      <wsdl:output message="tns:getRegionsForCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlacesForRegion">
+      <wsdl:input message="tns:getParkPlacesForRegionSoapIn" />
+      <wsdl:output message="tns:getParkPlacesForRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeCityName">
+      <wsdl:input message="tns:changeCityNameSoapIn" />
+      <wsdl:output message="tns:changeCityNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeRegionName">
+      <wsdl:input message="tns:changeRegionNameSoapIn" />
+      <wsdl:output message="tns:changeRegionNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeParkPlace">
+      <wsdl:input message="tns:changeParkPlaceSoapIn" />
+      <wsdl:output message="tns:changeParkPlaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNrSpaces">
+      <wsdl:input message="tns:getNrSpacesSoapIn" />
+      <wsdl:output message="tns:getNrSpacesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <wsdl:input message="tns:sendEmailSoapIn" />
+      <wsdl:output message="tns:sendEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addCity">
+      <wsdl:input message="tns:addCitySoapIn" />
+      <wsdl:output message="tns:addCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addParkingPlace">
+      <wsdl:input message="tns:addParkingPlaceSoapIn" />
+      <wsdl:output message="tns:addParkingPlaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addRegion">
+      <wsdl:input message="tns:addRegionSoapIn" />
+      <wsdl:output message="tns:addRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllHistory">
+      <wsdl:input message="tns:getAllHistorySoapIn" />
+      <wsdl:output message="tns:getAllHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <wsdl:input message="tns:getUserByIdSoapIn" />
+      <wsdl:output message="tns:getUserByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlaceById">
+      <wsdl:input message="tns:getParkPlaceByIdSoapIn" />
+      <wsdl:output message="tns:getParkPlaceByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionById">
+      <wsdl:input message="tns:getRegionByIdSoapIn" />
+      <wsdl:output message="tns:getRegionByIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getAllCites">
       <soap:operation soapAction="http://tempuri.org/getAllCites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCitesType">
+      <soap:operation soapAction="http://tempuri.org/getAllCitesType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRegions">
+      <soap:operation soapAction="http://tempuri.org/getAllRegions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllParkPlaces">
+      <soap:operation soapAction="http://tempuri.org/getAllParkPlaces" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsers">
+      <soap:operation soapAction="http://tempuri.org/getAllUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -362,8 +1035,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getRegionByCityId">
-      <soap:operation soapAction="http://tempuri.org/getRegionByCityId" style="document" />
+    <wsdl:operation name="getParkingPlacesByRegionId">
+      <soap:operation soapAction="http://tempuri.org/getParkingPlacesByRegionId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -371,8 +1044,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getParkingPlacesByRegionId">
-      <soap:operation soapAction="http://tempuri.org/getParkingPlacesByRegionId" style="document" />
+    <wsdl:operation name="reserveParkingLot">
+      <soap:operation soapAction="http://tempuri.org/reserveParkingLot" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -389,8 +1062,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="reserveParkingLot">
-      <soap:operation soapAction="http://tempuri.org/reserveParkingLot" style="document" />
+    <wsdl:operation name="getRegionByCityIdType">
+      <soap:operation soapAction="http://tempuri.org/getRegionByCityIdType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionByCityId">
+      <soap:operation soapAction="http://tempuri.org/getRegionByCityId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -443,8 +1125,197 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="checkCityDB">
-      <soap:operation soapAction="http://tempuri.org/checkCityDB" style="document" />
+    <wsdl:operation name="CityExists">
+      <soap:operation soapAction="http://tempuri.org/CityExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegionExists">
+      <soap:operation soapAction="http://tempuri.org/RegionExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParkingPlaceExists">
+      <soap:operation soapAction="http://tempuri.org/ParkingPlaceExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCityId">
+      <soap:operation soapAction="http://tempuri.org/getCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionId">
+      <soap:operation soapAction="http://tempuri.org/getRegionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteParkPlace">
+      <soap:operation soapAction="http://tempuri.org/deleteParkPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRegion">
+      <soap:operation soapAction="http://tempuri.org/deleteRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCity">
+      <soap:operation soapAction="http://tempuri.org/deleteCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionsForCity">
+      <soap:operation soapAction="http://tempuri.org/getRegionsForCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlacesForRegion">
+      <soap:operation soapAction="http://tempuri.org/getParkPlacesForRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeCityName">
+      <soap:operation soapAction="http://tempuri.org/changeCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeRegionName">
+      <soap:operation soapAction="http://tempuri.org/changeRegionName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeParkPlace">
+      <soap:operation soapAction="http://tempuri.org/changeParkPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNrSpaces">
+      <soap:operation soapAction="http://tempuri.org/getNrSpaces" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <soap:operation soapAction="http://tempuri.org/sendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCity">
+      <soap:operation soapAction="http://tempuri.org/addCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addParkingPlace">
+      <soap:operation soapAction="http://tempuri.org/addParkingPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRegion">
+      <soap:operation soapAction="http://tempuri.org/addRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHistory">
+      <soap:operation soapAction="http://tempuri.org/getAllHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <soap:operation soapAction="http://tempuri.org/getUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlaceById">
+      <soap:operation soapAction="http://tempuri.org/getParkPlaceById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionById">
+      <soap:operation soapAction="http://tempuri.org/getRegionById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -464,8 +1335,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getCityById">
-      <soap12:operation soapAction="http://tempuri.org/getCityById" style="document" />
+    <wsdl:operation name="getAllCitesType">
+      <soap12:operation soapAction="http://tempuri.org/getAllCitesType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -473,8 +1344,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getRegionByCityId">
-      <soap12:operation soapAction="http://tempuri.org/getRegionByCityId" style="document" />
+    <wsdl:operation name="getAllRegions">
+      <soap12:operation soapAction="http://tempuri.org/getAllRegions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllParkPlaces">
+      <soap12:operation soapAction="http://tempuri.org/getAllParkPlaces" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/getAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCityById">
+      <soap12:operation soapAction="http://tempuri.org/getCityById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -491,6 +1389,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="reserveParkingLot">
+      <soap12:operation soapAction="http://tempuri.org/reserveParkingLot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getParkingLotByParkingPlaceId">
       <soap12:operation soapAction="http://tempuri.org/getParkingLotByParkingPlaceId" style="document" />
       <wsdl:input>
@@ -500,8 +1407,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="reserveParkingLot">
-      <soap12:operation soapAction="http://tempuri.org/reserveParkingLot" style="document" />
+    <wsdl:operation name="getRegionByCityIdType">
+      <soap12:operation soapAction="http://tempuri.org/getRegionByCityIdType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionByCityId">
+      <soap12:operation soapAction="http://tempuri.org/getRegionByCityId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -554,8 +1470,197 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="checkCityDB">
-      <soap12:operation soapAction="http://tempuri.org/checkCityDB" style="document" />
+    <wsdl:operation name="CityExists">
+      <soap12:operation soapAction="http://tempuri.org/CityExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegionExists">
+      <soap12:operation soapAction="http://tempuri.org/RegionExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParkingPlaceExists">
+      <soap12:operation soapAction="http://tempuri.org/ParkingPlaceExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCityId">
+      <soap12:operation soapAction="http://tempuri.org/getCityId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionId">
+      <soap12:operation soapAction="http://tempuri.org/getRegionId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteParkPlace">
+      <soap12:operation soapAction="http://tempuri.org/deleteParkPlace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRegion">
+      <soap12:operation soapAction="http://tempuri.org/deleteRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCity">
+      <soap12:operation soapAction="http://tempuri.org/deleteCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionsForCity">
+      <soap12:operation soapAction="http://tempuri.org/getRegionsForCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlacesForRegion">
+      <soap12:operation soapAction="http://tempuri.org/getParkPlacesForRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeCityName">
+      <soap12:operation soapAction="http://tempuri.org/changeCityName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeRegionName">
+      <soap12:operation soapAction="http://tempuri.org/changeRegionName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeParkPlace">
+      <soap12:operation soapAction="http://tempuri.org/changeParkPlace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNrSpaces">
+      <soap12:operation soapAction="http://tempuri.org/getNrSpaces" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <soap12:operation soapAction="http://tempuri.org/sendEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCity">
+      <soap12:operation soapAction="http://tempuri.org/addCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addParkingPlace">
+      <soap12:operation soapAction="http://tempuri.org/addParkingPlace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRegion">
+      <soap12:operation soapAction="http://tempuri.org/addRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHistory">
+      <soap12:operation soapAction="http://tempuri.org/getAllHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <soap12:operation soapAction="http://tempuri.org/getUserById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkPlaceById">
+      <soap12:operation soapAction="http://tempuri.org/getParkPlaceById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionById">
+      <soap12:operation soapAction="http://tempuri.org/getRegionById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

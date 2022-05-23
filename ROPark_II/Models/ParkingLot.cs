@@ -23,5 +23,6 @@ namespace ROPark_II.Models
             this.plateNr = plateNr;
             this.state = state;
         }
+
     }
 }

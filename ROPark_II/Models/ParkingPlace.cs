@@ -23,5 +23,6 @@ namespace ROPark_II.Models
         public ParkingPlace()
         {
         }
+
     }
 }
