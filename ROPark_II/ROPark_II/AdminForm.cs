@@ -1,4 +1,5 @@
 ﻿using ROPark_II.localhost;
+using ROPark_II.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace ROPark_II
 
             String historyMsg;
             String userName, parkplaceName,regionName,cityName;
-            foreach (History history in serv.getAllHistory())
+            foreach (localhost.History history in serv.getAllHistory())
             {
                 userName = serv.getUserById(history.userId).Trim();
                 parkplaceName = serv.getParkPlaceById(history.parkingPlaceId).Trim();
@@ -40,9 +41,7 @@ namespace ROPark_II
                     + "; Parking Place: " + parkplaceName + " at: " + history.date;
                 listBoxHistory.Items.Add(historyMsg);
             }
-
         }
-
 
         private System.Windows.Forms.Form activeForm = null;
 
@@ -228,5 +227,10 @@ namespace ROPark_II
             openChildFormInPanel(enterForm);
         }
 
+        private void buttonSignOut_Click(object sender, EventArgs e)
+        {
+            Account.logOut();
+            this.Close();
+        }
     }
 }

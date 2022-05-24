@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ROPark_II.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,17 +18,14 @@ namespace ROPark_II
             InitializeComponent();
         }
         localhost.WebService1 serv = new localhost.WebService1();
-        public Boolean accountLogged = true;
-        public String accountUser;
         public void setLabels(String user)
         {
             if (user != null)
             {
-                accountLogged = true;
-
                 String[] userInfo;
                 String fullName = "";
                 userInfo = serv.getUser(user);
+                String historyMsg,userName,parkPlaceName,regionName,cityName;
 
                 for (int i = 0; i < userInfo.Length; i++)
                 {
@@ -42,15 +40,58 @@ namespace ROPark_II
                         labelEmail.Text = userInfo[i];
                 }
                 labelUser.Text = user;
-                accountUser = user;
+
+                foreach (localhost.History history in serv.getAllHistory())
+                {
+                    if (history.userId == Account.userId) 
+                    {
+                        userName = serv.getUserById(history.userId).Trim();
+                        parkPlaceName = serv.getParkPlaceById(history.parkingPlaceId).Trim();
+                        regionName = serv.getRegionById(history.regionId).Trim();
+                        cityName = serv.getCityById(history.cityId).Trim();
+
+                        historyMsg = "You have parked at City: " + cityName + "; Region: " + regionName
+                            + "; Parking Place: " + parkPlaceName + " at: " + history.date;
+
+                        listBoxHistory.Items.Add(historyMsg);
+                    }
+                }
+            }
+        }
+
+
+        private System.Windows.Forms.Form activeForm = null;
+        private void openChildFormInPanel(System.Windows.Forms.Form childForm)
+        {
+            try
+            {
+                if (activeForm != null)
+                    activeForm.Close();
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panelSecondForm.Controls.Add(childForm);
+                panelSecondForm.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+            }
+            catch (Exception)
+            {
+
             }
         }
 
         private void buttonSignOut_Click(object sender, EventArgs e)
         {
-            accountLogged=false;
-            accountUser = null;
+            Account.logOut();
             this.Close();
+        }
+
+        private void buttonPark_Click(object sender, EventArgs e)
+        {
+            ParkInfoForm parkInfoForm = new ParkInfoForm();
+            openChildFormInPanel(parkInfoForm);
         }
     }
 

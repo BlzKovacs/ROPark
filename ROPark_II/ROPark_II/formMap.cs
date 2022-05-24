@@ -16,6 +16,8 @@ namespace ROPark_II
         private String romaniaMap = "romaniaMap.jpg";
         private HelpingFunctions helpingFunctions = new HelpingFunctions();
         private List<OrasRectangle> listOrasRectangle = new List<OrasRectangle>();
+        private List<CityRegion> listRegiuni = new List<CityRegion>();
+        private List<ParkingPlace> listParkingPlaces = new List<ParkingPlace>();
         int selectedId = -1;
 
         public formMap()
@@ -25,8 +27,8 @@ namespace ROPark_II
             service = new ROPark_II.localhost.WebService1();
 
             List<City> listOrase = new List<City>();
-            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesCityType());
-            var x = service.getAllCitesCityType();
+            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesType());
+            var x = service.getAllCitesType();
 
 
             for (int i = 0; i < listOrase.Count(); i++)
@@ -91,7 +93,6 @@ namespace ROPark_II
         {
             City oras = getOrasFromClick(e.X, e.Y);
 
-
             if (oras != null)
             {
 
@@ -100,13 +101,14 @@ namespace ROPark_II
 
                 label_orasSelectat.Text = oras.name;
 
-                String[] list = service.getRegionByCityId(oras.id);
+                listRegiuni = helpingFunctions.convertOrasRegionServiceClient(
+                    this.service.getRegionByCityIdType(oras.id));
 
                 listView_Regiuni.Items.Clear();
 
-                for (int i = 0; i < list.Count(); i++)
+                for (int i = 0; i < listRegiuni.Count(); i++)
                 {
-                    listView_Regiuni.Items.Add(new ListViewItem(list[i]));
+                    listView_Regiuni.Items.Add(new ListViewItem(listRegiuni[i].name));
                 }
 
             }
@@ -154,6 +156,56 @@ namespace ROPark_II
             }
 
             return null;
+        }
+
+        private void listView_parkingPlace_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView_Regiuni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_Regiuni.SelectedItems.Count > 0)
+            {
+
+                int id = this.helpingFunctions.getIdFromNameRegiuni(
+                    listRegiuni,
+                    listView_Regiuni.SelectedItems[0].Text);
+
+                listParkingPlaces = helpingFunctions.convertParkingPlaceServiceClient(
+                    this.service.getParkingPlacesByRegionId(id));
+
+                listView_parkingPlace.Items.Clear();
+
+                if (listParkingPlaces.Count != 0)
+                {
+                        for (int i = 0; i < listRegiuni.Count(); i++)
+                        {
+                            listView_parkingPlace.Items.Add(new ListViewItem(listParkingPlaces[i].name));
+                        }
+                }
+
+            }
+        }
+
+        private void buttonSearch_Click_1(object sender, EventArgs e)
+        {
+            if (listView_Regiuni.SelectedItems.Count > 0 && listView_parkingPlace.SelectedItems.Count > 0)
+            {
+
+                int id = this.helpingFunctions.getIdFromNameParkingPlace(
+                    listParkingPlaces,
+                    listView_parkingPlace.SelectedItems[0].Text);
+
+                ParkSelection.parkingPlaceId = id;
+                ParkSelection.regionId = this.helpingFunctions.getIdFromNameRegiuni(
+                    listRegiuni,
+                    listView_Regiuni.SelectedItems[0].Text);
+                ParkSelection.cityId = service.getCityId(label_orasSelectat.Text.Trim());
+                ReserveParkingLot reserveParkingLot = new ReserveParkingLot(id);
+                reserveParkingLot.Show();
+
+            }
         }
     }
 }

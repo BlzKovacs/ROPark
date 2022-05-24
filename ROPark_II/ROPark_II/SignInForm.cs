@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ROPark_II.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,14 +17,12 @@ namespace ROPark_II
         {
             InitializeComponent();
         }
-        public String userName = null;
-        private Boolean adminEntered = false;
+
         localhost.WebService1 serv = new localhost.WebService1();
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             String username, password;
             Boolean success = false;
-            adminEntered = false;
 
             if (textBoxName.Text.Equals("") || textBoxPassword.Equals(""))
                 MessageBox.Show("Enter username and password!", "Error");
@@ -36,30 +35,19 @@ namespace ROPark_II
                 success = serv.checkUser(username, password);
                 if (success)
                 {
-                    if (username.Equals("admin"))
-                    {
-                        adminEntered = true;
-                        userName = "admin";
-                        labelWelcome.Text = "Welcome back Admin! Click Your Account.";
-                    }
-                    else
-                    {
-                        userName = username;
-                        labelWelcome.Text = "Welcome back " + username + "!";
-                        //loginSuccess = true;
-                    }
+                    labelWelcome.Text = "Welcome back " + username + "!";
+
+                    Account.userId = serv.getUserId(username);
+                    Account.userName = username;
+                    Account.isLogged = true;
                 }
                 else
                 {
-                    userName = null;
                     labelWelcome.Text = "Wrong username or password!";
                 }
             }
         }
-        public bool isAdminEntered()
-        {
-            return adminEntered;
-        }
+
         public static string EncodePassword(string password)
         {
             try

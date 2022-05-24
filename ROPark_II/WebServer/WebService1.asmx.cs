@@ -54,7 +54,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public List<City> getAllCitesCityType()
+        public List<City> getAllCitesType()
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -173,6 +173,111 @@ namespace WebServer
 
             sqlConnection.Close();
             return "NU EXISTA IN BAZA DE DATE";
+        }
+
+        [WebMethod]
+        public List<ParkingPlace> getParkingPlacesByRegionId(int idRegion)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "SELECT * FROM ParkingPlaces WHERE CityRegionID=" + idRegion.ToString();
+            SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
+            dataAdapter_Regions.Fill(dataSet_Regions, "ParkingPlaces");
+
+            List<ParkingPlace> list = new List<ParkingPlace>();
+
+            foreach (DataRow row in dataSet_Regions.Tables["ParkingPlaces"].Rows)
+            {
+
+                ParkingPlace pkPlace = new ParkingPlace();
+                pkPlace.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                pkPlace.name = row.ItemArray.GetValue(2).ToString();
+                pkPlace.nrSpaces = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(pkPlace);
+
+            }
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public void reserveParkingLot(int idParkingLot, String plateNr)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "UPDATE ParkingLot SET State=1, PlateNr='" + plateNr + "'" + " WHERE ParkingLotID=" + idParkingLot;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = sqlString;
+            sqlCommand.Connection = connection;
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        [WebMethod]
+        public List<ParkingLot> getParkingLotByParkingPlaceId(int idParkingPlace)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "SELECT * FROM ParkingLot WHERE ParkingPlaceID=" + idParkingPlace + "AND State=0";
+            SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
+            dataAdapter_Regions.Fill(dataSet_Regions, "ParkingLot");
+
+            List<ParkingLot> list = new List<ParkingLot>();
+
+            foreach (DataRow row in dataSet_Regions.Tables["ParkingLot"].Rows)
+            {
+
+                ParkingLot pkPlace = new ParkingLot();
+                pkPlace.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                pkPlace.plateNr = row.ItemArray.GetValue(2).ToString();
+                pkPlace.state = Convert.ToInt32(row.ItemArray.GetValue(3));
+
+                list.Add(pkPlace);
+
+            }
+
+            sqlConnection.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public List<CityRegion> getRegionByCityIdType(int idCity)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            DataSet dataSet_Regions = new DataSet();
+            String sqlString = "SELECT * FROM CityRegion WHERE CityID=" + idCity.ToString();
+            SqlDataAdapter dataAdapter_Regions = new SqlDataAdapter(sqlString, connection);
+            dataAdapter_Regions.Fill(dataSet_Regions, "RegionName");
+
+            List<CityRegion> list = new List<CityRegion>();
+
+            foreach (DataRow row in dataSet_Regions.Tables["RegionName"].Rows)
+            {
+
+                CityRegion cityRegion = new CityRegion();
+                cityRegion.id = Convert.ToInt32(row.ItemArray.GetValue(0));
+                cityRegion.name = row.ItemArray.GetValue(2).ToString();
+
+                list.Add(cityRegion);
+
+            }
+
+            sqlConnection.Close();
+
+            return list;
         }
 
         [WebMethod]
@@ -379,7 +484,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public bool RegionExists(String name,int cityId)
+        public bool RegionExists(String name, int cityId)
         {
             name = name.ToUpper();
             bool success = false;
@@ -408,7 +513,7 @@ namespace WebServer
             return success;
         }
         [WebMethod]
-        public bool ParkingPlaceExists(String name,int regionId)
+        public bool ParkingPlaceExists(String name, int regionId)
         {
             name = name.ToUpper();
             bool success = false;
@@ -437,7 +542,7 @@ namespace WebServer
             return success;
         }
 
-        
+
 
         [WebMethod]
         public int getCityId(String name)
@@ -445,6 +550,7 @@ namespace WebServer
             SqlConnection myCon = new SqlConnection();
             myCon.ConnectionString = connectionString;
 
+            name = name.ToUpper();
             string query = "SELECT CityID FROM City WHERE CityName = @name";
 
             int id = -1;
@@ -491,6 +597,65 @@ namespace WebServer
             while (dataReader.Read())
             {
                 id = Convert.ToInt32(dataReader["RegionID"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return id;
+
+        }
+        [WebMethod]
+        public int getParkPlaceId(String name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT ParkingPlaceID FROM ParkingPlaces WHERE ParkPlaceName = @name";
+
+            int id = -1;
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("name", name);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                id = Convert.ToInt32(dataReader["ParkingPlaceID"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return id;
+
+        }
+
+        [WebMethod]
+        public int getUserId(String name)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT UserID FROM Users WHERE UserName = @name";
+
+            int id = -1;
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("name", name);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                id = Convert.ToInt32(dataReader["UserID"].ToString());
             }
 
             dataReader.Close();
@@ -754,7 +919,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public Boolean sendEmail(String email,String msg, String userName, String firstName, String lastName, String phoneNr)
+        public Boolean sendEmail(String email, String msg, String userName, String firstName, String lastName, String phoneNr)
         {
             try
             {
@@ -782,9 +947,9 @@ namespace WebServer
 
         }
         [WebMethod]
-        public Boolean addCity(String cityName,int mapx,int mapy)
+        public Boolean addCity(String cityName, int mapx, int mapy)
         {
-            
+
             SqlConnection myCon = new SqlConnection();
             myCon.ConnectionString = connectionString;
 
@@ -809,7 +974,7 @@ namespace WebServer
             }
         }
 
-  
+
 
         [WebMethod]
         public Boolean addParkingPlace(int regionId, String name, int nrSpaces)
@@ -905,6 +1070,81 @@ namespace WebServer
         }
 
         [WebMethod]
+        public List<History> getUserHistory(int userId)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT * FROM History where UserID = @userId";
+
+            List<History> list = new List<History>();
+
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("@userId", userId);
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                History history = new History();
+                history.historyId = Convert.ToInt32(dataReader["HistoryID"].ToString());
+                history.userId = Convert.ToInt32(dataReader["userID"].ToString());
+                history.PlateNr = dataReader["PlateNr"].ToString();
+                history.parkingLotId = Convert.ToInt32(dataReader["ParkingLotID"].ToString());
+                history.parkingPlaceId = Convert.ToInt32(dataReader["ParkingPlaceID"].ToString());
+                history.regionId = Convert.ToInt32(dataReader["RegionID"].ToString());
+                history.cityId = Convert.ToInt32(dataReader["CityID"].ToString());
+                history.date = Convert.ToDateTime(dataReader["Date"].ToString());
+
+                list.Add(history);
+                
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return list;
+        }
+
+        [WebMethod]
+        public Boolean addHistory(History history)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Insert into History (UserID,PlateNr,ParkingLotID,ParkingPlaceID,CityRegionID,CityID,Date)" +
+                    " values (@userId,@plateNr,@parkingLotID,@parkingPlaceID,@cityRegionID,@cityID,@date)", myCon);
+                command.Parameters.Add("@userId", history.userId);
+                command.Parameters.Add("@plateNr", history.PlateNr);
+                command.Parameters.Add("@parkingLotID", history.parkingLotId);
+                command.Parameters.Add("@parkingPlaceID", history.parkingPlaceId);
+                command.Parameters.Add("@cityRegionID", history.regionId);
+                command.Parameters.Add("@cityID", history.cityId);
+                command.Parameters.Add("date", history.date);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                myCon.Close();
+            }
+        }
+
+        [WebMethod]
         public String getUserById(int id)
         {
             SqlConnection myCon = new SqlConnection();
@@ -988,7 +1228,119 @@ namespace WebServer
 
             return username;
         }
+
+        [WebMethod]
+        public Boolean addSpaces(int parkPlaceId, int nr)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                for (int i = 0; i < nr; i++)
+                {
+                    SqlCommand command = new SqlCommand("Insert into ParkingLot (ParkingPlaceID) values (@parkPlaceId)", myCon);
+                    command.Parameters.Add("@parkPlaceId", SqlDbType.Int).Value = parkPlaceId;
+
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                myCon.Close();
+            }
+        }
+
+        [WebMethod]
+        public Boolean finishParking(int spotId)
+        {
+
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            myCon.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand("Update ParkingLot Set State = 0 where ParkingLotID = @spotId", myCon);
+
+                command.Parameters.Add("@spotId", spotId);
+                command.ExecuteNonQuery();
+                myCon.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                myCon.Close();
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool isSpotFree(int spotId)
+        {
+            bool success = false;
+            String sqlStatement = "Select * from ParkingLot where ParkingLotID = @id and State = 0";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@id", spotId);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                        success = true;
+
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return success;
+        }
     }
 
+
+    public class City
+    {
+        public int id;
+        public string name;
+        public int mapX;
+        public int mapY;
+
+    }
+
+    public class CityRegion
+    {
+        public int id;
+        public String name;
+    }
+
+    public class ParkingPlace
+    {
+        public int id;
+        public String name;
+        public int nrSpaces;
+    }
+
+    public class ParkingLot
+    {
+        public int id;
+        public String plateNr;
+        public int state;
+    }
 
 }

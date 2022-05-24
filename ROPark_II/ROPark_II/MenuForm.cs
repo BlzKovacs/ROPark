@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ROPark_II.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,13 +20,11 @@ namespace ROPark_II
 
         
         private System.Windows.Forms.Form activeForm = null;
-        //private System.Windows.Forms.Form openedChildForm;
         SignInForm signInForm = new SignInForm();
         SignUpForm signUpForm = new SignUpForm();
         formMap formMap = new formMap();
         AccountForm accountForm = new AccountForm();
 
-        String userName = null, prevUserName=null;
         private void openChildFormInPanel(System.Windows.Forms.Form childForm)
         {
             if (activeForm != null)
@@ -58,11 +57,6 @@ namespace ROPark_II
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
             
-            if (accountForm.accountLogged == false)
-            {
-                userName = null;
-                signInForm.userName = null;
-            }
             try
             {
                 if (Form.ActiveForm != signInForm)
@@ -72,8 +66,7 @@ namespace ROPark_II
             }
             catch(Exception) 
             {
-                this.signInForm = new SignInForm();
-                signInForm.userName = userName;
+                this.signInForm = new SignInForm();  
                 openChildFormInPanel(signInForm);
             };
         }
@@ -99,7 +92,6 @@ namespace ROPark_II
             }
             catch (Exception)
             {
-
                 this.signUpForm = new SignUpForm();
                 openChildFormInPanel(signUpForm);
             };
@@ -113,77 +105,46 @@ namespace ROPark_II
         private void buttonAccount_Click(object sender, EventArgs e)
         {
 
-            if (signInForm.userName != null)
+            if (Account.isLogged)
             {
-                if (signInForm.userName.Equals("admin"))
+                if (Account.userName.Equals("admin"))
                 {
-                    userName = "admin";
                     AdminForm adminForm = new AdminForm();
                     openChildFormInPanel(adminForm);
                 }
                 else
                 {
-                    setNewAccount();
+                    this.accountForm = new AccountForm();
                     openChildFormInPanel(accountForm);
-                    accountForm.setLabels(signInForm.userName);
-                    userName = signInForm.userName;
+                    accountForm.setLabels(Account.userName);
                 }
             }
-
             else
                 MessageBox.Show("Sign in first!", "Error");
             
         }
 
-        private void setNewAccount()
-        {
-            
-            this.accountForm = new AccountForm();
-            accountForm.accountLogged = true;
-        }
-
-        public void setNewLogin(String username)
-        {
-            if (signInForm.userName != null)
-            {
-                this.signInForm = new SignInForm();
-                signInForm.userName = username;
-                if (!accountForm.accountLogged)
-                {
-                    setNewAccount();
-                    accountForm.accountUser = username;
-                }
-            }
-            else
-            {
-                this.signInForm = new SignInForm();
-                signInForm.userName = username;
-            }
-        }
-
 
         private void buttonPark_Click(object sender, EventArgs e)
         {
-            prevUserName = signInForm.userName;
-            if (accountForm.accountLogged == false)
+
+            if (Account.isLogged)
             {
-                userName = null;
-                signInForm.userName = null;
-            }
-            try
-            {
-                if (Form.ActiveForm != this.formMap)
+                try
                 {
-                    openChildFormInPanel(this.formMap);
+                    if (Form.ActiveForm != this.formMap)
+                    {
+                        openChildFormInPanel(this.formMap);
+                    }
                 }
+                catch (Exception)
+                {
+                    this.formMap = new formMap();
+                    openChildFormInPanel(formMap);
+                };
             }
-            catch (Exception)
-            {
-                //setNewLogin(userName);
-                this.formMap = new formMap();
-                signInForm.userName = userName;
-                openChildFormInPanel(formMap);
-            };
+            else
+                MessageBox.Show("You have to be logged in to start parking!", "Log in first");
         }
     }
 }

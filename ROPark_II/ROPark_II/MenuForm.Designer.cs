@@ -170,7 +170,7 @@
             this.labelClock.BackColor = System.Drawing.Color.Transparent;
             this.labelClock.Font = new System.Drawing.Font("Impact", 13.8F);
             this.labelClock.ForeColor = System.Drawing.Color.Black;
-            this.labelClock.Location = new System.Drawing.Point(487, 102);
+            this.labelClock.Location = new System.Drawing.Point(485, 54);
             this.labelClock.Name = "labelClock";
             this.labelClock.Size = new System.Drawing.Size(69, 28);
             this.labelClock.TabIndex = 2;
@@ -190,12 +190,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(254, 146);
+            this.pictureBox1.Location = new System.Drawing.Point(83, 101);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(779, 362);
+            this.pictureBox1.Size = new System.Drawing.Size(1068, 469);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 

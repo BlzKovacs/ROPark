@@ -26,8 +26,8 @@ namespace ROPark_II
             service = new ROPark_II.localhost.WebService1();
 
             List<City> listOrase = new List<City>();
-            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesCityType());
-            var x = service.getAllCitesCityType();
+            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesType());
+            var x = service.getAllCitesType();
 
 
             for (int i = 0; i < listOrase.Count(); i++)
@@ -206,8 +206,8 @@ namespace ROPark_II
         private void updateCity()
         {
             List<City> listOrase = new List<City>();
-            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesCityType());
-            var x = service.getAllCitesCityType();
+            listOrase = helpingFunctions.convertOrasServiceClient(this.service.getAllCitesType());
+            var x = service.getAllCitesType();
 
 
             for (int i = 0; i < listOrase.Count(); i++)
@@ -251,8 +251,13 @@ namespace ROPark_II
                             
                             if (nrSpaces > 0 && nrSpaces <= 1000)
                             {
-                                if(service.addParkingPlace(regionId, parkPlaceName, nrSpaces))
-                                    listViewParkPlace.Items.Add(parkPlaceName);
+                                if (service.addParkingPlace(regionId, parkPlaceName, nrSpaces))
+                                {
+                                    if (service.addSpaces(service.getParkPlaceId(parkPlaceName), nrSpaces))
+                                        listViewParkPlace.Items.Add(parkPlaceName);
+                                    else
+                                        MessageBox.Show("Parking spots could not be added...", "Error");
+                                }
                             }
                             else
                                 MessageBox.Show("Enter an even number from 1 to 1000!", "Error");
