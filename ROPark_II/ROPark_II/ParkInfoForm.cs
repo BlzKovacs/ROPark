@@ -27,8 +27,11 @@ namespace ROPark_II
             {
                 if(history.userId == Account.userId && !service.isSpotFree(history.parkingLotId))
                 {
-                    listBoxSpots.Items.Add(history.parkingLotId);
-                    i++;
+                    if (!listBoxSpots.Items.Contains(history.parkingLotId))
+                    {
+                        listBoxSpots.Items.Add(history.parkingLotId);
+                        i++;
+                    }
                 }
                 
             }
