@@ -1327,9 +1327,10 @@ namespace WebServer
             myCon.Open();
             try
             {
-                SqlCommand command = new SqlCommand("Update ParkingLot Set State = 0 where ParkingLotID = @spotId", myCon);
+                SqlCommand command = new SqlCommand("Update ParkingLot Set State = 0, PlateNr = @plate where ParkingLotID = @spotId", myCon);
 
                 command.Parameters.Add("@spotId", spotId);
+                command.Parameters.Add("@plate", "NULL");
                 command.ExecuteNonQuery();
                 myCon.Close();
                 return true;
