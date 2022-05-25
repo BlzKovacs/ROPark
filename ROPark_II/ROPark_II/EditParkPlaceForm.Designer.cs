@@ -35,17 +35,12 @@
             this.textBoxNew = new System.Windows.Forms.TextBox();
             this.textBoxOld = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBoxOldSpots = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(398, 314);
+            this.buttonCancel.Location = new System.Drawing.Point(397, 297);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(94, 28);
             this.buttonCancel.TabIndex = 28;
@@ -56,7 +51,7 @@
             // buttonEnter
             // 
             this.buttonEnter.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEnter.Location = new System.Drawing.Point(544, 314);
+            this.buttonEnter.Location = new System.Drawing.Point(528, 297);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(94, 28);
             this.buttonEnter.TabIndex = 27;
@@ -77,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 233);
+            this.label2.Location = new System.Drawing.Point(370, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 16);
             this.label2.TabIndex = 25;
@@ -85,14 +80,14 @@
             // 
             // textBoxNew
             // 
-            this.textBoxNew.Location = new System.Drawing.Point(328, 227);
+            this.textBoxNew.Location = new System.Drawing.Point(506, 230);
             this.textBoxNew.Name = "textBoxNew";
             this.textBoxNew.Size = new System.Drawing.Size(134, 22);
             this.textBoxNew.TabIndex = 24;
             // 
             // textBoxOld
             // 
-            this.textBoxOld.Location = new System.Drawing.Point(328, 171);
+            this.textBoxOld.Location = new System.Drawing.Point(506, 174);
             this.textBoxOld.Name = "textBoxOld";
             this.textBoxOld.ReadOnly = true;
             this.textBoxOld.Size = new System.Drawing.Size(134, 22);
@@ -101,49 +96,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 177);
+            this.label1.Location = new System.Drawing.Point(355, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 16);
             this.label1.TabIndex = 22;
             this.label1.Text = "Current Region name:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(526, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 16);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Current Number of spaces:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(541, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 16);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "New Number of spaces:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(729, 227);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 31;
-            // 
-            // textBoxOldSpots
-            // 
-            this.textBoxOldSpots.Location = new System.Drawing.Point(729, 170);
-            this.textBoxOldSpots.Name = "textBoxOldSpots";
-            this.textBoxOldSpots.ReadOnly = true;
-            this.textBoxOldSpots.Size = new System.Drawing.Size(120, 22);
-            this.textBoxOldSpots.TabIndex = 32;
             // 
             // EditParkPlaceForm
             // 
@@ -152,10 +109,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
             this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
-            this.Controls.Add(this.textBoxOldSpots);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.label4);
@@ -165,7 +118,6 @@
             this.Controls.Add(this.label1);
             this.Name = "EditParkPlaceForm";
             this.Text = "EditParkPlaceForm";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,9 +132,5 @@
         private System.Windows.Forms.TextBox textBoxNew;
         private System.Windows.Forms.TextBox textBoxOld;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBoxOldSpots;
     }
 }

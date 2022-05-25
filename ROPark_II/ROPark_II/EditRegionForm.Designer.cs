@@ -52,6 +52,7 @@
             // 
             // listBoxParkPlaces
             // 
+            this.listBoxParkPlaces.BackColor = System.Drawing.Color.White;
             this.listBoxParkPlaces.FormattingEnabled = true;
             this.listBoxParkPlaces.ItemHeight = 16;
             this.listBoxParkPlaces.Location = new System.Drawing.Point(599, 185);

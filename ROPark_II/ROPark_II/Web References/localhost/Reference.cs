@@ -1242,28 +1242,26 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changeParkPlace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool changeParkPlace(string oldName, string newName, int newSpaces) {
+        public bool changeParkPlace(string oldName, string newName) {
             object[] results = this.Invoke("changeParkPlace", new object[] {
                         oldName,
-                        newName,
-                        newSpaces});
+                        newName});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void changeParkPlaceAsync(string oldName, string newName, int newSpaces) {
-            this.changeParkPlaceAsync(oldName, newName, newSpaces, null);
+        public void changeParkPlaceAsync(string oldName, string newName) {
+            this.changeParkPlaceAsync(oldName, newName, null);
         }
         
         /// <remarks/>
-        public void changeParkPlaceAsync(string oldName, string newName, int newSpaces, object userState) {
+        public void changeParkPlaceAsync(string oldName, string newName, object userState) {
             if ((this.changeParkPlaceOperationCompleted == null)) {
                 this.changeParkPlaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangeParkPlaceOperationCompleted);
             }
             this.InvokeAsync("changeParkPlace", new object[] {
                         oldName,
-                        newName,
-                        newSpaces}, this.changeParkPlaceOperationCompleted, userState);
+                        newName}, this.changeParkPlaceOperationCompleted, userState);
         }
         
         private void OnchangeParkPlaceOperationCompleted(object arg) {

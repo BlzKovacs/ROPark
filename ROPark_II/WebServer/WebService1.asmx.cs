@@ -925,7 +925,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public Boolean changeParkPlace(String oldName, String newName, int newSpaces)
+        public Boolean changeParkPlace(String oldName, String newName)
         {
 
             SqlConnection myCon = new SqlConnection();
@@ -934,11 +934,10 @@ namespace WebServer
             myCon.Open();
             try
             {
-                SqlCommand command = new SqlCommand("Update ParkingPlaces Set ParkPlaceName = @newName,NrSpaces = @newSpaces where ParkPlaceName = @oldName", myCon);
+                SqlCommand command = new SqlCommand("Update ParkingPlaces Set ParkPlaceName = @newName where ParkPlaceName = @oldName", myCon);
 
                 command.Parameters.Add("@oldName", SqlDbType.NChar).Value = oldName;
                 command.Parameters.Add("@newName", SqlDbType.NChar).Value = newName;
-                command.Parameters.Add("@newSpaces", SqlDbType.NChar).Value = newSpaces;
                 command.ExecuteNonQuery();
                 myCon.Close();
                 return true;
