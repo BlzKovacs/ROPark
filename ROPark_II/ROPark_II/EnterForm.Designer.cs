@@ -56,7 +56,8 @@
             // 
             // pannel_menu
             // 
-            this.pannel_menu.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pannel_menu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pannel_menu.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.pannel_menu.Controls.Add(this.buttonBack);
             this.pannel_menu.Controls.Add(this.buttonParkPlace);
             this.pannel_menu.Controls.Add(this.listViewParkPlace);
@@ -159,6 +160,7 @@
             // 
             // groupBox_currentCity
             // 
+            this.groupBox_currentCity.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.groupBox_currentCity.Controls.Add(this.label_orasSelectat);
             this.groupBox_currentCity.Location = new System.Drawing.Point(11, 10);
             this.groupBox_currentCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -187,6 +189,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.groupBox_currentCity);
             this.Controls.Add(this.pictureBox_Romania);

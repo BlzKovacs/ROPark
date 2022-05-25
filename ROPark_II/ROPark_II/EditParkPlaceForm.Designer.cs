@@ -45,7 +45,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(354, 303);
+            this.buttonCancel.Location = new System.Drawing.Point(398, 314);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(94, 28);
             this.buttonCancel.TabIndex = 28;
@@ -56,7 +56,7 @@
             // buttonEnter
             // 
             this.buttonEnter.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEnter.Location = new System.Drawing.Point(500, 303);
+            this.buttonEnter.Location = new System.Drawing.Point(544, 314);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(94, 28);
             this.buttonEnter.TabIndex = 27;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 222);
+            this.label2.Location = new System.Drawing.Point(192, 233);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 16);
             this.label2.TabIndex = 25;
@@ -85,14 +85,14 @@
             // 
             // textBoxNew
             // 
-            this.textBoxNew.Location = new System.Drawing.Point(284, 216);
+            this.textBoxNew.Location = new System.Drawing.Point(328, 227);
             this.textBoxNew.Name = "textBoxNew";
             this.textBoxNew.Size = new System.Drawing.Size(134, 22);
             this.textBoxNew.TabIndex = 24;
             // 
             // textBoxOld
             // 
-            this.textBoxOld.Location = new System.Drawing.Point(284, 160);
+            this.textBoxOld.Location = new System.Drawing.Point(328, 171);
             this.textBoxOld.Name = "textBoxOld";
             this.textBoxOld.ReadOnly = true;
             this.textBoxOld.Size = new System.Drawing.Size(134, 22);
@@ -101,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 166);
+            this.label1.Location = new System.Drawing.Point(177, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 16);
             this.label1.TabIndex = 22;
@@ -110,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(482, 166);
+            this.label3.Location = new System.Drawing.Point(526, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 16);
             this.label3.TabIndex = 29;
@@ -119,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(497, 222);
+            this.label5.Location = new System.Drawing.Point(541, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(150, 16);
             this.label5.TabIndex = 30;
@@ -127,7 +127,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(685, 216);
+            this.numericUpDown1.Location = new System.Drawing.Point(729, 227);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             250,
             0,
@@ -139,7 +139,7 @@
             // 
             // textBoxOldSpots
             // 
-            this.textBoxOldSpots.Location = new System.Drawing.Point(685, 159);
+            this.textBoxOldSpots.Location = new System.Drawing.Point(729, 170);
             this.textBoxOldSpots.Name = "textBoxOldSpots";
             this.textBoxOldSpots.ReadOnly = true;
             this.textBoxOldSpots.Size = new System.Drawing.Size(120, 22);
@@ -150,6 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
+            this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.textBoxOldSpots);
             this.Controls.Add(this.numericUpDown1);

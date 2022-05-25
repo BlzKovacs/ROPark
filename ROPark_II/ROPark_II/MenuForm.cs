@@ -68,12 +68,24 @@ namespace ROPark_II
             {
                 this.signInForm = new SignInForm();  
                 openChildFormInPanel(signInForm);
+            }
+            finally
+            {
+                foreach(Control c in panel1.Controls)
+                {
+                    c.Enabled = true;
+                }
+                buttonSignIn.Enabled = false;
             };
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
             closeChildFormInPanel();
+            foreach (Control c in panel1.Controls)
+            {
+                c.Enabled = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -94,7 +106,15 @@ namespace ROPark_II
             {
                 this.signUpForm = new SignUpForm();
                 openChildFormInPanel(signUpForm);
-            };
+            }
+            finally
+            {
+                foreach (Control c in panel1.Controls)
+                {
+                    c.Enabled = true;
+                }
+                buttonSignUp.Enabled = false;
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -118,6 +138,12 @@ namespace ROPark_II
                     openChildFormInPanel(accountForm);
                     accountForm.setLabels(Account.userName);
                 }
+                foreach (Control c in panel1.Controls)
+                {
+                    c.Enabled = true;
+                }
+                buttonAccount.Enabled = false;
+
             }
             else
                 MessageBox.Show("Sign in first!", "Error");
@@ -141,10 +167,18 @@ namespace ROPark_II
                 {
                     this.formMap = new formMap();
                     openChildFormInPanel(formMap);
-                };
+                }
+                finally
+                {
+                    foreach (Control c in panel1.Controls)
+                    {
+                        c.Enabled = true;
+                    }
+                    buttonPark.Enabled = false;
+                }
             }
             else
-                MessageBox.Show("You have to be logged in to start parking!", "Log in first");
+                MessageBox.Show("Sign in to start parking!", "Sign in first");
         }
     }
 }

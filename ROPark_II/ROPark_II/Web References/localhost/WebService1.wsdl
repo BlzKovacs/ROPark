@@ -372,6 +372,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="deleteParkSpot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteParkSpotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteParkSpotResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="deleteRegion">
         <s:complexType>
           <s:sequence>
@@ -428,6 +442,25 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getParkSpotsForPlace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="placeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkSpotsForPlaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParkSpotsForPlaceResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="changeCityName">
         <s:complexType>
           <s:sequence>
@@ -840,6 +873,12 @@
   <wsdl:message name="deleteParkPlaceSoapOut">
     <wsdl:part name="parameters" element="tns:deleteParkPlaceResponse" />
   </wsdl:message>
+  <wsdl:message name="deleteParkSpotSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteParkSpot" />
+  </wsdl:message>
+  <wsdl:message name="deleteParkSpotSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteParkSpotResponse" />
+  </wsdl:message>
   <wsdl:message name="deleteRegionSoapIn">
     <wsdl:part name="parameters" element="tns:deleteRegion" />
   </wsdl:message>
@@ -863,6 +902,12 @@
   </wsdl:message>
   <wsdl:message name="getParkPlacesForRegionSoapOut">
     <wsdl:part name="parameters" element="tns:getParkPlacesForRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParkSpotsForPlaceSoapIn">
+    <wsdl:part name="parameters" element="tns:getParkSpotsForPlace" />
+  </wsdl:message>
+  <wsdl:message name="getParkSpotsForPlaceSoapOut">
+    <wsdl:part name="parameters" element="tns:getParkSpotsForPlaceResponse" />
   </wsdl:message>
   <wsdl:message name="changeCityNameSoapIn">
     <wsdl:part name="parameters" element="tns:changeCityName" />
@@ -1063,6 +1108,10 @@
       <wsdl:input message="tns:deleteParkPlaceSoapIn" />
       <wsdl:output message="tns:deleteParkPlaceSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="deleteParkSpot">
+      <wsdl:input message="tns:deleteParkSpotSoapIn" />
+      <wsdl:output message="tns:deleteParkSpotSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="deleteRegion">
       <wsdl:input message="tns:deleteRegionSoapIn" />
       <wsdl:output message="tns:deleteRegionSoapOut" />
@@ -1078,6 +1127,10 @@
     <wsdl:operation name="getParkPlacesForRegion">
       <wsdl:input message="tns:getParkPlacesForRegionSoapIn" />
       <wsdl:output message="tns:getParkPlacesForRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParkSpotsForPlace">
+      <wsdl:input message="tns:getParkSpotsForPlaceSoapIn" />
+      <wsdl:output message="tns:getParkSpotsForPlaceSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="changeCityName">
       <wsdl:input message="tns:changeCityNameSoapIn" />
@@ -1366,6 +1419,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deleteParkSpot">
+      <soap:operation soapAction="http://tempuri.org/deleteParkSpot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="deleteRegion">
       <soap:operation soapAction="http://tempuri.org/deleteRegion" style="document" />
       <wsdl:input>
@@ -1395,6 +1457,15 @@
     </wsdl:operation>
     <wsdl:operation name="getParkPlacesForRegion">
       <soap:operation soapAction="http://tempuri.org/getParkPlacesForRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkSpotsForPlace">
+      <soap:operation soapAction="http://tempuri.org/getParkSpotsForPlace" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1774,6 +1845,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deleteParkSpot">
+      <soap12:operation soapAction="http://tempuri.org/deleteParkSpot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="deleteRegion">
       <soap12:operation soapAction="http://tempuri.org/deleteRegion" style="document" />
       <wsdl:input>
@@ -1803,6 +1883,15 @@
     </wsdl:operation>
     <wsdl:operation name="getParkPlacesForRegion">
       <soap12:operation soapAction="http://tempuri.org/getParkPlacesForRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkSpotsForPlace">
+      <soap12:operation soapAction="http://tempuri.org/getParkSpotsForPlace" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

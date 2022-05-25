@@ -48,6 +48,7 @@
             // 
             // panelSecondForm
             // 
+            this.panelSecondForm.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.panelSecondForm.Controls.Add(this.buttonPark);
             this.panelSecondForm.Controls.Add(this.listBoxHistory);
             this.panelSecondForm.Controls.Add(this.label7);
@@ -64,13 +65,13 @@
             this.panelSecondForm.Controls.Add(this.label1);
             this.panelSecondForm.Location = new System.Drawing.Point(-2, -1);
             this.panelSecondForm.Name = "panelSecondForm";
-            this.panelSecondForm.Size = new System.Drawing.Size(1268, 610);
+            this.panelSecondForm.Size = new System.Drawing.Size(1369, 653);
             this.panelSecondForm.TabIndex = 16;
             // 
             // buttonPark
             // 
             this.buttonPark.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonPark.Location = new System.Drawing.Point(312, 414);
+            this.buttonPark.Location = new System.Drawing.Point(250, 400);
             this.buttonPark.Name = "buttonPark";
             this.buttonPark.Size = new System.Drawing.Size(292, 36);
             this.buttonPark.TabIndex = 29;

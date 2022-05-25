@@ -31,13 +31,13 @@ namespace ROPark_II
                 {
 
                     if (i == 1)
-                        fullName = userInfo[i];
+                        fullName = userInfo[i].Trim();
                     else if (i == 2)
-                        labelName.Text = fullName.Trim() + " " + userInfo[i];
+                        labelName.Text = fullName.Trim() + " " + userInfo[i].Trim();
                     else if (i == 3)
-                        labelPhone.Text = userInfo[i];
+                        labelPhone.Text = userInfo[i].Trim();
                     else if (i == 4)
-                        labelEmail.Text = userInfo[i];
+                        labelEmail.Text = userInfo[i].Trim();
                 }
                 labelUser.Text = user;
 

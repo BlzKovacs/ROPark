@@ -52,7 +52,8 @@
             // 
             // pannel_menu
             // 
-            this.pannel_menu.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pannel_menu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pannel_menu.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.pannel_menu.Controls.Add(this.label2);
             this.pannel_menu.Controls.Add(this.listView_parkingPlace);
             this.pannel_menu.Controls.Add(this.label1);
@@ -69,7 +70,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(57, 206);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 17);
+            this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Locuri parcare:";
             // 
@@ -83,6 +84,7 @@
             this.listView_parkingPlace.Size = new System.Drawing.Size(231, 149);
             this.listView_parkingPlace.TabIndex = 5;
             this.listView_parkingPlace.UseCompatibleStateImageBehavior = false;
+            this.listView_parkingPlace.View = System.Windows.Forms.View.List;
             this.listView_parkingPlace.SelectedIndexChanged += new System.EventHandler(this.listView_parkingPlace_SelectedIndexChanged);
             // 
             // label1
@@ -90,7 +92,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(57, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Regiuni:";
             // 
@@ -104,6 +106,7 @@
             this.listView_Regiuni.Size = new System.Drawing.Size(231, 149);
             this.listView_Regiuni.TabIndex = 3;
             this.listView_Regiuni.UseCompatibleStateImageBehavior = false;
+            this.listView_Regiuni.View = System.Windows.Forms.View.List;
             this.listView_Regiuni.SelectedIndexChanged += new System.EventHandler(this.listView_Regiuni_SelectedIndexChanged);
             // 
             // buttonSearch
@@ -130,6 +133,7 @@
             // 
             // groupBox_currentCity
             // 
+            this.groupBox_currentCity.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.groupBox_currentCity.Controls.Add(this.label_orasSelectat);
             this.groupBox_currentCity.Location = new System.Drawing.Point(11, 10);
             this.groupBox_currentCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -145,7 +149,7 @@
             this.label_orasSelectat.AutoSize = true;
             this.label_orasSelectat.Location = new System.Drawing.Point(49, 28);
             this.label_orasSelectat.Name = "label_orasSelectat";
-            this.label_orasSelectat.Size = new System.Drawing.Size(30, 17);
+            this.label_orasSelectat.Size = new System.Drawing.Size(24, 16);
             this.label_orasSelectat.TabIndex = 4;
             this.label_orasSelectat.Text = "- ; -";
             // 
@@ -153,6 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.groupBox_currentCity);
             this.Controls.Add(this.pictureBox_Romania);

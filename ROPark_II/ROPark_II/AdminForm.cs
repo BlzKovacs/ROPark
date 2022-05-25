@@ -94,9 +94,18 @@ namespace ROPark_II
         {
             if (listBoxParkPlaces.SelectedIndex != -1)
             {
+                listBoxParkSpots.Items.Clear();
+
                 listBoxUsers.SelectedIndex = -1;
                 listBoxRegions.SelectedIndex = -1;
                 listBoxCities.SelectedIndex = -1;
+                listBoxParkSpots.SelectedIndex = -1;
+
+                String parkPlaceName = listBoxParkPlaces.SelectedItem.ToString().Trim();
+                int id = serv.getParkPlaceId(parkPlaceName);
+
+                foreach (int parkSpot in serv.getParkSpotsForPlace(id))
+                    listBoxParkSpots.Items.Add(parkSpot);
             }
         }
 
@@ -105,10 +114,13 @@ namespace ROPark_II
             if (listBoxRegions.SelectedIndex != -1)
             {
                 listBoxParkPlaces.Items.Clear();
+                listBoxParkSpots.Items.Clear();
 
                 listBoxUsers.SelectedIndex = -1;
                 listBoxCities.SelectedIndex = -1;
                 listBoxParkPlaces.SelectedIndex = -1;
+                listBoxParkSpots.SelectedIndex = -1;
+
 
                 String regionName = listBoxRegions.SelectedItem.ToString().Trim();
                 int id = serv.getRegionId(regionName);
@@ -124,10 +136,13 @@ namespace ROPark_II
             {
                 listBoxRegions.Items.Clear();
                 listBoxParkPlaces.Items.Clear();
+                listBoxParkSpots.Items.Clear();
 
                 listBoxUsers.SelectedIndex = -1;
                 listBoxRegions.SelectedIndex = -1;
                 listBoxParkPlaces.SelectedIndex = -1;
+                listBoxParkSpots.SelectedIndex = -1;
+
                 String cityName = listBoxCities.SelectedItem.ToString().Trim();
                 int id = serv.getCityId(cityName);
 
@@ -139,6 +154,17 @@ namespace ROPark_II
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if(listBoxParkSpots.SelectedIndex != -1)
+            {
+                int parkspot = Convert.ToInt32(listBoxParkSpots.SelectedItem.ToString());
+                if (serv.deleteParkSpot(parkspot))
+                {
+                    listBoxParkSpots.Items.Remove(parkspot);
+                }
+                else
+                    MessageBox.Show("An error occured.", "Error");
+            }
+            
             if (listBoxParkPlaces.SelectedIndex != -1)
             {
 
@@ -148,7 +174,7 @@ namespace ROPark_II
                     listBoxParkPlaces.Items.Remove(parkplace);
                 }
                 else
-                    MessageBox.Show("An error occured.", "Error");
+                    MessageBox.Show("You have to delete the Parking Spots first!.", "Error");
             }
 
 
@@ -214,6 +240,7 @@ namespace ROPark_II
             listBoxCities.Items.Clear();
             listBoxRegions.Items.Clear();
             listBoxParkPlaces.Items.Clear();
+            listBoxParkSpots.Items.Clear();
 
             foreach (string city in serv.getAllCites())
                 listBoxCities.Items.Add(city);
@@ -231,6 +258,18 @@ namespace ROPark_II
         {
             Account.logOut();
             this.Close();
+        }
+
+        private void listBoxParkSpots_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxParkSpots.SelectedIndex != -1)
+            {
+                listBoxUsers.SelectedIndex = -1;
+                listBoxRegions.SelectedIndex = -1;
+                listBoxCities.SelectedIndex = -1;
+                listBoxParkPlaces.SelectedIndex = -1;
+
+            }
         }
     }
 }

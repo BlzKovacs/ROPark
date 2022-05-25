@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelSecondForm = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxParkSpots = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
@@ -50,6 +52,9 @@
             // 
             // panelSecondForm
             // 
+            this.panelSecondForm.BackgroundImage = global::ROPark_II.Properties.Resources.background;
+            this.panelSecondForm.Controls.Add(this.label5);
+            this.panelSecondForm.Controls.Add(this.listBoxParkSpots);
             this.panelSecondForm.Controls.Add(this.label6);
             this.panelSecondForm.Controls.Add(this.listBoxHistory);
             this.panelSecondForm.Controls.Add(this.buttonRefresh);
@@ -68,8 +73,29 @@
             this.panelSecondForm.Controls.Add(this.labelWelcome);
             this.panelSecondForm.Location = new System.Drawing.Point(3, 1);
             this.panelSecondForm.Name = "panelSecondForm";
-            this.panelSecondForm.Size = new System.Drawing.Size(1281, 653);
+            this.panelSecondForm.Size = new System.Drawing.Size(1391, 653);
             this.panelSecondForm.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(933, 115);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(187, 20);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Parking Spaces entered";
+            // 
+            // listBoxParkSpots
+            // 
+            this.listBoxParkSpots.FormattingEnabled = true;
+            this.listBoxParkSpots.HorizontalScrollbar = true;
+            this.listBoxParkSpots.ItemHeight = 16;
+            this.listBoxParkSpots.Location = new System.Drawing.Point(989, 138);
+            this.listBoxParkSpots.Name = "listBoxParkSpots";
+            this.listBoxParkSpots.Size = new System.Drawing.Size(69, 180);
+            this.listBoxParkSpots.TabIndex = 45;
+            this.listBoxParkSpots.SelectedIndexChanged += new System.EventHandler(this.listBoxParkSpots_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -117,7 +143,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(421, 114);
+            this.label4.Location = new System.Drawing.Point(314, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 20);
             this.label4.TabIndex = 39;
@@ -127,7 +153,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(671, 114);
+            this.label3.Location = new System.Drawing.Point(535, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 20);
             this.label3.TabIndex = 38;
@@ -137,7 +163,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(915, 114);
+            this.label2.Location = new System.Drawing.Point(749, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 20);
             this.label2.TabIndex = 37;
@@ -147,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(157, 114);
+            this.label1.Location = new System.Drawing.Point(82, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 20);
             this.label1.TabIndex = 36;
@@ -158,7 +184,7 @@
             this.listBoxParkPlaces.FormattingEnabled = true;
             this.listBoxParkPlaces.HorizontalScrollbar = true;
             this.listBoxParkPlaces.ItemHeight = 16;
-            this.listBoxParkPlaces.Location = new System.Drawing.Point(909, 137);
+            this.listBoxParkPlaces.Location = new System.Drawing.Point(753, 138);
             this.listBoxParkPlaces.Name = "listBoxParkPlaces";
             this.listBoxParkPlaces.Size = new System.Drawing.Size(170, 180);
             this.listBoxParkPlaces.TabIndex = 35;
@@ -169,7 +195,7 @@
             this.listBoxRegions.FormattingEnabled = true;
             this.listBoxRegions.HorizontalScrollbar = true;
             this.listBoxRegions.ItemHeight = 16;
-            this.listBoxRegions.Location = new System.Drawing.Point(658, 137);
+            this.listBoxRegions.Location = new System.Drawing.Point(522, 138);
             this.listBoxRegions.Name = "listBoxRegions";
             this.listBoxRegions.Size = new System.Drawing.Size(170, 180);
             this.listBoxRegions.TabIndex = 34;
@@ -180,7 +206,7 @@
             this.listBoxCities.FormattingEnabled = true;
             this.listBoxCities.HorizontalScrollbar = true;
             this.listBoxCities.ItemHeight = 16;
-            this.listBoxCities.Location = new System.Drawing.Point(401, 137);
+            this.listBoxCities.Location = new System.Drawing.Point(294, 138);
             this.listBoxCities.Name = "listBoxCities";
             this.listBoxCities.Size = new System.Drawing.Size(170, 180);
             this.listBoxCities.TabIndex = 33;
@@ -191,7 +217,7 @@
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.HorizontalScrollbar = true;
             this.listBoxUsers.ItemHeight = 16;
-            this.listBoxUsers.Location = new System.Drawing.Point(139, 137);
+            this.listBoxUsers.Location = new System.Drawing.Point(64, 138);
             this.listBoxUsers.Name = "listBoxUsers";
             this.listBoxUsers.Size = new System.Drawing.Size(170, 180);
             this.listBoxUsers.TabIndex = 32;
@@ -199,9 +225,9 @@
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonDelete.Location = new System.Drawing.Point(828, 357);
+            this.buttonDelete.Location = new System.Drawing.Point(815, 367);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(104, 40);
+            this.buttonDelete.Size = new System.Drawing.Size(170, 40);
             this.buttonDelete.TabIndex = 31;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -210,9 +236,9 @@
             // buttonEdit
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEdit.Location = new System.Drawing.Point(556, 357);
+            this.buttonEdit.Location = new System.Drawing.Point(226, 367);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(108, 40);
+            this.buttonEdit.Size = new System.Drawing.Size(170, 40);
             this.buttonEdit.TabIndex = 30;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = false;
@@ -221,9 +247,9 @@
             // buttonEnter
             // 
             this.buttonEnter.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEnter.Location = new System.Drawing.Point(298, 357);
+            this.buttonEnter.Location = new System.Drawing.Point(522, 367);
             this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(113, 40);
+            this.buttonEnter.Size = new System.Drawing.Size(170, 40);
             this.buttonEnter.TabIndex = 29;
             this.buttonEnter.Text = "Enter";
             this.buttonEnter.UseVisualStyleBackColor = false;
@@ -244,6 +270,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
+            this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.panelSecondForm);
             this.Name = "AdminForm";
@@ -274,5 +301,7 @@
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBoxHistory;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxParkSpots;
     }
 }

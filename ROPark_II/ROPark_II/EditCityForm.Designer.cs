@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 163);
+            this.label1.Location = new System.Drawing.Point(159, 176);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // textBoxOld
             // 
-            this.textBoxOld.Location = new System.Drawing.Point(242, 157);
+            this.textBoxOld.Location = new System.Drawing.Point(279, 170);
             this.textBoxOld.Name = "textBoxOld";
             this.textBoxOld.ReadOnly = true;
             this.textBoxOld.Size = new System.Drawing.Size(134, 22);
@@ -60,7 +60,7 @@
             // 
             // textBoxNew
             // 
-            this.textBoxNew.Location = new System.Drawing.Point(242, 213);
+            this.textBoxNew.Location = new System.Drawing.Point(279, 226);
             this.textBoxNew.Name = "textBoxNew";
             this.textBoxNew.Size = new System.Drawing.Size(134, 22);
             this.textBoxNew.TabIndex = 2;
@@ -68,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(137, 219);
+            this.label2.Location = new System.Drawing.Point(174, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 16);
             this.label2.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             this.listBoxRegions.FormattingEnabled = true;
             this.listBoxRegions.ItemHeight = 16;
-            this.listBoxRegions.Location = new System.Drawing.Point(450, 146);
+            this.listBoxRegions.Location = new System.Drawing.Point(487, 159);
             this.listBoxRegions.Name = "listBoxRegions";
             this.listBoxRegions.Size = new System.Drawing.Size(120, 148);
             this.listBoxRegions.TabIndex = 4;
@@ -87,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(461, 127);
+            this.label3.Location = new System.Drawing.Point(498, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 16);
             this.label3.TabIndex = 5;
@@ -106,7 +106,7 @@
             // buttonEnter
             // 
             this.buttonEnter.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEnter.Location = new System.Drawing.Point(308, 276);
+            this.buttonEnter.Location = new System.Drawing.Point(345, 289);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(94, 28);
             this.buttonEnter.TabIndex = 7;
@@ -117,7 +117,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(597, 127);
+            this.label5.Location = new System.Drawing.Point(634, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(159, 16);
             this.label5.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             this.listBoxParkPlaces.FormattingEnabled = true;
             this.listBoxParkPlaces.ItemHeight = 16;
-            this.listBoxParkPlaces.Location = new System.Drawing.Point(614, 146);
+            this.listBoxParkPlaces.Location = new System.Drawing.Point(651, 159);
             this.listBoxParkPlaces.Name = "listBoxParkPlaces";
             this.listBoxParkPlaces.Size = new System.Drawing.Size(120, 148);
             this.listBoxParkPlaces.TabIndex = 9;
@@ -135,7 +135,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(189, 276);
+            this.buttonCancel.Location = new System.Drawing.Point(226, 289);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(94, 28);
             this.buttonCancel.TabIndex = 10;
@@ -148,6 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(180)))));
+            this.BackgroundImage = global::ROPark_II.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1263, 606);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.listBoxParkPlaces);

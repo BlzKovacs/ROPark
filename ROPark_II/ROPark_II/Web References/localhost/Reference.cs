@@ -77,6 +77,8 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback deleteParkPlaceOperationCompleted;
         
+        private System.Threading.SendOrPostCallback deleteParkSpotOperationCompleted;
+        
         private System.Threading.SendOrPostCallback deleteRegionOperationCompleted;
         
         private System.Threading.SendOrPostCallback deleteCityOperationCompleted;
@@ -84,6 +86,8 @@ namespace ROPark_II.localhost {
         private System.Threading.SendOrPostCallback getRegionsForCityOperationCompleted;
         
         private System.Threading.SendOrPostCallback getParkPlacesForRegionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getParkSpotsForPlaceOperationCompleted;
         
         private System.Threading.SendOrPostCallback changeCityNameOperationCompleted;
         
@@ -230,6 +234,9 @@ namespace ROPark_II.localhost {
         public event deleteParkPlaceCompletedEventHandler deleteParkPlaceCompleted;
         
         /// <remarks/>
+        public event deleteParkSpotCompletedEventHandler deleteParkSpotCompleted;
+        
+        /// <remarks/>
         public event deleteRegionCompletedEventHandler deleteRegionCompleted;
         
         /// <remarks/>
@@ -240,6 +247,9 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         public event getParkPlacesForRegionCompletedEventHandler getParkPlacesForRegionCompleted;
+        
+        /// <remarks/>
+        public event getParkSpotsForPlaceCompletedEventHandler getParkSpotsForPlaceCompleted;
         
         /// <remarks/>
         public event changeCityNameCompletedEventHandler changeCityNameCompleted;
@@ -995,6 +1005,35 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteParkSpot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool deleteParkSpot(int id) {
+            object[] results = this.Invoke("deleteParkSpot", new object[] {
+                        id});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteParkSpotAsync(int id) {
+            this.deleteParkSpotAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void deleteParkSpotAsync(int id, object userState) {
+            if ((this.deleteParkSpotOperationCompleted == null)) {
+                this.deleteParkSpotOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteParkSpotOperationCompleted);
+            }
+            this.InvokeAsync("deleteParkSpot", new object[] {
+                        id}, this.deleteParkSpotOperationCompleted, userState);
+        }
+        
+        private void OndeleteParkSpotOperationCompleted(object arg) {
+            if ((this.deleteParkSpotCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteParkSpotCompleted(this, new deleteParkSpotCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteRegion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool deleteRegion(string name) {
             object[] results = this.Invoke("deleteRegion", new object[] {
@@ -1107,6 +1146,35 @@ namespace ROPark_II.localhost {
             if ((this.getParkPlacesForRegionCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getParkPlacesForRegionCompleted(this, new getParkPlacesForRegionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkSpotsForPlace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] getParkSpotsForPlace(int placeId) {
+            object[] results = this.Invoke("getParkSpotsForPlace", new object[] {
+                        placeId});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkSpotsForPlaceAsync(int placeId) {
+            this.getParkSpotsForPlaceAsync(placeId, null);
+        }
+        
+        /// <remarks/>
+        public void getParkSpotsForPlaceAsync(int placeId, object userState) {
+            if ((this.getParkSpotsForPlaceOperationCompleted == null)) {
+                this.getParkSpotsForPlaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkSpotsForPlaceOperationCompleted);
+            }
+            this.InvokeAsync("getParkSpotsForPlace", new object[] {
+                        placeId}, this.getParkSpotsForPlaceOperationCompleted, userState);
+        }
+        
+        private void OngetParkSpotsForPlaceOperationCompleted(object arg) {
+            if ((this.getParkSpotsForPlaceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkSpotsForPlaceCompleted(this, new getParkSpotsForPlaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2517,6 +2585,32 @@ namespace ROPark_II.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void deleteParkSpotCompletedEventHandler(object sender, deleteParkSpotCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteParkSpotCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteParkSpotCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void deleteRegionCompletedEventHandler(object sender, deleteRegionCompletedEventArgs e);
     
     /// <remarks/>
@@ -2615,6 +2709,32 @@ namespace ROPark_II.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkSpotsForPlaceCompletedEventHandler(object sender, getParkSpotsForPlaceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkSpotsForPlaceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkSpotsForPlaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
             }
         }
     }

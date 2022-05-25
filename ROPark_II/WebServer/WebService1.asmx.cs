@@ -695,6 +695,35 @@ namespace WebServer
         }
 
         [WebMethod]
+        public Boolean deleteParkSpot(int id)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+            try
+            {
+                using (myCon)
+                {
+                    myCon.Open();
+                    
+                    SqlCommand command = new SqlCommand("DELETE FROM ParkingLot WHERE ParkingLotID = @id", myCon);
+                    command.Parameters.Add("@id", id);
+
+                    using (command)
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    myCon.Close();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            };
+        }
+
+        [WebMethod]
         public Boolean deleteRegion(string name)
         {
             SqlConnection myCon = new SqlConnection();
@@ -802,6 +831,37 @@ namespace WebServer
             while (dataReader.Read())
             {
                 parkPlaces.Add(dataReader["ParkPlaceName"].ToString());
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return parkPlaces;
+        }
+
+        [WebMethod]
+        public List<int> getParkSpotsForPlace(int placeId)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            string query = "SELECT ParkingLotID FROM ParkingLot WHERE ParkingPlaceID = @id";
+
+            List<int> parkPlaces = new List<int>();
+
+
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", placeId);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                parkPlaces.Add(Convert.ToInt32(dataReader["ParkingLotID"].ToString()));
             }
 
             dataReader.Close();

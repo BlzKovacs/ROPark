@@ -62,6 +62,5 @@ namespace ROPark_II
                 throw new Exception("Error in base64Encode" + ex.Message);
             }
         }
-        
     }
 }
