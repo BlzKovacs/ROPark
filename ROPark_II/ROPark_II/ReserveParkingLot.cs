@@ -63,8 +63,13 @@ namespace ROPark_II
                     history.PlateNr = textBox1.Text.Trim().ToUpper();
 
                     service.addHistory(history);
-
-                    MessageBox.Show("Parking Lot rezervat.");
+                    String msg = "Thank you for parking with ROPark!\nThis is a confirmation email.\n\n" +
+                        "You are parking with license plate: "+ history.PlateNr+" at:\nCity: " + service.getCityById(history.cityId) + "\nRegion: " +
+                        service.getRegionById(history.regionId) + "\nParking place: " + service.getParkPlaceById(history.parkingPlaceId) + "\n" +
+                        "Parking spot: " + history.parkingLotId + "\nStarting from time and date: " + history.date;
+                    
+                    service.sendEmail(Account.emailAdress, msg);
+                    MessageBox.Show("Parking Lot reserved.");
 
                 }
                 catch (Exception)

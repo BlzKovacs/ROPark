@@ -978,7 +978,7 @@ namespace WebServer
         }
 
         [WebMethod]
-        public Boolean sendEmail(String email, String msg, String userName, String firstName, String lastName, String phoneNr)
+        public Boolean sendEmail(String email, String msg)
         {
             try
             {
@@ -1289,6 +1289,35 @@ namespace WebServer
         }
 
         [WebMethod]
+        public String getParkingPlaceById(int id)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            String query = "SELECT ParkPlaceName FROM ParkingPlaces WHERE ParkingPlaceID = @id";
+            String username = null;
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", id);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                username = dataReader["ParkPlaceName"].ToString();
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return username;
+        }
+
+
+        [WebMethod]
         public Boolean addSpaces(int parkPlaceId, int nr)
         {
             SqlConnection myCon = new SqlConnection();
@@ -1371,6 +1400,35 @@ namespace WebServer
 
             return success;
         }
+
+        [WebMethod]
+        public String getEmailAdress(int userId)
+        {
+            SqlConnection myCon = new SqlConnection();
+            myCon.ConnectionString = connectionString;
+
+            String query = "SELECT Email FROM Users WHERE UserID = @id";
+            String email = null;
+            myCon.Open();
+
+            SqlCommand cmd = new SqlCommand(query, myCon);
+            cmd.Parameters.Add("id", userId);
+
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+
+            while (dataReader.Read())
+            {
+                email = dataReader["Email"].ToString();
+            }
+
+            dataReader.Close();
+
+            myCon.Close();
+
+            return email;
+        }
+
     }
 
 

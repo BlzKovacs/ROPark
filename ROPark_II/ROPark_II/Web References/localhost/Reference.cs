@@ -117,11 +117,15 @@ namespace ROPark_II.localhost {
         
         private System.Threading.SendOrPostCallback getRegionByIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getParkingPlaceByIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback addSpacesOperationCompleted;
         
         private System.Threading.SendOrPostCallback finishParkingOperationCompleted;
         
         private System.Threading.SendOrPostCallback isSpotFreeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getEmailAdressOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -294,6 +298,9 @@ namespace ROPark_II.localhost {
         public event getRegionByIdCompletedEventHandler getRegionByIdCompleted;
         
         /// <remarks/>
+        public event getParkingPlaceByIdCompletedEventHandler getParkingPlaceByIdCompleted;
+        
+        /// <remarks/>
         public event addSpacesCompletedEventHandler addSpacesCompleted;
         
         /// <remarks/>
@@ -301,6 +308,9 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         public event isSpotFreeCompletedEventHandler isSpotFreeCompleted;
+        
+        /// <remarks/>
+        public event getEmailAdressCompletedEventHandler getEmailAdressCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllCites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1302,34 +1312,26 @@ namespace ROPark_II.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/sendEmail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool sendEmail(string email, string msg, string userName, string firstName, string lastName, string phoneNr) {
+        public bool sendEmail(string email, string msg) {
             object[] results = this.Invoke("sendEmail", new object[] {
                         email,
-                        msg,
-                        userName,
-                        firstName,
-                        lastName,
-                        phoneNr});
+                        msg});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void sendEmailAsync(string email, string msg, string userName, string firstName, string lastName, string phoneNr) {
-            this.sendEmailAsync(email, msg, userName, firstName, lastName, phoneNr, null);
+        public void sendEmailAsync(string email, string msg) {
+            this.sendEmailAsync(email, msg, null);
         }
         
         /// <remarks/>
-        public void sendEmailAsync(string email, string msg, string userName, string firstName, string lastName, string phoneNr, object userState) {
+        public void sendEmailAsync(string email, string msg, object userState) {
             if ((this.sendEmailOperationCompleted == null)) {
                 this.sendEmailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsendEmailOperationCompleted);
             }
             this.InvokeAsync("sendEmail", new object[] {
                         email,
-                        msg,
-                        userName,
-                        firstName,
-                        lastName,
-                        phoneNr}, this.sendEmailOperationCompleted, userState);
+                        msg}, this.sendEmailOperationCompleted, userState);
         }
         
         private void OnsendEmailOperationCompleted(object arg) {
@@ -1609,6 +1611,35 @@ namespace ROPark_II.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParkingPlaceById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getParkingPlaceById(int id) {
+            object[] results = this.Invoke("getParkingPlaceById", new object[] {
+                        id});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParkingPlaceByIdAsync(int id) {
+            this.getParkingPlaceByIdAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getParkingPlaceByIdAsync(int id, object userState) {
+            if ((this.getParkingPlaceByIdOperationCompleted == null)) {
+                this.getParkingPlaceByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParkingPlaceByIdOperationCompleted);
+            }
+            this.InvokeAsync("getParkingPlaceById", new object[] {
+                        id}, this.getParkingPlaceByIdOperationCompleted, userState);
+        }
+        
+        private void OngetParkingPlaceByIdOperationCompleted(object arg) {
+            if ((this.getParkingPlaceByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParkingPlaceByIdCompleted(this, new getParkingPlaceByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addSpaces", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool addSpaces(int parkPlaceId, int nr) {
             object[] results = this.Invoke("addSpaces", new object[] {
@@ -1694,6 +1725,35 @@ namespace ROPark_II.localhost {
             if ((this.isSpotFreeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.isSpotFreeCompleted(this, new isSpotFreeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getEmailAdress", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getEmailAdress(int userId) {
+            object[] results = this.Invoke("getEmailAdress", new object[] {
+                        userId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getEmailAdressAsync(int userId) {
+            this.getEmailAdressAsync(userId, null);
+        }
+        
+        /// <remarks/>
+        public void getEmailAdressAsync(int userId, object userState) {
+            if ((this.getEmailAdressOperationCompleted == null)) {
+                this.getEmailAdressOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEmailAdressOperationCompleted);
+            }
+            this.InvokeAsync("getEmailAdress", new object[] {
+                        userId}, this.getEmailAdressOperationCompleted, userState);
+        }
+        
+        private void OngetEmailAdressOperationCompleted(object arg) {
+            if ((this.getEmailAdressCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getEmailAdressCompleted(this, new getEmailAdressCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3103,6 +3163,32 @@ namespace ROPark_II.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getParkingPlaceByIdCompletedEventHandler(object sender, getParkingPlaceByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParkingPlaceByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParkingPlaceByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void addSpacesCompletedEventHandler(object sender, addSpacesCompletedEventArgs e);
     
     /// <remarks/>
@@ -3175,6 +3261,32 @@ namespace ROPark_II.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getEmailAdressCompletedEventHandler(object sender, getEmailAdressCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getEmailAdressCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getEmailAdressCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

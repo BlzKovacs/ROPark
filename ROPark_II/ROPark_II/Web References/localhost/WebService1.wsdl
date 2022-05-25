@@ -525,10 +525,6 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="phoneNr" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -683,6 +679,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getParkingPlaceById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParkingPlaceByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParkingPlaceByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="addSpaces">
         <s:complexType>
           <s:sequence>
@@ -723,6 +733,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="isSpotFreeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmailAdress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmailAdressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmailAdressResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -992,6 +1016,12 @@
   <wsdl:message name="getRegionByIdSoapOut">
     <wsdl:part name="parameters" element="tns:getRegionByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="getParkingPlaceByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getParkingPlaceById" />
+  </wsdl:message>
+  <wsdl:message name="getParkingPlaceByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getParkingPlaceByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="addSpacesSoapIn">
     <wsdl:part name="parameters" element="tns:addSpaces" />
   </wsdl:message>
@@ -1009,6 +1039,12 @@
   </wsdl:message>
   <wsdl:message name="isSpotFreeSoapOut">
     <wsdl:part name="parameters" element="tns:isSpotFreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmailAdressSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmailAdress" />
+  </wsdl:message>
+  <wsdl:message name="getEmailAdressSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmailAdressResponse" />
   </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="getAllCites">
@@ -1187,6 +1223,10 @@
       <wsdl:input message="tns:getRegionByIdSoapIn" />
       <wsdl:output message="tns:getRegionByIdSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getParkingPlaceById">
+      <wsdl:input message="tns:getParkingPlaceByIdSoapIn" />
+      <wsdl:output message="tns:getParkingPlaceByIdSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="addSpaces">
       <wsdl:input message="tns:addSpacesSoapIn" />
       <wsdl:output message="tns:addSpacesSoapOut" />
@@ -1198,6 +1238,10 @@
     <wsdl:operation name="isSpotFree">
       <wsdl:input message="tns:isSpotFreeSoapIn" />
       <wsdl:output message="tns:isSpotFreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmailAdress">
+      <wsdl:input message="tns:getEmailAdressSoapIn" />
+      <wsdl:output message="tns:getEmailAdressSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -1598,6 +1642,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getParkingPlaceById">
+      <soap:operation soapAction="http://tempuri.org/getParkingPlaceById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addSpaces">
       <soap:operation soapAction="http://tempuri.org/addSpaces" style="document" />
       <wsdl:input>
@@ -1618,6 +1671,15 @@
     </wsdl:operation>
     <wsdl:operation name="isSpotFree">
       <soap:operation soapAction="http://tempuri.org/isSpotFree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailAdress">
+      <soap:operation soapAction="http://tempuri.org/getEmailAdress" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2024,6 +2086,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getParkingPlaceById">
+      <soap12:operation soapAction="http://tempuri.org/getParkingPlaceById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addSpaces">
       <soap12:operation soapAction="http://tempuri.org/addSpaces" style="document" />
       <wsdl:input>
@@ -2044,6 +2115,15 @@
     </wsdl:operation>
     <wsdl:operation name="isSpotFree">
       <soap12:operation soapAction="http://tempuri.org/isSpotFree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailAdress">
+      <soap12:operation soapAction="http://tempuri.org/getEmailAdress" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

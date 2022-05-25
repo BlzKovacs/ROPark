@@ -13,12 +13,15 @@ namespace ROPark_II.Models
         public static int userId { get; set; }
         public static string userName { get; set; }
 
+        public static string emailAdress { get; set; }
+
         public static void logOut()
         {
             if (isLogged)
             {
                 userId = -1;
                 userName = null;
+                emailAdress = null;
                 isLogged = false;
             }
         }

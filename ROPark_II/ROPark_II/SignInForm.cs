@@ -39,6 +39,7 @@ namespace ROPark_II
 
                     Account.userId = serv.getUserId(username);
                     Account.userName = username;
+                    Account.emailAdress = serv.getEmailAdress(Account.userId);
                     Account.isLogged = true;
                 }
                 else
